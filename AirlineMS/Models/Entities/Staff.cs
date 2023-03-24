@@ -7,10 +7,8 @@ namespace AirlineMS.Models.Entities
 {
     public class Staff : BaseEntity
     {
-        public int UserId {get ; set;}
-        public int BranchId {get ; set;}
-
-
+        public string UserId {get ; set;}
+        public string BranchId {get ; set;}
         public User user {get ; set;}
         
     }

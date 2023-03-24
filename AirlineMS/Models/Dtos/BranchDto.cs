@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace AirlineMS.Models.Dtos
+{
+    public class BranchDto
+    {
+        public string Id {get; set;}
+        public string Name {get; set;}
+        public string CompanyId {get; set;}
+        public string CompanyName {get; set;}
+        public string PhoneNumber {get; set;}
+        public string Email {get; set;}
+        public string Address {get; set;}
+        public List<StaffDto> Staffs {get; set;}
+    }
+
+    public class CreateBranchRequestModel
+    {
+        public string Name {get; set;}
+        public string PhoneNumber {get; set;}
+        public string Email {get; set;}
+        public string Address {get; set;}
+    }
+
+    public class UpDateBranchRequestModel
+    {
+        public string Name {get; set;}
+        public string PhoneNumber {get; set;}
+        public string Address {get; set;}
+    }
+}

@@ -59,14 +59,7 @@ namespace AirlineMS.Services.Implementations
                     Email = newCompany.Email,
                     HQAddress = newCompany.HQAddress,
                     HQPhoneNumber = newCompany.HQPhoneNumber,
-                    Branches = newCompany.Branches.Select(b => new BranchDto{
-                        Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
+                    
                 }
             };
         }
@@ -100,12 +93,12 @@ namespace AirlineMS.Services.Implementations
                     Email = company.Email,
                     HQAddress = company.HQAddress,
                     HQPhoneNumber = company.HQPhoneNumber,
-                    Branches = company.Branches.Select(b => new BranchDto{
+                    Staffs = company.Staffs.Select(b => new StaffDto{
                         Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
+                        FirstName = b.user.FirstName,
+                        LastName = b.user.LastName,
+                        Email = b.user.Email,
+                        PhoneNumber = b.user.PhoneNumber,
                         CompanyId = b.CompanyId,
                     }).ToList()
                 }
@@ -138,12 +131,12 @@ namespace AirlineMS.Services.Implementations
                     Email = company.Email,
                     HQAddress = company.HQAddress,
                     HQPhoneNumber = company.HQPhoneNumber,
-                    Branches = company.Branches.Select(b => new BranchDto{
+                     Staffs = company.Staffs.Select(b => new StaffDto{
                         Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
+                        FirstName = b.user.FirstName,
+                        LastName = b.user.LastName,
+                        Email = b.user.Email,
+                        PhoneNumber = b.user.PhoneNumber,
                         CompanyId = b.CompanyId,
                     }).ToList()
                 }
@@ -174,12 +167,12 @@ namespace AirlineMS.Services.Implementations
                     Email = c.Email,
                     HQAddress = c.HQAddress,
                     HQPhoneNumber = c.HQPhoneNumber,
-                    Branches = c.Branches.Select(b => new BranchDto{
+                    Staffs = c.Staffs.Select(b => new StaffDto{
                         Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
+                        FirstName = b.user.FirstName,
+                        LastName = b.user.LastName,
+                        Email = b.user.Email,
+                        PhoneNumber = b.user.PhoneNumber,
                         CompanyId = b.CompanyId,
                     }).ToList()
                 })
@@ -218,12 +211,12 @@ namespace AirlineMS.Services.Implementations
                     Email = company.Email,
                     HQAddress = company.HQAddress,
                     HQPhoneNumber = company.HQPhoneNumber,
-                    Branches = company.Branches.Select(b => new BranchDto{
+                     Staffs = company.Staffs.Select(b => new StaffDto{
                         Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
+                        FirstName = b.user.FirstName,
+                        LastName = b.user.LastName,
+                        Email = b.user.Email,
+                        PhoneNumber = b.user.PhoneNumber,
                         CompanyId = b.CompanyId,
                     }).ToList()
                 }

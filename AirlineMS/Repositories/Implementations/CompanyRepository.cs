@@ -24,7 +24,7 @@ namespace AirlineMS.Repositories.Implementations
 
         public Company Get(Expression<Func<Company, bool>> expression)
         {
-            return _context.Companies.Include(c => c.Branches).FirstOrDefault(expression);
+            return _context.Companies.Include(c => c.Staffs).FirstOrDefault(expression);
         }
 
         public IEnumerable<Company> GetAll()
@@ -39,7 +39,7 @@ namespace AirlineMS.Repositories.Implementations
 
         public IEnumerable<Company> GetSelected(Expression<Func<Company, bool>> expression)
         {
-            return _context.Companies.Include(c => c.Branches).Where(expression).ToList();
+            return _context.Companies.Include(c => c.Staffs).Where(expression).ToList();
         }
     }
 }

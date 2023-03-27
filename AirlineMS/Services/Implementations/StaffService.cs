@@ -22,7 +22,7 @@ namespace AirlineMS.Services.Implementations
             if (staffExist == null)
             {
                 Staff staff = new Staff();
-                staff.user.FirstName = model.FirsttName;
+                staff.user.FirstName = model.FirstName;
                 staff.user.LastName = model.LastName;
                 staff.user.Email = model.Email;
                 staff.user.Password = model.Password;
@@ -38,7 +38,7 @@ namespace AirlineMS.Services.Implementations
                     {
                         Id = staff.Id,
                         BranchId = staff.BranchId,
-                        FirsttName = staff.user.FirstName,
+                        FirstName = staff.user.FirstName,
                         LastName = staff.user.LastName,
                         Email = staff.user.Email,
                         PhoneNumber = staff.user.PhoneNumber,
@@ -66,7 +66,7 @@ namespace AirlineMS.Services.Implementations
                     {
                         Id = staff.Id,
                         BranchId = staff.BranchId,
-                        FirsttName = staff.user.FirstName,
+                        FirstName = staff.user.FirstName,
                         LastName = staff.user.LastName,
                         PhoneNumber = staff.user.PhoneNumber,
                         Email = staff.user.Email,
@@ -93,7 +93,7 @@ namespace AirlineMS.Services.Implementations
                     {
                         Id = s.Id,
                         BranchId = s.BranchId,
-                        FirsttName = s.user.FirstName,
+                        FirstName = s.user.FirstName,
                         LastName = s.user.LastName,
                         Email = s.user.Email,
                         PhoneNumber = s.user.PhoneNumber,
@@ -123,7 +123,7 @@ namespace AirlineMS.Services.Implementations
                     {
                         Id = staff.Id,
                         BranchId = staff.BranchId,
-                        FirsttName = staff.user.FirstName,
+                        FirstName = staff.user.FirstName,
                         LastName = staff.user.LastName,
                         PhoneNumber = staff.user.PhoneNumber,
                         Email = staff.user.Email,
@@ -150,7 +150,7 @@ namespace AirlineMS.Services.Implementations
                 };
             }
 
-            staff.user.FirstName = model.FirsttName;
+            staff.user.FirstName = model.FirstName;
             staff.user.LastName = model.LastName;
             staff.user.PhoneNumber = model.PhoneNumber;
 
@@ -165,7 +165,7 @@ namespace AirlineMS.Services.Implementations
                 {
                     Id = staff.Id,
                     BranchId = staff.BranchId,
-                    FirsttName = staff.user.FirstName,
+                    FirstName = staff.user.FirstName,
                     LastName = staff.user.LastName,
                     PhoneNumber = staff.user.PhoneNumber,
                     Email = staff.user.Email,

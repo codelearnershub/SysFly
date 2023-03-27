@@ -50,50 +50,58 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
-        public BaseResponse<IEnumerable<RoleDto>> GetAllRolesOfAUser(string userId)      
+        public BaseResponse<IEnumerable<UserDto>> GetAllUserOfARole(string roleId)      
         {
 
-            var user = _userRepository.Get(x => x.Id == userId);
-            if (user is null)
+            var role = _roleRepository.Get(x => x.Id == roleId);
+            if (role is null)
             {
-                return new BaseResponse<IEnumerable<RoleDto>>
+                return new BaseResponse<IEnumerable<UserDto>>
                 {
                     Message = "User does not Exist",
                     Status = false
                 };
             }
-            var userRoles = user.UserRoles.Select(x => new RoleDto
-            {
-                Id = x.RoleId,
-                Name = x.Role.Name,
-                Description = x.Role.Description
-            }).ToList();
+    
 
-            return new BaseResponse<IEnumerable<RoleDto>>
+            return new BaseResponse<IEnumerable<UserDto>>
             {
-                Data = userRoles
+                
             };
         }
 
-        public BaseResponse<RoleDto> GetRoleByUserId(string userId)
+        public BaseResponse<IEnumerable<RoleDto>> GetRolesOfUser(string userId)
         {
             var user = _userRepository.Get(u => u.Id == userId);
             if(user == null)
             {
-                return new BaseResponse<RoleDto>
+                return new BaseResponse<IEnumerable<RoleDto>>
                 {
                     Message ="User does not exist",
                     Status = false
                 };
             }
-             var roleUser = user.UserRoles.Select(u => u.Id == userId).ToList();
-
+            List<RoleDto> userRoles = new List<RoleDto>();
+            foreach (var item in user.UserRoles)
+            {
+                if (item.UserId == user.Id)
+                {
+                    userRoles.Add
+                    (
+                        new RoleDto{ Id = item.RoleId , Name = item.Role.Name}
+                    );
+                }
+            }
+            return new BaseResponse<IEnumerable<RoleDto>>
+            {
+                Message = "",
+                Status = true,
+                Data = userRoles
+            };
 
         }
 
-
-
-        BaseResponse<RoleDto> Update(string id, UpdateRoleRequestModel model)
+        public BaseResponse<RoleDto> Update(string id, UpdateRoleRequestModel model)
         {
             throw new NotImplementedException();
         }

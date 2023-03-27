@@ -15,6 +15,6 @@ namespace AirlineMS.Models.Entities
         public string Email { get; set; }
         public string HQAddress { get; set; }
         public string HQPhoneNumber { get; set; }
-        public List<Branch> Branches { get; set; }
+        public List<Staff> Staffs { get; set; }
     }
 }

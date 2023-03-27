@@ -10,8 +10,10 @@ namespace AirlineMS.Models.Dtos
     public class StaffDto
     {
         public string Id { get; set; }
+        public string UserId {get ; set;}
         public string BranchId { get; set; }
-        public string FirsttName { get; set; }
+        public string CompanyId { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }

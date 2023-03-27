@@ -15,29 +15,38 @@ namespace AirlineMS.Models.Dtos
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
-
     }
 
     public class CreateStaffRequestModel
     {
+        [MaxLength(50), MinLength(3)]
+        public string FirstName{ get;set;}
+
         [Required]
-        [Range(5,15, ErrorMessage = "Firstname should not be less than 5 letters and more than 15 letters")]
-        public string FirsttName { get; set; }
+        [MaxLength(50), MinLength(3)]
+        public string LastName{ get;set;}
         [Required]
-        [Range(5,15, ErrorMessage = "Lastname should not be less than 5 letters and more than 15 letters")]
-        public string LastName { get; set; }
-        [MaxLength(11, ErrorMessage = "PhoneNumber should not be more than 11 numbers")]
+        [MaxLength(50), MinLength(10)]
+        public string PhoneNumber{ get;set;}
         [Required]
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
+        public string Email{ get;set;}
         [Required]
-        public string Password { get; set; }
+        public string Password{ get;set;}
     }
 
     public class UpdateStaffRequestModel
     {
-        public string FirsttName { get; set; }
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
+        [Required]
+        [MaxLength(50), MinLength(3)]
+
+        public string FirstName{ get;set;}
+        [Required]
+        [MaxLength(50), MinLength(3)]
+
+        public string LastName{ get;set;}
+        
+        [Required]
+        [MaxLength(50), MinLength(10)]
+        public string PhoneNumber{ get;set;}
     }
 }

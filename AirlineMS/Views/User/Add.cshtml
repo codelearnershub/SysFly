@@ -1,0 +1,43 @@
+@model AirlineMS.Models.Entities.User;
+@{
+ ViewData["Title"] = "Add Users";
+}
+
+<div class="border p-3 mt-4">
+    <div><h1>@ViewData["Title"]</h1></div>
+    <div>
+        <form asp-action="Add">
+            <div>
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" type="text" />
+            </div>
+            <div>
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" type="text" />
+            </div>
+            <div>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" type="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" type="text" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control" type="number" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="UserRoles"></label>
+                <input asp-for="UserRoles" class="form-control" type="text" />
+                <span asp-validation-for="UserRoles" class="text-danger"></span>
+            </div>
+            <div class="mt-2 text-end">
+                <button type="submit" class="btn btn-primary" style="width: 30%">Add User</button>
+            </div>
+        </form>
+    </div>
+</div> 

@@ -1,3 +1,5 @@
+using System;
+
 namespace AirlineMS.Models.Entities
 {
     public class BaseEntity

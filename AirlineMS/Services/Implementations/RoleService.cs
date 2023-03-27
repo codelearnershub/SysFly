@@ -50,8 +50,7 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
-
-        public BaseResponse<IEnumerable<RoleDto>> GetAllRolesOfAUser(string userId)
+        public BaseResponse<IEnumerable<RoleDto>> GetAllRolesOfAUser(string userId)      
         {
 
             var user = _userRepository.Get(x => x.Id == userId);
@@ -74,7 +73,6 @@ namespace AirlineMS.Services.Implementations
             {
                 Data = userRoles
             };
-
         }
 
         public BaseResponse<RoleDto> GetRoleByUserId(string userId)

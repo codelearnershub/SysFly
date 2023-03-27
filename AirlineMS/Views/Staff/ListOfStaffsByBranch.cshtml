@@ -1,0 +1,51 @@
+@model AirlineMS.Models.Dtos.BranchDto
+
+<div>
+    <table class="table table-active table-bordered table-responsive table-striped">
+        <thead>
+            <tr>
+                <td>
+                S/N
+                </td>
+                <td>
+                First Name
+                </td>
+                <td>
+                Last Name
+                </td>
+                <td>
+                Phone Number
+                </td>
+                <td>
+                Details
+                </td>
+                <td>
+                Delete
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int a = 1;
+                    foreach (var staff in Model.Staffs)
+                    {
+                    <tr>
+                        <td>@a</td>
+                        <td>@staff.user.FirstName</td>
+                        <td>@staff.user.LastName</td>
+                        <td>@staff.user.PhoneNumber</td>
+                        <td>
+                            <a asp-controller="Staff" asp-action="Details">Details</a>
+                            </td>
+                        <td>
+                            <a asp-controller="Staff" asp-action="Delete">Delete</a>
+                            </td>
+                    </tr>
+                        {
+                            a++;
+                        }
+                    }
+            }
+        </tbody>
+    </table>
+</div>

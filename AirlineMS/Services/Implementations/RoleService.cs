@@ -48,14 +48,14 @@ namespace AirlineMS.Services.Implementations
         }
 
       
-        public BaseResponse<IEnumerable<RoleDto>> GetAllRolesOfAUser(string UserId)
+        public BaseResponse<IEnumerable<RoleDto>> GetAll(string UserId)
         {
             throw new NotImplementedException();
         }
 
         
 
-        public BaseResponse<RoleDto> GetRoleByRoleName(string roleName)
+        public BaseResponse<RoleDto> Get(string roleName)
         {
             throw new NotImplementedException();
         }

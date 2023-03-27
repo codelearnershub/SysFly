@@ -69,10 +69,125 @@ namespace AirlineMS.Services.Implementations
                 }
             };
         }
+        
+        public BaseResponse<CompanyDto> Delete(string id)
+        {
+            var company = _companyRepository.Get(id);
+            if (company is null)
+            {
+                return new BaseResponse<CompanyDto>{
+                    Message = "Company not found",
+                    Status = false
+                };
+            }
+
+            company.IsDeleted = true;
+
+            _companyRepository.Update(company);
+            _companyRepository.Save();
+
+            return new BaseResponse<CompanyDto>{
+                Message = "Successful",
+                Status = true,
+                Data = new CompanyDto{
+                    Id = company.Id,
+                    UserId = company.UserId,
+                    CompanyName = company.CompanyName,
+                    CACRegistrationNum = company.CACRegistrationNum,
+                    CACDocument = company.CACDocument,
+                    Logo = company.Logo,
+                    Email = company.Email,
+                    HQAddress = company.HQAddress,
+                    HQPhoneNumber = company.HQPhoneNumber,
+                    Branches = company.Branches.Select(b => new BranchDto{
+                        Id = b.Id,
+                        Name = b.Name,
+                        Address = b.Address,
+                        Email = b.Email,
+                        PhoneNumber = b.PhoneNumber,
+                        CompanyId = b.CompanyId,
+                    }).ToList()
+                }
+            };
+        }
+
+        public BaseResponse<CompanyDto> Get(string id)
+        {
+            var company = _companyRepository.Get(id);
+            if (company == null)
+            {
+                return new BaseResponse<CompanyDto>{
+                    Message = "Company not found",
+                    Status = false
+                };
+            }
+
+            return new BaseResponse<CompanyDto>
+            {
+                Message = "Successful",
+                Status = true,
+                Data = new CompanyDto
+                {
+                    Id = company.Id,
+                    UserId = company.UserId,
+                    CompanyName = company.CompanyName,
+                    CACRegistrationNum = company.CACRegistrationNum,
+                    CACDocument = company.CACDocument,
+                    Logo = company.Logo,
+                    Email = company.Email,
+                    HQAddress = company.HQAddress,
+                    HQPhoneNumber = company.HQPhoneNumber,
+                    Branches = company.Branches.Select(b => new BranchDto{
+                        Id = b.Id,
+                        Name = b.Name,
+                        Address = b.Address,
+                        Email = b.Email,
+                        PhoneNumber = b.PhoneNumber,
+                        CompanyId = b.CompanyId,
+                    }).ToList()
+                }
+            };
+        }
+
+        public BaseResponse<IEnumerable<CompanyDto>> GetAll()
+        {
+            var companies = _companyRepository.GetAll();
+            if (companies == null)
+            {
+                return new BaseResponse<IEnumerable<CompanyDto>>{
+                    Message = "No Company found",
+                    Status = false
+                };
+            }
+
+            return new BaseResponse<IEnumerable<CompanyDto>>{
+                Message = "Successful",
+                Status = true,
+                Data = companies.Select(c => new CompanyDto{
+                    Id = c.Id,
+                    UserId = c.UserId,
+                    CompanyName = c.CompanyName,
+                    CACRegistrationNum = c.CACRegistrationNum,
+                    CACDocument = c.CACDocument,
+                    Logo = c.Logo,
+                    Email = c.Email,
+                    HQAddress = c.HQAddress,
+                    HQPhoneNumber = c.HQPhoneNumber,
+                    Branches = c.Branches.Select(b => new BranchDto{
+                        Id = b.Id,
+                        Name = b.Name,
+                        Address = b.Address,
+                        Email = b.Email,
+                        PhoneNumber = b.PhoneNumber,
+                        CompanyId = b.CompanyId,
+                    }).ToList()
+                })
+            };
+        }
 
         public BaseResponse<CompanyDto> Update(string id, UpdateCompanyRequestModel model)
         {
-            var company = _companyRepository.Get(c => c.Email == model.Email);
+            var company = _companyRepository.Get(id);
             if (company is null)
             {
                 return new BaseResponse<CompanyDto>{

@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AirlineMS.Models;
+using Microsoft.Extensions.Logging;
 
-namespace AirlineMS.Controllers;
+ namespace AirlineMS.Controllers;
 
 public class HomeController : Controller
 {

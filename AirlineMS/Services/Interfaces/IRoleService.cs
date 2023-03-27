@@ -11,7 +11,7 @@ namespace AirlineMS.Services.Interfaces
     {
         BaseResponse<RoleDto> Create(CreateRoleRequestModel model);
         BaseResponse<RoleDto> Update(string id, UpdateRoleRequestModel model);
-        BaseResponse<RoleDto> GetRoleByRoleName(string roleName);
-        BaseResponse<IEnumerable<RoleDto>> GetAllRolesOfAUser(string UserId);
+        BaseResponse<RoleDto> Get(string roleName);
+        BaseResponse<IEnumerable<RoleDto>> GetAll(string UserId);
     }
 }

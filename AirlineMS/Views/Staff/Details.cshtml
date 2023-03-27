@@ -1,0 +1,20 @@
+@model AirlineMS.Models.Dtos.StaffDto
+@{
+    ViewData["StaffName"] = @Model.user.FirstName + " " +Model.user.LastName;
+}
+<h2>
+    @ViewData["StaffName"]
+</h2>
+
+<div>
+    <h4>Full Name : @ViewBag["StaffName"]</h4>
+    <h4>Email : @Model.user.Email</h4>
+    <h4>Phone Number:@Model.user.PhoneNumber </h4>
+    <h3>Role(s)</h3>
+    @foreach (var item in @Model.user.UserRoles)
+    {
+        <ul>
+            <h4>@item</h4>
+        </ul>
+    }
+</div>

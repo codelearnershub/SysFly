@@ -52,7 +52,6 @@ namespace AirlineMS.Services.Implementations
                 Data = new CompanyDto{
                     Id = newCompany.Id,
                     UserId = newCompany.UserId,
-                    CompanyName = newCompany.CompanyName,
                     CACRegistrationNum = newCompany.CACRegistrationNum,
                     CACDocument = newCompany.CACDocument,
                     Logo = newCompany.Logo,
@@ -96,7 +95,6 @@ namespace AirlineMS.Services.Implementations
                 Data = new CompanyDto{
                     Id = company.Id,
                     UserId = company.UserId,
-                    CompanyName = company.CompanyName,
                     CACRegistrationNum = company.CACRegistrationNum,
                     CACDocument = company.CACDocument,
                     Logo = company.Logo,

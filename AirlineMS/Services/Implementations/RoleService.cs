@@ -18,11 +18,11 @@ namespace AirlineMS.Services.Implementations
         }
         public BaseResponse<RoleDto> Create(CreateRoleRequestModel model)
         {
-            var roleExist = _roleRepository.Get(a => a.RoleName == model.RoleName);
+            var roleExist = _roleRepository.Get(a => a.Name == model.Name);
             if (roleExist == null)
             {
                 Role role = new Role();
-                role.RoleName = model.RoleName;
+                role.Name = model.Name;
                 role.Description = model.Description;
 
                 _roleRepository.Create(role);
@@ -35,7 +35,7 @@ namespace AirlineMS.Services.Implementations
                     Data = new RoleDto
                     {
                         Id = role.Id,
-                        RoleName = role.RoleName,
+                        Name = role.Name,
                         Description = role.Description,
                     }
                 };

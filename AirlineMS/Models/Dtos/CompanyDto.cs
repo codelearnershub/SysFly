@@ -9,7 +9,7 @@ namespace AirlineMS.Models.Dtos
     {
         public string Id { get; set; }
         public string UserId { get; set; }
-        public string CompanyName { get; set; }
+        public string Name { get; set; }
         public string CACRegistrationNum { get; set; }
         public string CACDocument { get; set; }
         public string Logo { get; set; }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AirlineMS.AppDbContext;
 using AirlineMS.Models.Entities;
@@ -22,6 +23,7 @@ namespace AirlineMS.Repositories.Implementations
         {
             _context.Set<T>().Remove(entity);
         }
+
 
         public int Save()
         {

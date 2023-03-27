@@ -12,7 +12,7 @@ namespace AirlineMS.Models.Dtos
         public string LastName{ get;set;}
         public string PhoneNumber{ get;set;}
         public string Email{ get;set;}
-        public List<UserRole> UserRoles{ get;set;}
+        public List<RoleDto> Roles{ get;set;}
     }
     public class CreateUserRequestModel
     {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AirlineMS.AppDbContext;
 using AirlineMS.Models.Entities;
 using AirlineMS.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AirlineMS.Repositories.Implementations
 {
@@ -22,7 +23,7 @@ namespace AirlineMS.Repositories.Implementations
 
         public User Get(Expression<Func<User, bool>> expression)
         {
-            return _context.Users.FirstOrDefault(expression);
+            return _context.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role).FirstOrDefault(expression);
         }
 
         public IEnumerable<User> GetAll()

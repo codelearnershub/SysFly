@@ -28,12 +28,12 @@ namespace AirlineMS.Repositories.Implementations
 
         public IEnumerable<Role> GetAll()
         {
-            return _context.Roles.ToList();
+            return _context.Roles.Include(a => a.UserRoles).ThenInclude(a => a.User).ToList();
         }
 
         public IEnumerable<Role> GetSelected(Expression<Func<Role, bool>> expression)
         {
-            return _context.Roles.Where(expression).ToList();
+            return _context.Roles.Include(a => a.UserRoles).ThenInclude(a => a.User).Where(expression).ToList();
         }
 
         public IEnumerable<Role> GetSelected(List<string> ids)

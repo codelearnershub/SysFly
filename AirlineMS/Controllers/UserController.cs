@@ -50,6 +50,12 @@ namespace AirlineMS.Controllers
             
             return View();
         }
+
+        public IActionResult List()
+        {
+            var users = _userService.GetAll();
+            return View(users.Data);
+        }
         
     }
 }

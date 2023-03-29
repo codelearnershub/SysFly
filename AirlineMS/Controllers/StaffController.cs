@@ -18,16 +18,21 @@ namespace AirlineMS.Controllers
             _staffservice = staffservice;
         }
 
-        public IActionResult Staffs(string branchId)
+        public IActionResult ListOfStaffsByBranch(string branchId)
         {
-           var staffs= _staffservice.GetAllStaffs(branchId);
-           return View(staffs);
+           var staffs = _staffservice.GetStaffsByBranchId(branchId);
+           return View(staffs.Data);
+        }
+        public IActionResult ListOfStaffsByCompany(string companyId)
+        {
+           var staffs= _staffservice.GetStaffsByCompanyId(companyId);
+           return View(staffs.Data);
         }
 
-        public IActionResult Staff(string id)
+        public IActionResult Details(string id)
         {
             var staff= _staffservice.Get(id);
-            return View(staff);
+            return View(staff.Data);
         }
 
         [HttpGet]
@@ -46,14 +51,36 @@ namespace AirlineMS.Controllers
             }
             return RedirectToAction("Login" ,"User");
         }
+        [HttpGet]
+        public IActionResult Update(string id)
+        {
+            var staff = _staffservice.Get(id);
+            var updateModel  = new UpdateStaffRequestModel
+            {
+                FirstName = staff.Data.FirstName,
+                LastName = staff.Data.LastName,
+                PhoneNumber = staff.Data.PhoneNumber
 
+            };
+            return View(updateModel);
+        }
+        [HttpPost]
         public IActionResult Update(string id,UpdateStaffRequestModel model)
         {
-                _staffservice.Update(id,model);
-                return RedirectToAction("Staffs");
+            
+            _staffservice.Update(id,model);
+            return RedirectToAction("ListOfStaffsByCompany");
         }
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Delete(string id)
         {
+           var staff = _staffservice.Get(id);
+            return View(staff.Data);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult ActualDelete(string id)
+        {
+            
             return View();
         }
 

@@ -11,17 +11,18 @@ namespace AirlineMS.Services.Implementations
 {
     public class CompanyService : ICompanyService
     {
-        private ICompanyRepository _companyRepository;
-        private IWebHostEnvironment _webHostEnvironment;
+       private readonly ICompanyRepository _companyRepository;
+       private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CompanyService(ICompanyRepository companyRepository, IWebHostEnvironment webHostEnvironment)
-        {
+       public CompanyService(ICompanyRepository companyRepository, IWebHostEnvironment webHostEnvironment)
+       {
             _companyRepository = companyRepository;
             _webHostEnvironment = webHostEnvironment;
-        }
-
+       }
         public BaseResponse<CompanyDto> Create(CreateCompanyRequestModel model)
         {
+
+        
             var companyExist = _companyRepository.Get(c => c.Name == model.Name);
             if (companyExist is not null)
             {
@@ -52,80 +53,67 @@ namespace AirlineMS.Services.Implementations
                     CACRegistrationNum = newCompany.CACRegistrationNum,
                     CACDocument = newCompany.CACDocument,
                     Logo = newCompany.Logo,
-                    
+
                 }
             };
-        }
         
+        }
+
         public BaseResponse<CompanyDto> Delete(string id)
         {
-            var company = _companyRepository.Get(id);
-            if (company is null)
+            var objExists = _companyRepository.Get(d => d.Id == id);
+             if (objExists != null)
             {
+               objExists.IsDeleted = true;
+               _companyRepository.Update(objExists);
+               _companyRepository.Save();
+               
                 return new BaseResponse<CompanyDto>{
-                    Message = "Company not found",
-                    Status = false
+                    Message = "successful",
+                    Status = true
                 };
             }
+             return new BaseResponse<CompanyDto>{
+                    Message = "Company already exists",
+                    Status = false
+                };
 
-            company.IsDeleted = true;
-
-            _companyRepository.Update(company);
-            _companyRepository.Save();
-
-            return new BaseResponse<CompanyDto>{
-                Message = "Successful",
-                Status = true,
-                Data = new CompanyDto{
-                    Id = company.Id,
-                    Name = company.Name,
-                    CACRegistrationNum = company.CACRegistrationNum,
-                    CACDocument = company.CACDocument,
-                    Logo = company.Logo,
-                }
-            };
         }
 
         public BaseResponse<CompanyDto> Get(string id)
         {
-            var company = _companyRepository.Get(id);
-            if (company == null)
+            var companyExists = _companyRepository.Get(g => g.Id == id);
+            if(companyExists != null)
             {
+                companyExists.IsDeleted = false;
+                _companyRepository.Update(companyExists);
+                _companyRepository.Save();
+
                 return new BaseResponse<CompanyDto>{
-                    Message = "Company not found",
+                    Message = "successful",
                     Status = false
                 };
             }
-
-            return new BaseResponse<CompanyDto>
-            {
-                Message = "Successful",
-                Status = true,
-                Data = new CompanyDto
-                {
-                    Id = company.Id,
-                    Name = company.Name,
-                    CACRegistrationNum = company.CACRegistrationNum,
-                    CACDocument = company.CACDocument,
-                    Logo = company.Logo,
-                }
-            };
+             return new BaseResponse<CompanyDto>{
+                    Message = "Company is not fund",
+                    Status = true
+                };
         }
 
         public BaseResponse<IEnumerable<CompanyDto>> GetAll()
         {
-            var companies = _companyRepository.GetAll();
+             var companies = _companyRepository.GetAll();
             if (companies == null)
             {
                 return new BaseResponse<IEnumerable<CompanyDto>>{
                     Message = "No Company found",
-                    Status = false
+                    Status = true
                 };
             }
 
             return new BaseResponse<IEnumerable<CompanyDto>>{
                 Message = "Successful",
-                Status = true,
+                Status = false,
                 Data = companies.Select(c => new CompanyDto{
                     Id = c.Id,
                     Name = c.Name,
@@ -134,36 +122,13 @@ namespace AirlineMS.Services.Implementations
                     Logo = c.Logo,
                 })
             };
+           
         }
 
         public BaseResponse<CompanyDto> Update(string id, UpdateCompanyRequestModel model)
         {
-            var company = _companyRepository.Get(id);
-            if (company is null)
-            {
-                return new BaseResponse<CompanyDto>{
-                    Message = "Company not found",
-                    Status = false
-                };
-            }
-
-    
-
-            _companyRepository.Create(company);
-            _companyRepository.Save();
-
-            return new BaseResponse<CompanyDto>{
-                Message = "Successful",
-                Status = true,
-                Data = new CompanyDto{
-                    Id = company.Id,
-                    CACRegistrationNum = company.CACRegistrationNum,
-                    CACDocument = company.CACDocument,
-                    Logo = company.Logo,
-                }
-            };
+            throw new NotImplementedException();
         }
-
 
         private string UploadFile(IFormFile file)
         {

@@ -17,7 +17,7 @@ namespace AirlineMS.Models.Dtos
         public string Email { get; set; }
         public string HQAddress { get; set; }
         public string HQPhoneNumber { get; set; }
-        public List<BranchDto> Branches { get; set; }
+        public List<StaffDto> Staffs { get; set; }
         
     }
 

@@ -11,8 +11,8 @@ namespace AirlineMS.Repositories.Interfaces
     {
         Branch Get(string id);
         Branch Get(Expression<Func<Branch,bool>> expression);
-        IEnumerable<Branch> GetAll();
-        IEnumerable<Branch> GetSelected(Expression<Func<Branch,bool>> expression);
         IEnumerable<Branch> GetSelected(List<string> ids);
+        IEnumerable<Branch> GetSelected(Expression<Func<Branch,bool>> expression);
+        IEnumerable<Branch> GetAll();
     }
 }

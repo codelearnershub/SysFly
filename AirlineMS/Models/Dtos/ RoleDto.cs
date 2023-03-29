@@ -11,7 +11,7 @@ namespace AirlineMS.Models.Dtos
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<UserDto> user { get; set; }
+        public List<UserDto> Users { get; set; }
     }
 
     public class CreateRoleRequestModel

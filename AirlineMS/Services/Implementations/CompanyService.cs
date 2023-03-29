@@ -22,7 +22,7 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<CompanyDto> Create(CreateCompanyRequestModel model)
         {
-            var companyExist = _companyRepository.Get(c => c.Email == model.Email);
+            var companyExist = _companyRepository.Get(c => c.Name == model.Name);
             if (companyExist is not null)
             {
                 return new BaseResponse<CompanyDto>{
@@ -37,9 +37,6 @@ namespace AirlineMS.Services.Implementations
             var newCompany = new Company{
                 CACDocument = CACRegistrationNum,
                 CACRegistrationNum = model.CACRegistrationNum,
-                CompanyName = model.CompanyName,
-                Email = model.Email,
-                HQAddress = model.HQAddress,
                 Logo = Logo
             };
 
@@ -51,14 +48,10 @@ namespace AirlineMS.Services.Implementations
                 Status = true,
                 Data = new CompanyDto{
                     Id = newCompany.Id,
-                    UserId = newCompany.UserId,
-                    CompanyName = newCompany.CompanyName,
+                    Name = newCompany.Name,
                     CACRegistrationNum = newCompany.CACRegistrationNum,
                     CACDocument = newCompany.CACDocument,
                     Logo = newCompany.Logo,
-                    Email = newCompany.Email,
-                    HQAddress = newCompany.HQAddress,
-                    HQPhoneNumber = newCompany.HQPhoneNumber,
                     
                 }
             };
@@ -85,22 +78,10 @@ namespace AirlineMS.Services.Implementations
                 Status = true,
                 Data = new CompanyDto{
                     Id = company.Id,
-                    UserId = company.UserId,
-                    CompanyName = company.CompanyName,
+                    Name = company.Name,
                     CACRegistrationNum = company.CACRegistrationNum,
                     CACDocument = company.CACDocument,
                     Logo = company.Logo,
-                    Email = company.Email,
-                    HQAddress = company.HQAddress,
-                    HQPhoneNumber = company.HQPhoneNumber,
-                    Staffs = company.Staffs.Select(b => new StaffDto{
-                        Id = b.Id,
-                        FirstName = b.user.FirstName,
-                        LastName = b.user.LastName,
-                        Email = b.user.Email,
-                        PhoneNumber = b.user.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
                 }
             };
         }
@@ -123,22 +104,10 @@ namespace AirlineMS.Services.Implementations
                 Data = new CompanyDto
                 {
                     Id = company.Id,
-                    UserId = company.UserId,
-                    CompanyName = company.CompanyName,
+                    Name = company.Name,
                     CACRegistrationNum = company.CACRegistrationNum,
                     CACDocument = company.CACDocument,
                     Logo = company.Logo,
-                    Email = company.Email,
-                    HQAddress = company.HQAddress,
-                    HQPhoneNumber = company.HQPhoneNumber,
-                     Staffs = company.Staffs.Select(b => new StaffDto{
-                        Id = b.Id,
-                        FirstName = b.user.FirstName,
-                        LastName = b.user.LastName,
-                        Email = b.user.Email,
-                        PhoneNumber = b.user.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
                 }
             };
         }
@@ -159,22 +128,10 @@ namespace AirlineMS.Services.Implementations
                 Status = true,
                 Data = companies.Select(c => new CompanyDto{
                     Id = c.Id,
-                    UserId = c.UserId,
-                    CompanyName = c.CompanyName,
+                    Name = c.Name,
                     CACRegistrationNum = c.CACRegistrationNum,
                     CACDocument = c.CACDocument,
                     Logo = c.Logo,
-                    Email = c.Email,
-                    HQAddress = c.HQAddress,
-                    HQPhoneNumber = c.HQPhoneNumber,
-                    Staffs = c.Staffs.Select(b => new StaffDto{
-                        Id = b.Id,
-                        FirstName = b.user.FirstName,
-                        LastName = b.user.LastName,
-                        Email = b.user.Email,
-                        PhoneNumber = b.user.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
                 })
             };
         }
@@ -191,9 +148,6 @@ namespace AirlineMS.Services.Implementations
             }
 
     
-            company.Email = model.Email;
-            company.HQAddress = model.HQAddress;
-            company.HQPhoneNumber = model.HQPhoneNumber;
 
             _companyRepository.Create(company);
             _companyRepository.Save();
@@ -203,22 +157,9 @@ namespace AirlineMS.Services.Implementations
                 Status = true,
                 Data = new CompanyDto{
                     Id = company.Id,
-                    UserId = company.UserId,
-                    CompanyName = company.CompanyName,
                     CACRegistrationNum = company.CACRegistrationNum,
                     CACDocument = company.CACDocument,
                     Logo = company.Logo,
-                    Email = company.Email,
-                    HQAddress = company.HQAddress,
-                    HQPhoneNumber = company.HQPhoneNumber,
-                     Staffs = company.Staffs.Select(b => new StaffDto{
-                        Id = b.Id,
-                        FirstName = b.user.FirstName,
-                        LastName = b.user.LastName,
-                        Email = b.user.Email,
-                        PhoneNumber = b.user.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
                 }
             };
         }

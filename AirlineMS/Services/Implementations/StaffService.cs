@@ -80,6 +80,11 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
+        public BaseResponse<IEnumerable<StaffDto>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public BaseResponse<IEnumerable<StaffDto>> GetAllStaffs(string branchId)
         {
             var check = _staffRepository.GetSelected(a => a.BranchId == branchId);
@@ -137,6 +142,15 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
+        public BaseResponse<StaffDto> GetStaffsByBranchId(string branchId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BaseResponse<StaffDto> GetStaffsByCompanyId(string companyId)
+        {
+            throw new NotImplementedException();
+        }
 
         public BaseResponse<StaffDto> Update(string id, UpdateStaffRequestModel model)
         {

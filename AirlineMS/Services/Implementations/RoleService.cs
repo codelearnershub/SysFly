@@ -50,6 +50,21 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
+        public BaseResponse<RoleDto> Delete(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BaseResponse<RoleDto> Get(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BaseResponse<IEnumerable<RoleDto>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public BaseResponse<IEnumerable<UserDto>> GetAllUserOfARole(string roleId)      
         {
 

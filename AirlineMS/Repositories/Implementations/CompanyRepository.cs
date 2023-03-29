@@ -19,27 +19,52 @@ namespace AirlineMS.Repositories.Implementations
 
         public Company Get(string id)
         {
-            return _context.Companies.FirstOrDefault(c => c.Id == id);
+            return _context.Companies
+            .Where(a => a.IsDeleted == false)
+            .Include(a => a.Branches)
+            .Include(a => a.Staffs)
+            .ThenInclude(a => a.User)
+            .FirstOrDefault(c => c.Id == id);
         }
 
         public Company Get(Expression<Func<Company, bool>> expression)
         {
-            return _context.Companies.Include(c => c.Staffs).FirstOrDefault(expression);
+            return _context.Companies
+            .Where(a => a.IsDeleted == false)
+            .Include(a => a.Branches)
+            .Include(a => a.Staffs)
+            .ThenInclude(a => a.User)
+            .FirstOrDefault(expression);
         }
 
         public IEnumerable<Company> GetAll()
         {
-            return _context.Companies.ToList();
+            return _context.Companies
+            .Where(a => a.IsDeleted == false)
+            .Include(a => a.Branches)
+            .Include(a => a.Staffs)
+            .ThenInclude(a => a.User)
+            .ToList();
         }
 
         public IEnumerable<Company> GetSelected(List<string> ids)
         {
-            return _context.Companies.Where(c => ids.Contains(c.Id)).ToList();
+            return _context.Companies
+            .Where(a => ids.Contains(a.Id) && a.IsDeleted == false)
+            .Include(a => a.Branches)
+            .Include(a => a.Staffs)
+            .ThenInclude(a => a.User)
+            .ToList();
         }
 
         public IEnumerable<Company> GetSelected(Expression<Func<Company, bool>> expression)
         {
-            return _context.Companies.Include(c => c.Staffs).Where(expression).ToList();
+            return _context.Companies
+            .Where(expression)
+            .Include(a => a.Branches)
+            .Include(a => a.Staffs)
+            .ThenInclude(a => a.User)
+            .ToList();
         }
     }
 }

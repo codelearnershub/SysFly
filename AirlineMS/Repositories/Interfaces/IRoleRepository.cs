@@ -11,8 +11,8 @@ namespace AirlineMS.Repositories.Interfaces
     {
         Role Get(string id);
         Role Get(Expression<Func<Role, bool>> expression);
-        IEnumerable<Role> GetAll();
-        IEnumerable<Role> GetSelected(Expression<Func<Role, bool>> expression);
         IEnumerable<Role> GetSelected(List<string> ids);
+        IEnumerable<Role> GetSelected(Expression<Func<Role, bool>> expression);
+        IEnumerable<Role> GetAll();
     }
 }

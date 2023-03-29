@@ -18,27 +18,47 @@ namespace AirlineMS.Repositories.Implementations
         }
         public Role Get(string id)
         {
-            return _context.Roles.FirstOrDefault(x => x.Id == id);
+            return _context.Roles
+            .Where(a => a.IsDeleted == false)
+            .Include(a => a.UserRoles)
+            .ThenInclude(a => a.User)
+            .FirstOrDefault(x => x.Id == id);
         }
 
         public Role Get(Expression<Func<Role, bool>> expression)
         {
-            return _context.Roles.Include(a => a.UserRoles).FirstOrDefault(expression);
+            return _context.Roles
+            .Where(a => a.IsDeleted == false)
+            .Include(a => a.UserRoles)
+            .ThenInclude(a => a.User)
+            .FirstOrDefault(expression);
         }
 
         public IEnumerable<Role> GetAll()
         {
-            return _context.Roles.Include(a => a.UserRoles).ThenInclude(a => a.User).ToList();
+            return _context.Roles
+            .Where(a => a.IsDeleted == false)
+            .Include(a => a.UserRoles)
+            .ThenInclude(a => a.User)
+            .ToList();
         }
 
         public IEnumerable<Role> GetSelected(Expression<Func<Role, bool>> expression)
         {
-            return _context.Roles.Include(a => a.UserRoles).ThenInclude(a => a.User).Where(expression).ToList();
+            return _context.Roles
+            .Include(a => a.UserRoles)
+            .ThenInclude(a => a.User)
+            .Where(expression)
+            .ToList();
         }
 
         public IEnumerable<Role> GetSelected(List<string> ids)
         {
-            return _context.Roles.Where(a => ids.Contains(a.Id)).ToList();
+            return _context.Roles
+            .Include(a => a.UserRoles)
+            .ThenInclude(a => a.User)
+            .Where(a => ids.Contains(a.Id) && a.IsDeleted == false)
+            .ToList();
         }
     }
 }

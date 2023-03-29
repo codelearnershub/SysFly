@@ -11,6 +11,8 @@ namespace AirlineMS.Repositories.Interfaces
     {
         User Get(string id);
         User Get(Expression<Func<User,bool>> expression);
+        List<User> GetSelected(List<string> ids);
+        List<User> GetSelected(Expression<Func<User,bool>> expression);
         IEnumerable<User> GetAll();
     }
 }

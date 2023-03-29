@@ -56,6 +56,11 @@ namespace AirlineMS.Services.Implementations
 
         }
 
+        public BaseResponse<BranchDto> Create(string agencyId, CreateBranchRequestModel model)
+        {
+            throw new NotImplementedException();
+        }
+
         public BaseResponse<IEnumerable<BranchDto>> GetAllBranchesOfACompany(string companyId)
         {
             var branch = _branchRepository.GetSelected(a => a.CompanyId == companyId);
@@ -111,6 +116,11 @@ namespace AirlineMS.Services.Implementations
               Status = false,
             };
 
+        }
+
+        public BaseResponse<BranchDto> GetBranchesByCompanyId(string companyId)
+        {
+            throw new NotImplementedException();
         }
 
         public BaseResponse<BranchDto> Update(string id, UpDateBranchRequestModel model)

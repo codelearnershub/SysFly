@@ -11,8 +11,8 @@ namespace AirlineMS.Repositories.Interfaces
     {
         Staff Get(string id);
         Staff Get(Expression<Func<Staff,bool>> expression);
-        IEnumerable<Staff> GetAll();
-        IEnumerable<Staff> GetSelected(Expression<Func<Staff,bool>> expression);
          IEnumerable<Staff> GetSelected(List<string> ids);
+        IEnumerable<Staff> GetSelected(Expression<Func<Staff,bool>> expression);
+        IEnumerable<Staff> GetAll();
     }
 }

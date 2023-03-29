@@ -9,7 +9,6 @@ namespace AirlineMS.Repositories.Interfaces
     {
         T Create(T entity);
         T Update(T entity);
-        void Delete(T entity);
         int Save ();
 
     

@@ -18,11 +18,6 @@ namespace AirlineMS.Repositories.Implementations
             return entity;
         }
 
-        public void Delete(T entity)
-        {
-            _context.Set<T>().Remove(entity);
-        }
-
         public int Save()
         {
             return _context.SaveChanges();

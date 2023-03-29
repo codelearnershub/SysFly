@@ -20,39 +20,14 @@ namespace AirlineMS.Services.Implementations
             _userRepository = userRepository;
         }
 
-        public BaseResponse<UserDto> Create(CreateUserRequestModel model)
+        public BaseResponse<UserDto> Get(string id)
         {
-           var userExist = _userRepository.Get(a => a.Email == model.Email);
-           if (userExist == null)
-           {
-                User user = new User();
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.Email = model.Email;
-                user.Password = model.Password;
-                user.PhoneNumber = model.PhoneNumber;
-                _userRepository.Create(user);
-                _userRepository.Save();
+            throw new NotImplementedException();
+        }
 
-               return new BaseResponse<UserDto>
-                {
-                    Message = "Succcessful",
-                    Status = true,
-                    Data = new UserDto
-                    {
-                        Id = user.Id,
-                        FirstName = user.FirstName,
-                        Email = user.Email,
-                        PhoneNumber = user.PhoneNumber,
-                        LastName = user.LastName,
-                                               
-                    }
-                };
-            }
-            return new BaseResponse<UserDto>{
-                Message = "ALready Exist",
-                Status = false
-            };
+        public BaseResponse<List<UserDto>> GetAll()
+        {
+            throw new NotImplementedException();
         }
 
         public BaseResponse<UserDto> Login(LoginUserRequestModel model)
@@ -79,35 +54,6 @@ namespace AirlineMS.Services.Implementations
                 Message = "Incorrect email of password",
                 Status = false
             } ;
-        }
-
-        public BaseResponse<UserDto> Update(string id, UpdateUserRequestModel model)
-        {
-            User user = _userRepository.Get(id);
-            if (user !=  null)
-            {
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.PhoneNumber  = model.PhoneNumber;
-                return new BaseResponse<UserDto> 
-                {
-                    Message = "Update successful",
-                    Status = true,
-                    Data = new UserDto
-                    {
-                        LastName = user.LastName,
-                        FirstName = user.FirstName,
-                        PhoneNumber = user.PhoneNumber,
-                        Email =user.Email,
-                        Id = user.Id
-                    }
-                };
-            }
-            return new BaseResponse<UserDto>
-            {
-                Message = "Unable to Update",
-                Status = false
-            };
         }
     }
 }

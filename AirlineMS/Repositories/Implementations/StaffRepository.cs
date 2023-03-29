@@ -18,29 +18,48 @@ namespace AirlineMS.Repositories.Implementations
         }
         public Staff Get(string id)
         {
-            return _context.Staffs.FirstOrDefault(a => a.Id == id);
+            return _context.Staffs
+            .Include(a => a.User)
+            .Include(a => a.Company)
+            .FirstOrDefault(a => a.Id == id && a.IsDeleted == false);
         }
 
         public Staff Get(Expression<Func<Staff, bool>> expression)
         {
-           return _context.Staffs.Include(a => a.user).FirstOrDefault(expression);
+           return _context.Staffs
+            .Include(a => a.User)
+            .Include(a => a.Company)
+            .Where(a => a.IsDeleted == false)
+            .FirstOrDefault(expression);
         }
 
         
 
         public IEnumerable<Staff> GetAll()
         {
-           return _context.Staffs.ToList();
+           return _context.Staffs
+            .Include(a => a.User)
+            .Include(a => a.Company)
+            .Where(a => a.IsDeleted == false)
+            .ToList();
         }
 
         public IEnumerable<Staff> GetSelected(Expression<Func<Staff, bool>> expression)
         {
-            return _context.Staffs.Where(expression).ToList();
+            return _context.Staffs
+            .Include(a => a.User)
+            .Include(a => a.Company)
+            .Where(expression)
+            .ToList();
         }
 
         public IEnumerable<Staff> GetSelected(List<string> ids)
         {
-           return _context.Staffs.Where(a => ids.Contains(a.Id)).ToList();
+           return _context.Staffs
+            .Include(a => a.User)
+            .Include(a => a.Company)
+            .Where(a => ids.Contains(a.Id) && a.IsDeleted == false)
+            .ToList();
         }
 
       

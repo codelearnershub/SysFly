@@ -9,9 +9,10 @@ namespace AirlineMS.Services.Interfaces
 {
     public interface IRoleService
     {
-         BaseResponse<RoleDto> Create(CreateRoleRequestModel model);
+        BaseResponse<RoleDto> Create(CreateRoleRequestModel model);
         BaseResponse<RoleDto> Update(string id, UpdateRoleRequestModel model);
-        BaseResponse<IEnumerable<RoleDto>> GetRolesOfUser(string userId);
-        BaseResponse<IEnumerable<UserDto>> GetAllUserOfARole(string roleId);
+        BaseResponse<RoleDto> Get(string id);
+        BaseResponse<IEnumerable<RoleDto>> GetAll();
+        BaseResponse<RoleDto> Delete(string id);
     }
 }

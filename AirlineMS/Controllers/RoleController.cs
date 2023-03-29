@@ -23,29 +23,34 @@ namespace AirlineMS.Controllers
         [HttpPost]
         public IActionResult Add(CreateRoleRequestModel model)
         {
-            return View();
+            _roleService.Create(model);
+            return RedirectToAction("List");
         }
         [HttpGet]
-        public IActionResult Delete ()
+        public IActionResult Delete (string id)
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
 
-        public IActionResult ActualDelete ()
+        public IActionResult ActualDelete (string id)
         {
-            return View();
+            _roleService.Delete(id);
+            return RedirectToAction("List");
         }
 
         [HttpGet]
-        public IActionResult Details()
+        public IActionResult Details(string id)
         {
-            return View();
+            var role = _roleService.Get(id);
+
+            return View(role.Data);
         }
         [HttpPost]
-        public IActionResult Details(StaffDto staffModel)
+        public IActionResult List()
         {
-            return View();
+             var roles = _roleService.GetAll();
+            return View(roles.Data);
         }
         [HttpGet]
         public IActionResult Update()

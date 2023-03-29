@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Create Branch";
+}
+<div>
+    <div class="text-center">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form asp-controller="Branch" asp-action="Create" asp-route-agencyId="">
+                <div>
+                    <label for="">Name</label>
+                    <input type="" name="Name"/>
+                </div>
+                <div>
+                    <label for="">PhoneNumber</label>
+                    <input type="" name="PhoneNumber"/>
+                </div>
+                <div>
+                    <label for="">Email</label>
+                    <input type="" name="Email"/>
+                </div>
+                <div>
+                    <label for="">Address</label>
+                    <input type="" name="Address"/>
+                </div>
+                <div>
+                    <button class="btn btn-primary">Create Branch</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

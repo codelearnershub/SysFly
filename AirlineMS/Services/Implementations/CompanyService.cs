@@ -52,7 +52,6 @@ namespace AirlineMS.Services.Implementations
                     CACRegistrationNum = newCompany.CACRegistrationNum,
                     CACDocument = newCompany.CACDocument,
                     Logo = newCompany.Logo,
-                    
                 }
             };
         }

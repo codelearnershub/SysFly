@@ -22,24 +22,69 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<UserDto> Get(string id)
         {
-            throw new NotImplementedException();
+            var fetchs = _userRepository.Get(id);
+            if (fetchs != null)
+            {
+                return new BaseResponse<UserDto>
+                {
+                    Message = "user found successfully",
+                    Status = true,
+                    Data = new UserDto
+                    {
+                        FirstName = fetchs.FirstName,
+                        LastName = fetchs.LastName,
+                        Email = fetchs.Email,
+                        PhoneNumber = fetchs.PhoneNumber,
+                        Id = fetchs.Id
+                    }
+                };
+            }
+            return new BaseResponse<UserDto>
+            {
+                Message = "User not found",
+                Status = false,
+            };
         }
 
         public BaseResponse<List<UserDto>> GetAll()
         {
-            throw new NotImplementedException();
+            var getUsers = _userRepository.GetAll();
+            if (getUsers != null)
+            {
+                return new BaseResponse<List<UserDto>>
+                {
+                    Message = "Successful",
+                    Status = true,
+                    Data = getUsers.Select(g => new UserDto
+                    {
+                        FirstName = g.FirstName,
+                        LastName = g.LastName,
+                        Email = g.Email,
+                        PhoneNumber = g.PhoneNumber,
+                        Id = g.Id
+
+                    }).ToList()
+                };
+            }
+            return new BaseResponse<List<UserDto>>
+            {
+                Message = "UnSuccessful",
+                Status = false,
+
+            };
         }
 
         public BaseResponse<UserDto> Login(LoginUserRequestModel model)
         {
-            var user =_userRepository.Get(a => a.Email == model.Email && a.Password == model.Password);
+            var user = _userRepository.Get(a => a.Email == model.Email && a.Password == model.Password);
             if (user != null)
             {
-                var userLogin =  new BaseResponse<UserDto> 
+                var userLogin = new BaseResponse<UserDto>
                 {
                     Message = "Login Successful",
-                    Status =true,
-                    Data = new UserDto{
+                    Status = true,
+                    Data = new UserDto
+                    {
                         FirstName = user.FirstName,
                         LastName = user.LastName,
                         Email = user.Email,
@@ -47,13 +92,13 @@ namespace AirlineMS.Services.Implementations
                         Id = user.Id
                     }
                 };
-            
+
             }
-            return  new BaseResponse<UserDto>
+            return new BaseResponse<UserDto>
             {
                 Message = "Incorrect email of password",
                 Status = false
-            } ;
+            };
         }
     }
 }

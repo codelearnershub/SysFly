@@ -1,4 +1,5 @@
-@model AirlineMS.Models.Entities.Company;
+@using AirlineMS.Models.Dtos;
+@model CompanyDto;
 @{
     ViewData["Title"] = "Delete Company";
 }
@@ -12,12 +13,12 @@
             <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>
-                        <td><strong>UserId</strong></td>
-                        <td>@Model.UserId</td>
+                        <td><strong>Id</strong></td>
+                        <td>@Model.Id</td>
                     </tr>
                     <tr>
                         <td><strong>Company Name</strong></td>
-                        <td>@Model.CompanyName</td>
+                        <td>@Model.Name</td>
                     </tr>
                     <tr>
                     <tr>
@@ -31,22 +32,6 @@
                     <tr>
                         <td><strong>Logo</strong></td>
                         <td>@Model.Logo</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Email</strong></td>
-                        <td>@Model.Email</td>
-                    </tr>
-                    <tr>
-                        <td><strong>HQAddress</strong></td>
-                        <td>@Model.HQAddress</td>
-                    </tr>
-                    <tr>
-                        <td><strong>HQPhoneNumber</strong></td>
-                        <td>@Model.HQPhoneNumber</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Branches</strong></td>
-                        <td>@Model.Branches</td>
                     </tr>
                 </tbody>
             </table>

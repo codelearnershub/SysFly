@@ -1,5 +1,5 @@
-@model AirlineMS.Models.Entities.Company;
-
+@using AirlineMS.Models.Dtos;
+@model IEnumerable<CompanyDto>;
 @{
     ViewData["Title"] = "List of Company";
 }
@@ -20,11 +20,7 @@
                     <th>CompanyName</th>
                     <th>CACRegistrationNum</th>
                     <th>CACDocument</th>
-                    <th>Logo</th>
-                    <th>Email</th>
-                    <th>HQAddress</th>
-                    <th>HQPhoneNumber</th>
-                    <th>Branches</th>                    
+                    <th>Logo</th>                   
                     <th>Detail</th>
                     <th>Delete</th>
                 </tr>
@@ -33,17 +29,13 @@
                 @foreach (var company in Model)
                 {
                     <tr>
-                        <td>@company.UserId</td>
-                        <td>@company.CompanyName</td>
+                        <td>@company.Id</td>
+                        <td>@company.Name</td>
                         <td>@company.CACRegistrationNum</td>
                         <td>@company.CACDocument</td>
-                        <td>@company.Logo</td>                      
-                        <td>@company.Email</td>
-                        <td>@company.HQAddress</td>
-                        <td>@company.HQPhoneNumber</td>
-                        <td>@company.Branches</td>
+                        <td>@company.Logo</td>
                         <td>
-                            <a asp-controller="Company" asp-action="Details" asp-route-id="@company.UserId">View</a>
+                            <a asp-controller="Company" asp-action="Details" asp-route-id="@company.Id">View</a>
                         </td>
                         <td>Remove</td>
                     </tr>

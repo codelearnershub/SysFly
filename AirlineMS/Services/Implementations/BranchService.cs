@@ -44,11 +44,12 @@ namespace AirlineMS.Services.Implementations
                         Email = branch.Email,
                         PhoneNumber = branch.PhoneNumber,
                         CompanyId = branch.CompanyId,
-                        
+
                     }
                 };
             }
-            return new BaseResponse<BranchDto>{
+            return new BaseResponse<BranchDto>
+            {
                 Message = "ALready Exist",
                 Status = false
             };
@@ -57,17 +58,86 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<IEnumerable<BranchDto>> GetAllBranchesOfACompany(string companyId)
         {
-            throw new NotImplementedException();
+            var branch = _branchRepository.GetSelected(a => a.CompanyId == companyId);
+            if(branch != null)
+            {
+                return new BaseResponse<IEnumerable<BranchDto>>
+                {
+                    Message = "Successful",
+                    Status = true,
+                    Data =  branch.Select(s => new BranchDto
+                    {
+                        Id = s.Id,
+                        Name = s.Name,
+                        PhoneNumber = s.PhoneNumber,
+                        Email = s.Email,
+                        Address = s.Address,
+                        CompanyId = s.CompanyId,
+                    })
+                    
+                };
+            }
+            return new BaseResponse<IEnumerable<BranchDto>>
+            {
+                Message = "Not found",
+                Status = false,
+            };
         }
 
         public BaseResponse<BranchDto> GetBranchByCompanyId(string companyId)
         {
-            throw new NotImplementedException();
+            var branch = _branchRepository.Get(a => a.CompanyId == companyId);
+            if (branch is not  null)
+            {
+                return new BaseResponse<BranchDto>
+                {
+                   Message = "Successful",
+                   Status = true,
+                   Data =  new BranchDto
+                   {
+                     Id = branch.Id,
+                     Name = branch.Name,
+                     Address = branch.Address,
+                     CompanyId = branch.CompanyId,
+                     PhoneNumber = branch.PhoneNumber,
+                     Email = branch.Email
+                   }
+
+                };
+            }
+            return new BaseResponse<BranchDto>
+            {
+              Message = "not found",
+              Status = false,
+            };
+
         }
 
         public BaseResponse<BranchDto> Update(string id, UpDateBranchRequestModel model)
         {
-            throw new NotImplementedException();
+            var update = _branchRepository.Get(a => a.Id == id);
+            if(update is not null)
+            {
+                update.Name = model.Name;
+                update.Address = model.Address;
+                update.PhoneNumber = model.PhoneNumber; 
+                return new BaseResponse<BranchDto>
+                {
+                    Message = "Updated Successful",
+                    Status = true,
+                    Data = new BranchDto
+                    {
+                        Name = update.Name,
+                        Address = update.Address,
+                        PhoneNumber = update.PhoneNumber,
+                    }
+                };
+            }
+            return new BaseResponse<BranchDto>
+            {
+                Message = "Enable to Update",
+                Status = false,
+            };
         }
     }
 }

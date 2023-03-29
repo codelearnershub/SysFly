@@ -10,7 +10,8 @@ namespace AirlineMS.Services.Interfaces
     {
          BaseResponse<StaffDto> Create(CreateStaffRequestModel model);
         BaseResponse<StaffDto> Update(string id, UpdateStaffRequestModel model);
-        BaseResponse<StaffDto> GetStaffByBranchId(string staffId);
-        BaseResponse<IEnumerable<StaffDto>> GetAllStaffs(string staffId);
+        BaseResponse<StaffDto> GetStaffByBranchId(string branchId);
+        BaseResponse<IEnumerable<StaffDto>> GetAllStaffs(string branchId);
+        BaseResponse<StaffDto> Get(string id);
     }
 }

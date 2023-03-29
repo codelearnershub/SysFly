@@ -1,0 +1,14 @@
+@model AirlineMS.Models.Dtos.StaffDto
+@{
+    ViewData["StaffName"] = @Model.FirstName + " " +Model.LastName;
+}
+<h2>
+    @ViewData["StaffName"]
+</h2>
+
+<div>
+    <h4>Full Name : @ViewBag["StaffName"]</h4>
+    <h4>Email : @Model.Email</h4>
+    <h4>Phone Number:@Model.PhoneNumber </h4>
+    
+</div>

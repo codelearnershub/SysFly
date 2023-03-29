@@ -5,24 +5,27 @@ using System.Threading.Tasks;
 using AirlineMS.Models.Dtos;
 using AirlineMS.Models.Entities;
 using AirlineMS.Repositories.Implementations;
+using AirlineMS.Repositories.Interfaces;
 using AirlineMS.Services.Interfaces;
 
 namespace AirlineMS.Services.Implementations
 {
     public class RoleService : IRoleService
     {
-        private readonly RoleRepository _roleRepository;
-        public RoleService(RoleRepository roleRepository)
+        private readonly IRoleRepository _roleRepository;
+        private readonly IUserRepository _userRepository;
+        public RoleService(IRoleRepository roleRepository, IUserRepository userRepository)
         {
             _roleRepository = roleRepository;
+            _userRepository = userRepository;
         }
         public BaseResponse<RoleDto> Create(CreateRoleRequestModel model)
         {
-            var roleExist = _roleRepository.Get(a => a.RoleName == model.RoleName);
+            var roleExist = _roleRepository.Get(a => a.Name == model.Name);
             if (roleExist == null)
             {
                 Role role = new Role();
-                role.RoleName = model.RoleName;
+                role.Name = model.Name;
                 role.Description = model.Description;
 
                 _roleRepository.Create(role);
@@ -35,7 +38,7 @@ namespace AirlineMS.Services.Implementations
                     Data = new RoleDto
                     {
                         Id = role.Id,
-                        RoleName = role.RoleName,
+                        Name = role.Name,
                         Description = role.Description,
                     }
                 };
@@ -47,17 +50,55 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
-      
-        public BaseResponse<IEnumerable<RoleDto>> GetAllRolesOfAUser(string UserId)
+        public BaseResponse<IEnumerable<UserDto>> GetAllUserOfARole(string roleId)      
         {
-            throw new NotImplementedException();
+
+            var role = _roleRepository.Get(x => x.Id == roleId);
+            if (role is null)
+            {
+                return new BaseResponse<IEnumerable<UserDto>>
+                {
+                    Message = "User does not Exist",
+                    Status = false
+                };
+            }
+    
+
+            return new BaseResponse<IEnumerable<UserDto>>
+            {
+                
+            };
         }
 
-        
-
-        public BaseResponse<RoleDto> GetRoleByRoleName(string roleName)
+        public BaseResponse<IEnumerable<RoleDto>> GetRolesOfUser(string userId)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.Get(u => u.Id == userId);
+            if(user == null)
+            {
+                return new BaseResponse<IEnumerable<RoleDto>>
+                {
+                    Message ="User does not exist",
+                    Status = false
+                };
+            }
+            List<RoleDto> userRoles = new List<RoleDto>();
+            foreach (var item in user.UserRoles)
+            {
+                if (item.UserId == user.Id)
+                {
+                    userRoles.Add
+                    (
+                        new RoleDto{ Id = item.RoleId , Name = item.Role.Name}
+                    );
+                }
+            }
+            return new BaseResponse<IEnumerable<RoleDto>>
+            {
+                Message = "",
+                Status = true,
+                Data = userRoles
+            };
+
         }
 
         public BaseResponse<RoleDto> Update(string id, UpdateRoleRequestModel model)

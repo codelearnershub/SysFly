@@ -7,7 +7,7 @@
 <div class="border p-3 mt-4">
     <div><h1>@ViewData["Title"]</h1></div>
     <div>
-        <form asp-action="Add">
+        <form asp-action="Add" enctype="multipart/form-data">
             <div>
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control" type="text" />

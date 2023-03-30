@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 using AirlineMS.Models.Dtos;
 using AirlineMS.Models.Entities;
 using AirlineMS.Repositories.Implementations;
+using AirlineMS.Repositories.Interfaces;
 using AirlineMS.Services.Interfaces;
 
 namespace AirlineMS.Services.Implementations
 {
     public class StaffService : IStaffService
     {
-        private readonly StaffRepository _staffRepository;
-        public StaffService(StaffRepository staffRepository)
+        private readonly IStaffRepository _staffRepository;
+        public StaffService(IStaffRepository staffRepository)
         {
             _staffRepository = staffRepository;
         }

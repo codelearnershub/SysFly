@@ -4,19 +4,11 @@
     ViewData["Title"] = "List of Company";
 }
 <div>
-    <div class="text-center">welcome <h6>@ViewBag.email</h6></div>
-    <div>
-        <div class="text-center"><h4>@ViewData["Title"]</h4></div>
-        <div class="text-end">
-            <a class="btn btn-primary" asp-action="Logout">LogOut</a>
-            <a class="btn btn-primary" asp-action="Add">Add New Company</a>
-        </div>
-    </div>
     <div class="pt-4">
         <table class="table table-bordered table-striped table-responsive">
             <thead>
                 <tr>
-                    <th>UserId</th>
+                    <th>Id</th>
                     <th>CompanyName</th>
                     <th>CACRegistrationNum</th>
                     <th>CACDocument</th>
@@ -32,8 +24,8 @@
                         <td>@company.Id</td>
                         <td>@company.Name</td>
                         <td>@company.CACRegistrationNum</td>
-                        <td>@company.CACDocument</td>
-                        <td>@company.Logo</td>
+                        <td><img src="~/Upload/Images/@company.CACDocument" height="100" width="100"></td>
+                        <td><img src="~/Upload/Images/@company.Logo" height="100" width="100"></td>
                         <td>
                             <a asp-controller="Company" asp-action="Details" asp-route-id="@company.Id">View</a>
                         </td>

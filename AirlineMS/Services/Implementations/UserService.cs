@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AirlineMS.Models.Dtos;
 using AirlineMS.Models.Entities;
 using AirlineMS.Repositories.Implementations;
+using AirlineMS.Repositories.Interfaces;
 using AirlineMS.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -13,9 +14,9 @@ namespace AirlineMS.Services.Implementations
 {
     public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(UserRepository userRepository)
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -85,18 +86,25 @@ namespace AirlineMS.Services.Implementations
                     Status = true,
                     Data = new UserDto
                     {
+                        Id = user.Id,
                         FirstName = user.FirstName,
                         LastName = user.LastName,
                         Email = user.Email,
                         PhoneNumber = user.PhoneNumber,
-                        Id = user.Id
+                        Roles = user.UserRoles.Select(a => new RoleDto{
+                            Id = a.Role.Id,
+                            Name = a.Role.Name,
+                            Description = a.Role.Description
+                        }).ToList(),
+                        
                     }
                 };
+                return userLogin;
 
             }
             return new BaseResponse<UserDto>
             {
-                Message = "Incorrect email of password",
+                Message = "Incorrect email or password",
                 Status = false
             };
         }

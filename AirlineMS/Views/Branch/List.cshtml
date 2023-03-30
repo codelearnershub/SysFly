@@ -23,25 +23,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(Model.Count() > 0){
-                        var sn = 1;
-                        foreach (var branch in Model)
-                        {
-                            <tr>
-                                <td>@sn</td>
-                                <td>Name</td>
-                                <td>Email</td>
-                                <td>Phone Number</td>
-                                <td>Address</td>
-                                <td>
-                                    <a href="#">Edit</a>
-                                </td>
-                                <td>
-                                    <a href="#">Remove</a>
-                                </td>
-                            </tr>
-                            sn++;
-                        }
+                    @foreach (var branch in Model)
+                    {
+                        <tr>
+                            <td>@branch.Id</td>
+                            <td>@branch.Name</td>
+                            <td>@branch.Email</td>
+                            <td>@branch.PhoneNumber</td>
+                            <td>@branch.Address</td>
+                            <td>
+                                <a href="#">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#">Remove</a>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>

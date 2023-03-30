@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {}
+    "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {}
   },
   "projects": {
-    "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {
+    "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
         "projectName": "AirlineMS",
-        "projectPath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "projectPath": "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -21,8 +21,6 @@ namespace AirlineMS.Services.Implementations
        }
         public BaseResponse<CompanyDto> Create(CreateCompanyRequestModel model)
         {
-
-        
             var companyExist = _companyRepository.Get(c => c.Name == model.Name);
             if (companyExist is not null)
             {
@@ -36,6 +34,7 @@ namespace AirlineMS.Services.Implementations
             var Logo = UploadFile(model.Logo);
 
             var newCompany = new Company{
+                Name = model.Name,
                 CACDocument = CACRegistrationNum,
                 CACRegistrationNum = model.CACRegistrationNum,
                 Logo = Logo
@@ -81,21 +80,29 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<CompanyDto> Get(string id)
         {
-            var companyExists = _companyRepository.Get(g => g.Id == id);
-            if(companyExists != null)
+            var company = _companyRepository.Get(g => g.Id == id);
+            if(company != null)
             {
-                companyExists.IsDeleted = false;
-                _companyRepository.Update(companyExists);
-                _companyRepository.Save();
 
                 return new BaseResponse<CompanyDto>{
                     Message = "successful",
-                    Status = false
+                    Status = true,
+                    Data = new CompanyDto{
+                        Id = company.Id,
+                        Name = company.Name,
+                        Logo = company.Logo,
+                        Branches = company.Branches.Select(a => new BranchDto{
+                            Id = a.Id,
+                            Name = a.Name,
+                            Address = a.Address,
+
+                        }).ToList()
+                    },
                 };
             }
              return new BaseResponse<CompanyDto>{
                     Message = "Company is not fund",
-                    Status = true
+                    Status = false
                 };
         }
 

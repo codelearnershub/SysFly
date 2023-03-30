@@ -31,6 +31,15 @@ namespace AirlineMS.Models.Dtos
         public string Address {get; set;}
     }
 
+
+    public class CreateHeadRequestModel
+    {
+        public string PhoneNumber {get; set;}
+        public string Email {get; set;}
+        [Required]
+        public string Address {get; set;}
+    }
+
     public class UpDateBranchRequestModel
     {
         [MinLength(5, ErrorMessage = "your name must not less than five character"), MaxLength(15,ErrorMessage = " your name must not greater than fifteen character")]

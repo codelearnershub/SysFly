@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AirlineMS.Models.Dtos;
 using AirlineMS.Models.Entities;
 using AirlineMS.Repositories.Implementations;
+using AirlineMS.Repositories.Interfaces;
 using AirlineMS.Services.Interfaces;
 
 namespace AirlineMS.Services.Implementations
@@ -12,9 +13,9 @@ namespace AirlineMS.Services.Implementations
     public class RoleService : IRoleService
     {
 
-        private readonly RoleRepository _roleRepository;
+        private readonly IRoleRepository _roleRepository;
 
-        private RoleService(RoleRepository roleRepository)
+        public RoleService(IRoleRepository roleRepository)
         {
             _roleRepository = roleRepository;
         }
@@ -53,7 +54,7 @@ namespace AirlineMS.Services.Implementations
         public BaseResponse<RoleDto> Delete(string id)
         {
           var role = _roleRepository.Get(id);
-          if (role is not null)
+          if (role is null)
           {
             return new BaseResponse<RoleDto>
             {

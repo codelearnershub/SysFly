@@ -15,9 +15,10 @@ namespace AirlineMS.Controllers
         private readonly ILogger<CompanyController> _logger;
         private readonly ICompanyService _companyService;
 
-        public CompanyController(ILogger<CompanyController> logger)
+        public CompanyController(ILogger<CompanyController> logger, ICompanyService companyService)
         {
             _logger = logger;
+            _companyService = companyService;
         }
 
         public IActionResult Index()
@@ -58,16 +59,16 @@ namespace AirlineMS.Controllers
             return View(result);
         }
 
-        public IActionResult Detail(string id)
+        public IActionResult Details(string id)
         {
             var result = _companyService.Get(id);
-            return View(result);
+            return View(result.Data);
         }
 
         public IActionResult List()
         {
             var result = _companyService.GetAll();
-            return View(result);
+            return View(result.Data);
         }
 
         public IActionResult Update(string id)

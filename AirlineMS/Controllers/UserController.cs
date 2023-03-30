@@ -22,7 +22,7 @@ namespace AirlineMS.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            
+
             return View();
         }
 
@@ -30,25 +30,33 @@ namespace AirlineMS.Controllers
         public IActionResult Login(LoginUserRequestModel model)
         {
             var user = _userService.Login(model);
-            if(!user.Status)
+            if (user != null)
             {
-                return View();
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Email, user.Data.Email),
+                    new Claim(ClaimTypes.Name, user.Data.FirstName +" "+ user.Data.LastName),
+                    new Claim(ClaimTypes.HomePhone, user.Data.PhoneNumber)
+                };
+
+                var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                var claimsPrincipal = new ClaimsPrincipal(claimIdentity);
+
+                HttpContext.SignInAsync(claimsPrincipal);
+                if(user.Status == true)
+                {
+                    if(user.Data.Roles.Select(r => r.Name).Contains("Super Admin"))
+                    {
+                        return RedirectToAction("Super");
+                    }
+                }
+
+                
             }
-
-           var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Email, user.Data.Email),
-                new Claim(ClaimTypes.Name, user.Data.FirstName +" "+ user.Data.LastName),
-                new Claim(ClaimTypes.HomePhone, user.Data.PhoneNumber)
-            };
-
-            var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            var claimsPrincipal = new ClaimsPrincipal(claimIdentity);
-
-            HttpContext.SignInAsync(claimsPrincipal);
-            
             return View();
+
+
         }
 
         public IActionResult List()
@@ -56,6 +64,17 @@ namespace AirlineMS.Controllers
             var users = _userService.GetAll();
             return View(users.Data);
         }
-        
+
+        public IActionResult Super()
+        {
+            return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync();
+            return RedirectToAction("Login");
+        }
+
     }
 }

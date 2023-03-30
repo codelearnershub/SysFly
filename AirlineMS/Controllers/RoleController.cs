@@ -15,6 +15,7 @@ namespace AirlineMS.Controllers
         {
             _roleService = roleService;
         }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -31,8 +32,8 @@ namespace AirlineMS.Controllers
         {
             return View();
         }
-        [HttpPost, ActionName("Delete")]
 
+        [HttpPost, ActionName("Delete")]
         public IActionResult ActualDelete (string id)
         {
             _roleService.Delete(id);
@@ -46,7 +47,7 @@ namespace AirlineMS.Controllers
 
             return View(role.Data);
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult List()
         {
              var roles = _roleService.GetAll();

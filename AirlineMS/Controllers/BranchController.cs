@@ -33,6 +33,25 @@ namespace AirlineMS.Controllers
         }
 
         [HttpGet]
+        public IActionResult CreateHead()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateHead(string id, CreateHeadRequestModel model)
+        {
+            var response = _branchService.CreateHeadquarters(id, model);
+            if (response.Status)
+            {
+                TempData["Successful"] = " Created Successful";
+
+                return RedirectToAction("List");
+            }
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Delete(string id)
         {
             // var response = _branchService.Get(id);
@@ -53,10 +72,10 @@ namespace AirlineMS.Controllers
         }
 
         [HttpGet]
-        public IActionResult List(string agencyId)
+        public IActionResult List(string id)
         {
-            var response = _branchService.GetBranchesByCompanyId(agencyId);
-            return View(response);
+            var response = _branchService.GetBranchesByCompanyId(id);
+            return View(response.Data);
         }
 
         [HttpGet]

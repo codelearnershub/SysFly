@@ -15,6 +15,7 @@ namespace AirlineMS.AppDbContext
         }
 
         public DbSet<Branch> Branches {get; set;}
+        public DbSet<BranchManager> BranchManagers {get; set;}
         public DbSet<Company> Companies {get; set;}
         public DbSet<Staff> Staffs {get; set;}
         public DbSet<User> Users {get;set;}

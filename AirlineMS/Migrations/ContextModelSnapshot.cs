@@ -88,6 +88,35 @@ namespace AirlineMS.Migrations
                     b.ToTable("Branches");
                 });
 
+            modelBuilder.Entity("AirlineMS.Models.Entities.BranchManager", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("BranchId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BranchId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BranchManagers");
+                });
+
             modelBuilder.Entity("AirlineMS.Models.Entities.Company", b =>
                 {
                     b.Property<string>("Id")
@@ -263,6 +292,21 @@ namespace AirlineMS.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("AirlineMS.Models.Entities.BranchManager", b =>
+                {
+                    b.HasOne("AirlineMS.Models.Entities.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchId");
+
+                    b.HasOne("AirlineMS.Models.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Branch");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Staff", b =>

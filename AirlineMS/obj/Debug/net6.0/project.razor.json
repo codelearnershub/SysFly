@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+  "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16298,153 +16298,158 @@
   "RootNamespace": "AirlineMS",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Branch\\List.cshtml",
-      "TargetPath": "Views\\Branch\\List.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Role\\Update.cshtml",
-      "TargetPath": "Views\\Role\\Update.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Branch\\CreateHead.cshtml",
-      "TargetPath": "Views\\Branch\\CreateHead.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\User\\Login.cshtml",
-      "TargetPath": "Views\\User\\Login.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Company\\Details.cshtml",
-      "TargetPath": "Views\\Company\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Company\\Delete.cshtml",
-      "TargetPath": "Views\\Company\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Company\\Add.cshtml",
-      "TargetPath": "Views\\Company\\Add.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Company\\List.cshtml",
-      "TargetPath": "Views\\Company\\List.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\User\\List.cshtml",
-      "TargetPath": "Views\\User\\List.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Staff\\ListOfStaffsByBranch.cshtml",
-      "TargetPath": "Views\\Staff\\ListOfStaffsByBranch.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Role\\Details.cshtml",
-      "TargetPath": "Views\\Role\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Staff\\Details.cshtml",
-      "TargetPath": "Views\\Staff\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Staff\\Delete.cshtml",
-      "TargetPath": "Views\\Staff\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Branch\\Update.cshtml",
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Branch\\Update.cshtml",
       "TargetPath": "Views\\Branch\\Update.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Role\\Delete.cshtml",
-      "TargetPath": "Views\\Role\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Branch\\Create.cshtml",
-      "TargetPath": "Views\\Branch\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\User\\Super.cshtml",
-      "TargetPath": "Views\\User\\Super.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Staff\\ListOfStaffsByCompany.cshtml",
-      "TargetPath": "Views\\Staff\\ListOfStaffsByCompany.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Staff\\Update.cshtml",
-      "TargetPath": "Views\\Staff\\Update.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Company\\Update.cshtml",
-      "TargetPath": "Views\\Company\\Update.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Role\\Add.cshtml",
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Role\\Add.cshtml",
       "TargetPath": "Views\\Role\\Add.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Role\\List.cshtml",
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Company\\Add.cshtml",
+      "TargetPath": "Views\\Company\\Add.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\User\\Login.cshtml",
+      "TargetPath": "Views\\User\\Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Company\\Update.cshtml",
+      "TargetPath": "Views\\Company\\Update.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Role\\Delete.cshtml",
+      "TargetPath": "Views\\Role\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Staff\\ListOfStaffsByBranch.cshtml",
+      "TargetPath": "Views\\Staff\\ListOfStaffsByBranch.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\User\\List.cshtml",
+      "TargetPath": "Views\\User\\List.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Company\\List.cshtml",
+      "TargetPath": "Views\\Company\\List.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Role\\List.cshtml",
       "TargetPath": "Views\\Role\\List.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\Views\\Staff\\Add.cshtml",
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Staff\\ListOfStaffsByCompany.cshtml",
+      "TargetPath": "Views\\Staff\\ListOfStaffsByCompany.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Staff\\Update.cshtml",
+      "TargetPath": "Views\\Staff\\Update.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Staff\\Details.cshtml",
+      "TargetPath": "Views\\Staff\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Company\\Details.cshtml",
+      "TargetPath": "Views\\Company\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Branch\\Delete.cshtml",
+      "TargetPath": "Views\\Branch\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Branch\\CreateHead.cshtml",
+      "TargetPath": "Views\\Branch\\CreateHead.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Branch\\List.cshtml",
+      "TargetPath": "Views\\Branch\\List.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Company\\Delete.cshtml",
+      "TargetPath": "Views\\Company\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Staff\\Add.cshtml",
       "TargetPath": "Views\\Staff\\Add.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Staff\\Delete.cshtml",
+      "TargetPath": "Views\\Staff\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Role\\Update.cshtml",
+      "TargetPath": "Views\\Role\\Update.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\User\\Super.cshtml",
+      "TargetPath": "Views\\User\\Super.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Branch\\Create.cshtml",
+      "TargetPath": "Views\\Branch\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Role\\Details.cshtml",
+      "TargetPath": "Views\\Role\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\User\\Documents\\SysFly\\AirlineMS\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     }
   ],

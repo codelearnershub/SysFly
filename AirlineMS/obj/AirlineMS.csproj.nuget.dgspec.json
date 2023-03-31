@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {}
+    "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {
+    "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj",
         "projectName": "AirlineMS",
-        "projectPath": "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Desktop\\SysFly\\AirlineMS\\obj\\",
+        "projectPath": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -96,7 +96,14 @@ namespace AirlineMS.Services.Implementations
                             Name = a.Name,
                             Address = a.Address,
 
-                        }).ToList()
+
+                        },
+                            Aircraft = company.Aircrafts.Select(a => new AircraftDto{
+                                Name = a.Name,
+                                EngineNumber = a.EngineNumber,
+                                Capacity = a.Capacity,
+                            })
+                        ).ToList()
                     },
                 };
             }

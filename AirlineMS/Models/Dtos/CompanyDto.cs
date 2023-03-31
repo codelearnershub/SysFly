@@ -15,6 +15,8 @@ namespace AirlineMS.Models.Dtos
         public string CACDocument { get; set; }
         public List<BranchDto> Branches { get; set; }
         public List<StaffDto> Staffs { get; set; }
+        public List<AircraftDto> Aircrafts{get; set;}
+        
         
     }
 

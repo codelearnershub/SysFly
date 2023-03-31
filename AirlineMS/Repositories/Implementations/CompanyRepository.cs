@@ -23,6 +23,7 @@ namespace AirlineMS.Repositories.Implementations
             .Where(a => a.IsDeleted == false)
             .Include(a => a.Branches)
             .Include(a => a.Staffs)
+            .Include(a => a.Aircraft)
             .ThenInclude(a => a.User)
             .FirstOrDefault(c => c.Id == id);
         }
@@ -33,6 +34,7 @@ namespace AirlineMS.Repositories.Implementations
             .Where(a => a.IsDeleted == false)
             .Include(a => a.Branches)
             .Include(a => a.Staffs)
+            .Include(a => a.Aircraft)
             .ThenInclude(a => a.User)
             .FirstOrDefault(expression);
         }
@@ -43,6 +45,7 @@ namespace AirlineMS.Repositories.Implementations
             .Where(a => a.IsDeleted == false)
             .Include(a => a.Branches)
             .Include(a => a.Staffs)
+            .Include(a => a.Aircraft)
             .ThenInclude(a => a.User)
             .ToList();
         }
@@ -53,6 +56,7 @@ namespace AirlineMS.Repositories.Implementations
             .Where(a => ids.Contains(a.Id) && a.IsDeleted == false)
             .Include(a => a.Branches)
             .Include(a => a.Staffs)
+            .Include(a => a.Aircraft)
             .ThenInclude(a => a.User)
             .ToList();
         }
@@ -63,6 +67,7 @@ namespace AirlineMS.Repositories.Implementations
             .Where(expression)
             .Include(a => a.Branches)
             .Include(a => a.Staffs)
+            .Include(a => a.Aircraft)
             .ThenInclude(a => a.User)
             .ToList();
         }

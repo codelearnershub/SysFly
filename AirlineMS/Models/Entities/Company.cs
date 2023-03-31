@@ -8,7 +8,7 @@ namespace AirlineMS.Models.Entities
     public class Company : BaseEntity
     {
         public string Name { get; set; }
-        public string CACRegistrationNum { get; set; }
+        public string CACRegistrationNum { get; set; }       
         public string CACDocument { get; set; }
         public string Logo { get; set; }
         public ICollection<Branch> Branches {get; set;} = new HashSet<Branch>();

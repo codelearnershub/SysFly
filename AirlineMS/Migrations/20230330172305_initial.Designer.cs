@@ -11,17 +11,12 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirlineMS.Migrations
 {
     [DbContext(typeof(Context))]
-<<<<<<<< HEAD:AirlineMS/Migrations/20230330211520_commitInit.Designer.cs
-    [Migration("20230330211520_commitInit")]
-    partial class commitInit
-========
 <<<<<<<< HEAD:AirlineMS/Migrations/20230330172305_initial.Designer.cs
     [Migration("20230330172305_initial")]
     partial class initial
 ========
     [Migration("20230330171742_init3")]
     partial class init3
->>>>>>>> master:AirlineMS/Migrations/20230330171742_init3.Designer.cs
 >>>>>>>> master:AirlineMS/Migrations/20230330171742_init3.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,35 +93,6 @@ namespace AirlineMS.Migrations
                     b.HasIndex("CompanyId");
 
                     b.ToTable("Branches");
-                });
-
-            modelBuilder.Entity("AirlineMS.Models.Entities.BranchManager", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("BranchId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BranchId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("BranchManagers");
                 });
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Company", b =>
@@ -304,21 +270,6 @@ namespace AirlineMS.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("AirlineMS.Models.Entities.BranchManager", b =>
-                {
-                    b.HasOne("AirlineMS.Models.Entities.Branch", "Branch")
-                        .WithMany()
-                        .HasForeignKey("BranchId");
-
-                    b.HasOne("AirlineMS.Models.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Branch");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Staff", b =>

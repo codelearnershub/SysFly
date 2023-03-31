@@ -59,7 +59,7 @@ namespace AirlineMS.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Update(UpdateStaffRequestModel staffModel)
+        public IActionResult Update(UpdateRoleRequestModel roleModel)
         {
             return View();
         }

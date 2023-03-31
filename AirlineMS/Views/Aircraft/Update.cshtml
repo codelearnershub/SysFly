@@ -1,0 +1,33 @@
+@using AirlineMS.Models.Dtos
+@model AircraftDto
+@{
+    ViewData["Title"] = "Update Aircraft";
+}
+<div>
+    <div class="text-center">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form asp-controller="Aircraft" asp-action="Update" asp-route-agencyId="">
+                <div>
+                    <label for="">Name</label>
+                    <input type="" name="Name" value="@Model.Name"/>
+                </div>
+                <div>
+                    <label for="">Engine Number</label>
+                    <input type="" name="EngineNumber" value="@Model.EngineNumber"/>
+                </div>
+                <div>
+                    <label for="">Capacity</label>
+                    <input type="" name="Capacity" value="@Model.Capacity"/>
+                </div>
+                <div>
+                    <button class="btn btn-primary">Update Aircraft</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

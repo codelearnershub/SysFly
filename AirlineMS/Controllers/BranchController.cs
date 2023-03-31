@@ -20,9 +20,9 @@ namespace AirlineMS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(string agencyId, CreateBranchRequestModel model)
+        public IActionResult Create(string companyId, CreateBranchRequestModel model)
         {
-            var response = _branchService.Create(agencyId, model);
+            var response = _branchService.Create(companyId, model);
             if (response.Status)
             {
                 TempData["Successful"] = " Created Successful";
@@ -59,12 +59,12 @@ namespace AirlineMS.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult RealDelete(string agencyId, CreateBranchRequestModel model)
+        public IActionResult RealDelete(string id)
         {
-            var response = _branchService.Create(agencyId, model);
+            var response = _branchService.Delete(id);
             if (response.Status)
             {
-                TempData["Successful"] = " Created Successful";
+                TempData["Successful"] = "Deleted successfully";
 
                 return RedirectToAction("List");
             }
@@ -72,9 +72,9 @@ namespace AirlineMS.Controllers
         }
 
         [HttpGet]
-        public IActionResult List(string id)
+        public IActionResult List(string companyId)
         {
-            var response = _branchService.GetBranchesByCompanyId(id);
+            var response = _branchService.GetBranchesByCompanyId(companyId);
             return View(response.Data);
         }
 

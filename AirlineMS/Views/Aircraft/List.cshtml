@@ -1,7 +1,7 @@
 @using AirlineMS.Models.Dtos
-@model IEnumerable<BranchDto>
+@model IEnumerable<AircraftDto>
 @{
-    ViewData["Title"] = "Branch List";
+    ViewData["Title"] = "Aircraft List";
 }
 <div>
     <div class="text-center">
@@ -15,27 +15,25 @@
                     <tr>
                         <th>S/N</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
+                        <th>Engine Number</th>
+                        <th>Capacity</th>
                         <th>Update</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var branch in Model)
+                    @foreach (var aircraft in Model)
                     {
                         <tr>
-                            <td>@branch.Id</td>
-                            <td>@branch.Name</td>
-                            <td>@branch.Email</td>
-                            <td>@branch.PhoneNumber</td>
-                            <td>@branch.Address</td>
+                            <td>@aircraft.Id</td>
+                            <td>@aircraft.Name</td>
+                            <td>@aircraft.EngineNumber</td>
+                            <td>@aircraft.Capacity</td>
                             <td>
-                                <a asp-controller="Branch" asp-action="Update" asp-route-id="@branch.Id">Edit</a>
+                                <a href="#">Edit</a>
                             </td>
                             <td>
-                                <a asp-controller="Branch" asp-action="Delete" asp-route-id="@branch.Id">Remove</a>
+                                <a href="#">Remove</a>
                             </td>
                         </tr>
                     }

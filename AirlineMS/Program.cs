@@ -22,6 +22,8 @@ builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IBranchService, BranchService>();
 builder.Services.AddScoped<IStaffService, StaffService>();
+builder.Services.AddScoped<IBranchManagerRepository, BranchManagerRepository>();
+builder.Services.AddScoped<IBranchManagerService, BranchManagerService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

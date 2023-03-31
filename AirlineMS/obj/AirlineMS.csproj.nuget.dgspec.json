@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\Haruna\\Desktop\\SysFly\\AirlineMs\\AirlineMS.csproj": {}
   },
   "projects": {
@@ -15,11 +16,81 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Haruna\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+<<<<<<< HEAD
+    "C:\\Users\\HP\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\HP\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "projectName": "AirlineMS",
+        "projectPath": "C:\\Users\\HP\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\SysFly\\AirlineMS\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+<<<<<<< HEAD
+    "C:\\Users\\USER PC\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\USER PC\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\USER PC\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "projectName": "AirlineMS",
+        "projectPath": "C:\\Users\\USER PC\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "packagesPath": "C:\\Users\\USER PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\USER PC\\Desktop\\SysFly\\AirlineMS\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\USER PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+<<<<<<< HEAD
+    "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "projectName": "AirlineMS",
+        "projectPath": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
+    "c:\\Users\\USER\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {}
+  },
+  "projects": {
+    "c:\\Users\\USER\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "c:\\Users\\USER\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "projectName": "AirlineMS",
+        "projectPath": "c:\\Users\\USER\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\USER\\Desktop\\SysFly\\AirlineMS\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> master
+>>>>>>> master
+>>>>>>> master
+>>>>>>> master
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -48,10 +119,6 @@
               "target": "Package",
               "version": "[6.0.14, )"
             },
-            "MySql.EntityFrameWorkCore": {
-              "target": "Package",
-              "version": "[5.0.10, )"
-            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[6.0.0, )"
@@ -76,7 +143,19 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+>>>>>>> master
+>>>>>>> master
+>>>>>>> master
         }
       }
     }

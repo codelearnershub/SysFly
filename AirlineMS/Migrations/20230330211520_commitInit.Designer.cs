@@ -3,6 +3,7 @@ using System;
 using AirlineMS.AppDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,20 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirlineMS.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+<<<<<<<< HEAD:AirlineMS/Migrations/20230330211520_commitInit.Designer.cs
+    [Migration("20230330211520_commitInit")]
+    partial class commitInit
+========
+<<<<<<<< HEAD:AirlineMS/Migrations/20230330172305_initial.Designer.cs
+    [Migration("20230330172305_initial")]
+    partial class initial
+========
+    [Migration("20230330171742_init3")]
+    partial class init3
+>>>>>>>> master:AirlineMS/Migrations/20230330171742_init3.Designer.cs
+>>>>>>>> master:AirlineMS/Migrations/20230330171742_init3.Designer.cs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

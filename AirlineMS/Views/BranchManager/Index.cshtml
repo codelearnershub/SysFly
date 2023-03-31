@@ -1,0 +1,45 @@
+@using AirlineMS.Models.Dtos
+@model BranchManagerDto
+@{
+    ViewData["Title"] = "Branch Manager Dashboard";
+}
+<div class="pt-4">
+    <div class="text-center">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="row container-fluid">
+        <div class="col-lg-3 col-md-3 border text-center text-left">
+            <div>
+                <a href="void:()">Staff Management</a>
+                <ul>
+                    <li type="circle">
+                        <a asp-controller="Staff" asp-action="Add">Add Staff</a>
+                    </li>
+                    <li type="circle">
+                        <a asp-controller="Staff" asp-action="List">Staff List</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <a href="void:()">Passenger Management</a>
+                <ul>
+                    <li type="circle">
+                        <a asp-controller="Passenger" asp-action="List">Passenger List</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <a href="void:()">Flight Management</a>
+                <ul>
+                    <li >
+                        <a asp-controller="Flight" asp-action="Add">Add Flight</a>
+                    </li>
+                    <li type="circle">
+                        <a asp-controller="Flight" asp-action="List">Flight List</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9"></div>
+    </div>
+</div>

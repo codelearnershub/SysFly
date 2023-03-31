@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Create Aircraft";
+}
+<div>
+    <div class="text-center">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form asp-controller="Aircraft" asp-action="Create" asp-route-agencyId="">
+                <div>
+                    <label for="">Name</label>
+                    <input type="" name="Name"/>
+                </div>
+                <div>
+                    <label for="">Engine Number</label>
+                    <input type="" name="EngineNumber"/>
+                </div>
+                <div>
+                    <label for="">Capacity</label>
+                    <input type="" name="Capacity"/>
+                </div>
+                <div>
+                    <button class="btn btn-primary">Create Aircraft</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

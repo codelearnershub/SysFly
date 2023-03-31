@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirlineMS.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230330095723_second")]
-    partial class second
+    [Migration("20230330172305_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,39 @@ namespace AirlineMS.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("AirlineMS.Models.Entities.Aircraft", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("EngineNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Aircraft");
+                });
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Branch", b =>
                 {
@@ -179,6 +212,9 @@ namespace AirlineMS.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("longtext");
 
+                    b.Property<double>("Wallet")
+                        .HasColumnType("double");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -211,6 +247,15 @@ namespace AirlineMS.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRoles");
+                });
+
+            modelBuilder.Entity("AirlineMS.Models.Entities.Aircraft", b =>
+                {
+                    b.HasOne("AirlineMS.Models.Entities.Company", "Company")
+                        .WithMany("Aircrafts")
+                        .HasForeignKey("CompanyId");
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Branch", b =>
@@ -265,6 +310,8 @@ namespace AirlineMS.Migrations
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Company", b =>
                 {
+                    b.Navigation("Aircrafts");
+
                     b.Navigation("Branches");
 
                     b.Navigation("Staffs");

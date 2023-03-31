@@ -823,11 +823,25 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
+    "C:\\Users\\User\\.nuget\\packages\\": {}
+=======
     "C:\\Users\\USER\\.nuget\\packages\\": {}
+>>>>>>> master
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj",
+      "projectName": "AirlineMS",
+      "projectPath": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
       "projectUniqueName": "C:\\Users\\USER\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
       "projectName": "AirlineMS",
       "projectPath": "C:\\Users\\USER\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
@@ -836,6 +850,7 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> master
       ],
       "originalTargetFrameworks": [
         "net6.0"

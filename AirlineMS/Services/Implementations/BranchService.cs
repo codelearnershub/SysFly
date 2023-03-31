@@ -21,8 +21,11 @@ namespace AirlineMS.Services.Implementations
             _companyRepository = companyRepository;
         }
 
-        public BaseResponse<BranchDto> Create(CreateBranchRequestModel model)
+      
+
+        public BaseResponse<BranchDto> Create(string companyId, CreateBranchRequestModel model)
         {
+            var company = _companyRepository.Get(companyId);
             var branchExist = _branchRepository.Get(a => a.Email == model.Email);
             if (branchExist == null)
             {
@@ -34,7 +37,6 @@ namespace AirlineMS.Services.Implementations
 
                 _branchRepository.Create(branch);
                 _branchRepository.Save();
-
                 return new BaseResponse<BranchDto>
                 {
                     Message = "Succcessful",
@@ -56,12 +58,6 @@ namespace AirlineMS.Services.Implementations
                 Message = "ALready Exist",
                 Status = false
             };
-
-        }
-
-        public BaseResponse<BranchDto> Create(string agencyId, CreateBranchRequestModel model)
-        {
-            throw new NotImplementedException();
         }
 
         public BaseResponse<BranchDto> CreateHeadquarters(string companyId, CreateHeadRequestModel model)
@@ -103,62 +99,29 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
-        public BaseResponse<IEnumerable<BranchDto>> GetAllBranchesOfACompany(string companyId)
+        public BaseResponse<BranchDto> Delete(string id)
         {
-            var branch = _branchRepository.GetSelected(a => a.CompanyId == companyId);
-            if (branch != null)
-            {
-                return new BaseResponse<IEnumerable<BranchDto>>
-                {
-                    Message = "Successful",
-                    Status = true,
-                    Data = branch.Select(s => new BranchDto
-                    {
-                        Id = s.Id,
-                        Name = s.Name,
-                        PhoneNumber = s.PhoneNumber,
-                        Email = s.Email,
-                        Address = s.Address,
-                        CompanyId = s.CompanyId,
-                    })
-
-                };
-            }
-            return new BaseResponse<IEnumerable<BranchDto>>
-            {
-                Message = "Not found",
-                Status = false,
-            };
-        }
-
-        public BaseResponse<BranchDto> GetBranchByCompanyId(string companyId)
-        {
-            var branch = _branchRepository.Get(a => a.CompanyId == companyId);
-            if (branch is not null)
+            var branch = _branchRepository.Get(id);
+            if (branch is null)
             {
                 return new BaseResponse<BranchDto>
                 {
-                    Message = "Successful",
-                    Status = true,
-                    Data = new BranchDto
-                    {
-                        Id = branch.Id,
-                        Name = branch.Name,
-                        Address = branch.Address,
-                        CompanyId = branch.CompanyId,
-                        PhoneNumber = branch.PhoneNumber,
-                        Email = branch.Email
-                    }
-
+                    Message = "Not Found",
+                    Status = false
                 };
             }
+            branch.IsDeleted = true;
+            _branchRepository.Update(branch);
+            _branchRepository.Save();
             return new BaseResponse<BranchDto>
             {
-                Message = "not found",
-                Status = false,
+                Message = "Found",
+                Status = false
             };
-
         }
+
+       
+       
 
         public BaseResponse<IEnumerable<BranchDto>> GetBranchesByCompanyId(string companyId)
         {
@@ -212,7 +175,7 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<BranchDto>
             {
-                Message = "Enable to Update",
+                Message = "Unable to Update",
                 Status = false,
             };
         }

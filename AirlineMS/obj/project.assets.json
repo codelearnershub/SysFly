@@ -824,6 +824,9 @@
   },
   "packageFolders": {
 <<<<<<< HEAD
+    "C:\\Users\\Haruna\\.nuget\\packages\\": {}
+=======
+<<<<<<< HEAD
     "C:\\Users\\HP\\.nuget\\packages\\": {}
 =======
 <<<<<<< HEAD
@@ -836,10 +839,21 @@
 >>>>>>> master
 >>>>>>> master
 >>>>>>> master
+>>>>>>> master
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\Haruna\\Desktop\\SysFly\\AirlineMs\\AirlineMS.csproj",
+      "projectName": "AirlineMS",
+      "projectPath": "C:\\Users\\Haruna\\Desktop\\SysFly\\AirlineMs\\AirlineMS.csproj",
+      "packagesPath": "C:\\Users\\Haruna\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Haruna\\Desktop\\SysFly\\AirlineMs\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Haruna\\AppData\\Roaming\\NuGet\\NuGet.Config"
+=======
 <<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\HP\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
       "projectName": "AirlineMS",
@@ -880,6 +894,7 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 >>>>>>> master
@@ -942,12 +957,16 @@
           }
         },
 <<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
 =======
 <<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
 =======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
       }

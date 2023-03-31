@@ -1,0 +1,55 @@
+@model IEnumerable<AirlineMS.Models.Dtos.CompanyManagerDto>
+
+<div>
+    <table class="table table-active table-bordered table-responsive table-striped">
+        <thead>
+            <tr>
+                <td>
+                S/N
+                </td>
+                <td>
+                First Name
+                </td>
+                <td>
+                Last Name
+                </td>
+                <td>
+                Email
+                </td>
+                <td>
+                Phone Number
+                </td>
+                <td>
+                Details
+                </td>
+                <td>
+                Delete
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int a = 1;
+                    foreach (var companyManager in Model)
+                    {
+                    <tr>
+                        <td>@a</td>
+                        <td>@companyManager.FirstName</td>
+                        <td>@companyManager.LastName</td>
+                        <td>@companyManager.Email</td>
+                        <td>@companyManager.PhoneNumber</td>
+                        <td>
+                            <a asp-controller="CompanyManager" asp-action="Details">Details</a>
+                            </td>
+                        <td>
+                            <a asp-controller="CompanyManager" asp-action="Delete">Delete</a>
+                            </td>
+                    </tr>
+                        {
+                            a++;
+                        }
+                    }
+            }
+        </tbody>
+    </table>
+</div>

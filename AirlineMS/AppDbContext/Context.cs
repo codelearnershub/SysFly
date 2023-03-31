@@ -21,9 +21,13 @@ namespace AirlineMS.AppDbContext
         public DbSet<Role> Roles {get; set;}
         public DbSet<UserRole> UserRoles {get;set;}
 <<<<<<< HEAD
+        public DbSet<Aircraft> Aircrafts {get; set;}
+=======
+<<<<<<< HEAD
         public DbSet<Airport> Airporte {get;set;}
 =======
         public DbSet<Flight> Flights {get; set;}
+>>>>>>> master
 >>>>>>> master
     }
 }

@@ -824,14 +824,29 @@
   },
   "packageFolders": {
 <<<<<<< HEAD
+    "C:\\Users\\USER PC\\.nuget\\packages\\": {}
+=======
+<<<<<<< HEAD
     "C:\\Users\\User\\.nuget\\packages\\": {}
 =======
     "C:\\Users\\USER\\.nuget\\packages\\": {}
+>>>>>>> master
 >>>>>>> master
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Users\\USER PC\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+      "projectName": "AirlineMS",
+      "projectPath": "C:\\Users\\USER PC\\Desktop\\SysFly\\AirlineMS\\AirlineMS.csproj",
+      "packagesPath": "C:\\Users\\USER PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USER PC\\Desktop\\SysFly\\AirlineMS\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\USER PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
 <<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\User\\Documents\\SysFly\\AirlineMS\\AirlineMS.csproj",
       "projectName": "AirlineMS",
@@ -851,11 +866,13 @@
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
 >>>>>>> master
+>>>>>>> master
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -908,7 +925,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+>>>>>>> master
       }
     }
   }

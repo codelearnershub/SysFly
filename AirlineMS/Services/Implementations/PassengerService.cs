@@ -13,9 +13,11 @@ namespace AirlineMS.Services.Implementations
     public class PassengerService : IPassengerService
     {
         private readonly IPassengerRepository _passengerRepository;
-        public PassengerService(IPassengerRepository passengerRepository)
+        private readonly IFlightRepository _flightRepository;
+        public PassengerService(IPassengerRepository passengerRepository, IFlightRepository flightRepository)
         {
             _passengerRepository = passengerRepository;
+            _flightRepository = flightRepository;
         }
         BaseResponse<PassengerDto> Create(CreatePassengerRequestModel model)
         {
@@ -56,11 +58,11 @@ namespace AirlineMS.Services.Implementations
             var passengers = _passengerRepository.GetAll();
             if (passengers is not null)
             {
-                return new BaseResponse<IEnumerable<passengerDto>>
+                return new BaseResponse<IEnumerable<PassengerDto>>
                 {
                     Message = "Successful",
                     Status = true,
-                    Data = passengers.Select(s => new passengerDto
+                    Data = passengers.Select(s => new PassengerDto
                     {
                         Id = s.Id,
                         FirstName = s.User.FirstName,
@@ -95,7 +97,6 @@ namespace AirlineMS.Services.Implementations
                     Data = new PassengerDto
                     {
                         Id = passenger.Id,
-                        FlightId = passenger.FlightId,
                         FirstName = passenger.User.FirstName,
                         LastName = passenger.User.LastName,
                         Email = passenger.User.Email,
@@ -112,14 +113,14 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<IEnumerable<PassengerDto>> GetPassengersByFlightId(string flightId)
         {
-            var passenger = _passengerRepository.GetSelected(a => a.FlightId == flightId);
-            if (passenger is not null)
+            var passengers = _passengerRepository.GetAll();
+            if (passengers is not null)
             {
-                return new BaseResponse<PassengerDto>
+                return new BaseResponse<IEnumerable<PassengerDto>>
                 {
                     Message = "passenger found",
                     Status = true,
-                    Data = passenger.Select(a => new PassengerDto
+                    Data = passengers.Select(a => new PassengerDto
                     {
                         Id = a.Id,
                         FirstName = a.User.FirstName,
@@ -129,7 +130,7 @@ namespace AirlineMS.Services.Implementations
                     }).ToList(),
                 };
             }
-            return new BaseResponse<passengerDto>
+            return new BaseResponse<IEnumerable<PassengerDto>>
             {
                 Message = "Not found",
                 Status = false,
@@ -146,7 +147,7 @@ namespace AirlineMS.Services.Implementations
                 passenger.User.PhoneNumber = model.PhoneNumber;
                 _passengerRepository.Update(passenger);
                 _passengerRepository.Save();
-                return new BaseResponse<passengerDto>
+                return new BaseResponse<PassengerDto>
                 {
                     Message = "Updated successfully",
                     Status = true,
@@ -165,5 +166,9 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
+        BaseResponse<PassengerDto> IPassengerService.Create(CreatePassengerRequestModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

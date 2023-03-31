@@ -7,10 +7,10 @@ using AirlineMS.Models.Entities;
 
 namespace AirlineMS.Repositories.Interfaces
 {
-    public interface IPassengerRepository : IBaseRespository<Passenger>
+    public interface IPassengerRepository : IBaseRepository<Passenger>
     {
-        Passenger GetPassenger(string id);
-        Passenger GetPassenger(Expression<Func<Passenger, bool>> expression);
+        Passenger Get(string id);
+        Passenger Get(Expression<Func<Passenger, bool>> expression);
         IEnumerable<Passenger> GetSelected(List<string> ids);
         IEnumerable<Passenger> GetSelected(Expression<Func<Passenger, bool>> expression);
         IEnumerable<Passenger> GetAll();

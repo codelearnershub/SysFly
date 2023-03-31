@@ -155,31 +155,32 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<BranchDto> Update(string id, UpDateBranchRequestModel model)
         {
-            var update = _branchRepository.Get(a => a.Id == id);
-            if (update is not null)
-            {
-                update.Name = model.Name;
-                update.Address = model.Address;
-                update.PhoneNumber = model.PhoneNumber;
-                return new BaseResponse<BranchDto>
-                {
-                    Message = "Updated successfully",
-                    Status = true,
-                    Data = new BranchDto
-                    {
-                       PhoneNumber = branch.PhoneNumber,
-                       Address = branch.Address
+            return null;
+            // var update = _branchRepository.Get(a => a.Id == id);
+            // if (update is not null)
+            // {
+            //     update.Name = model.Name;
+            //     update.Address = model.Address;
+            //     update.PhoneNumber = model.PhoneNumber;
+            //     return new BaseResponse<BranchDto>
+            //     {
+            //         Message = "Updated successfully",
+            //         Status = true,
+            //         Data = new BranchDto
+            //         {
+            //            PhoneNumber = branch.PhoneNumber,
+            //            Address = branch.Address
                         
-                    }
-                };
-            }
+            //         }
+            //     };
+            // }
 
-            return new BaseResponse<BranchDto>
-            {
-                Message = "Unable to Update",
-                Status = false,
+            // return new BaseResponse<BranchDto>
+            // {
+            //     Message = "Unable to Update",
+            //     Status = false,
                 
-            };
+            // };
         }
     }
 }

@@ -6,7 +6,7 @@ namespace AirlineMS.Models.Entities
     {
         public string Id{get; set;} = Guid.NewGuid().ToString();
         public bool IsDeleted{get;set;}
-        public DateTime DateCreated{get; set;} 
+        public DateTime DateCreated{get; set;} = DateTime.Now;
         public string CreatedBy{get; set;}
     }
 }

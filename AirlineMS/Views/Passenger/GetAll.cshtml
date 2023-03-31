@@ -1,0 +1,61 @@
+@model IEnumerable<AirlineMS.Models.Dtos.PassengerDto>
+
+<div>
+    <table class="table table-active table-bordered table-responsive table-striped">
+        <thead>
+            <tr>
+                <td>
+                    S/N
+                </td>
+                <td>
+                    First Name
+                </td>
+                <td>
+                    Last Name
+                </td>
+                <td>
+                    Phone Number
+                </td>
+                <td>
+                    Details
+                </td>
+                <td>
+                    Delete
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+                foreach (var passenger in Model)
+                {
+                    <tr>
+                        <td>@a</td>
+                        <td>@passenger.FirstName</td>
+                        <td>@passenger.LastName</td>
+                        <td>@passenger.PhoneNumber</td>
+                        <td>
+                            <a asp-controller="Passenger" asp-action="Get">Details</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Passenger" asp-action="Delete">Delete</a>
+                        </td>
+                    </tr>
+                    {
+                        i++;
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+    tr {
+        color: cadetblue;
+        text-transform: uppercase;
+    }
+
+    td. {
+        color: cornflowerblue;
+    }
+</style>

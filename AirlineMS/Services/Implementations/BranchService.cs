@@ -12,6 +12,17 @@ namespace AirlineMS.Services.Implementations
 {
     public class BranchService : IBranchService
     {
+<<<<<<< HEAD
+        public readonly IBranchRepository _branchRepository;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public BranchService(IBranchRepository branchRepository, IWebHostEnvironment webHostEnvironment)
+        {
+            _branchRepository = branchRepository;
+            _webHostEnvironment = webHostEnvironment;
+        }
+
+        public BaseResponse<BranchDto> Create(string agencyId, CreateBranchRequestModel model)
+=======
         private readonly IBranchRepository _branchRepository;
         private readonly ICompanyRepository _companyRepository;
 
@@ -24,6 +35,7 @@ namespace AirlineMS.Services.Implementations
       
 
         public BaseResponse<BranchDto> Create(string companyId, CreateBranchRequestModel model)
+>>>>>>> master
         {
             var company = _companyRepository.Get(companyId);
             var branchExist = _branchRepository.Get(a => a.Email == model.Email);
@@ -99,6 +111,34 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
+<<<<<<< HEAD
+        public BaseResponse<BranchDto> GetBranchesByCompanyId(string companyId)
+        {
+            var branch = _branchRepository.Get(a => a.CompanyId == companyId);
+            if (branch is not  null)
+            {
+                return new BaseResponse<BranchDto>
+                {
+                   Message = "Successful",
+                   Status = true,
+                   Data =  new BranchDto
+                   {
+                     Id = branch.Id,
+                     Name = branch.Name,
+                     Address = branch.Address,
+                     CompanyId = branch.CompanyId,
+                     PhoneNumber = branch.PhoneNumber,
+                     Email = branch.Email
+                   }
+
+                };
+            }
+            return new BaseResponse<BranchDto>
+            {
+              Message = "not found",
+              Status = false,
+            };
+=======
         public BaseResponse<BranchDto> Delete(string id)
         {
             var branch = _branchRepository.Get(id);
@@ -151,32 +191,50 @@ namespace AirlineMS.Services.Implementations
                 Status = false,
             };
 
+>>>>>>> master
         }
 
         public BaseResponse<BranchDto> Update(string id, UpDateBranchRequestModel model)
         {
+<<<<<<< HEAD
+           var branch = _branchRepository.Get(a => a.Id == id);
+            if (branch != null)
+            {
+                branch.PhoneNumber = model.PhoneNumber;
+                branch.Address = model.Address;
+
+                _branchRepository.Update(branch);
+                _branchRepository.Save();
+=======
             var update = _branchRepository.Get(a => a.Id == id);
             if (update is not null)
             {
                 update.Name = model.Name;
                 update.Address = model.Address;
                 update.PhoneNumber = model.PhoneNumber;
+>>>>>>> master
                 return new BaseResponse<BranchDto>
                 {
-                    Message = "Updated Successful",
+                    Message = "Updated successfully",
                     Status = true,
                     Data = new BranchDto
                     {
-                        Name = update.Name,
-                        Address = update.Address,
-                        PhoneNumber = update.PhoneNumber,
+                       PhoneNumber = branch.PhoneNumber,
+                       Address = branch.Address
+                        
                     }
                 };
             }
+
             return new BaseResponse<BranchDto>
             {
+<<<<<<< HEAD
+                Message = "Not successful",
+=======
                 Message = "Unable to Update",
+>>>>>>> master
                 Status = false,
+                
             };
         }
     }

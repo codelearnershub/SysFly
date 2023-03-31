@@ -1,0 +1,30 @@
+@using AirlineMS.Models.Dtos
+@model CreateHeadRequestModel
+@{
+
+}
+<div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form asp-action="CreateHead">
+                <div>
+                    <label for="">PhoneNumber</label>
+                    <input type="" name="PhoneNumber"/>
+                </div>
+                <div>
+                    <label for="">Email</label>
+                    <input type="" name="Email"/>
+                </div>
+                <div>
+                    <label for="">Address</label>
+                    <input type="" name="Address"/>
+                </div>
+                <div>
+                    <button class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

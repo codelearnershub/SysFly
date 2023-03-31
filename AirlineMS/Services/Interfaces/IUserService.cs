@@ -8,9 +8,9 @@ namespace AirlineMS.Services.Interfaces
 {
     public interface IUserService
     {
-        BaseResponse<UserDto> Create(CreateUserRequestModel model);
         BaseResponse<UserDto> Login(LoginUserRequestModel model);
-        BaseResponse<UserDto> Update(string id, UpdateUserRequestModel model);
+        BaseResponse<UserDto> Get(string id);
+        BaseResponse<List<UserDto>> GetAll();
 
     }
 }

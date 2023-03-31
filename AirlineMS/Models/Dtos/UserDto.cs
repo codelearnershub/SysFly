@@ -15,20 +15,7 @@ namespace AirlineMS.Models.Dtos
         public string Email{ get;set;}
         public List<RoleDto> Roles{ get;set;}
     }
-    public class CreateUserRequestModel
-    {
-        public string FirstName{ get;set;}
-        public string LastName{ get;set;}
-        public string PhoneNumber{ get;set;}
-        public string Email{ get;set;}
-        public string Password{ get;set;}  
-    }
-    public class UpdateUserRequestModel
-    {
-        public string FirstName{ get;set;}
-        public string LastName{ get;set;}
-        public string PhoneNumber{ get;set;}
-    }
+    
     public class LoginUserRequestModel
     {
         public string Email{ get;set;}

@@ -1,4 +1,4 @@
-@model AirlineMS.Models.Dtos.BranchDto
+@model IEnumerable<AirlineMS.Models.Dtos.StaffDto>
 
 <div>
     <table class="table table-active table-bordered table-responsive table-striped">
@@ -27,13 +27,13 @@
         <tbody>
             @{
                 int a = 1;
-                    foreach (var staff in Model.Staffs)
+                    foreach (var staff in Model)
                     {
                     <tr>
                         <td>@a</td>
-                        <td>@staff.user.FirstName</td>
-                        <td>@staff.user.LastName</td>
-                        <td>@staff.user.PhoneNumber</td>
+                        <td>@staff.FirstName</td>
+                        <td>@staff.LastName</td>
+                        <td>@staff.PhoneNumber</td>
                         <td>
                             <a asp-controller="Staff" asp-action="Details">Details</a>
                             </td>

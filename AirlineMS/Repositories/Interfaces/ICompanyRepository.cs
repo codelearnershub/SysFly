@@ -11,8 +11,8 @@ namespace AirlineMS.Repositories.Interfaces
     {
         Company Get(string id);
         Company Get(Expression<Func<Company, bool>> expression);
-        IEnumerable<Company> GetAll();
         IEnumerable<Company> GetSelected(List<string> ids);
         IEnumerable<Company> GetSelected(Expression<Func<Company, bool>> expression);
+        IEnumerable<Company> GetAll();
     }
 }

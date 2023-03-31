@@ -1,8 +1,6 @@
-@model AirlineMS.Models.Dtos.CompanyDto
-@{
-    ViewBag["CompanyName"] = Model.CompanyName;
-}
-<h2>ViewBag["CompanyName"] List Of Staffs</h2>
+@model IEnumerable<AirlineMS.Models.Dtos.StaffDto>
+
+<h2>List Of Staffs</h2>
 <div>
     <table class="table table-active table-bordered table-responsive table-striped">
         <thead>
@@ -20,9 +18,6 @@
                 Phone Number
                 </td>
                 <td>
-                Branch 
-                </td>
-                <td>
                 Details 
                 </td>
             </tr>
@@ -30,16 +25,13 @@
         <tbody>
             @{
                 int a = 1;
-                foreach (var branch in Model.Branches)
-                {
-                    foreach (var staff in branch.Staffs)
+                    foreach (var staff in Model)
                     {
                     <tr>
                         <td>@a</td>
-                        <td>@staff.user.FirstName</td>
-                        <td>@staff.user.LastName</td>
-                        <td>@staff.user.PhoneNumber</td>
-                        <td>@branch.Name</td>
+                        <td>@staff.FirstName</td>
+                        <td>@staff.LastName</td>
+                        <td>@staff.PhoneNumber</td>
                         <td>
                             <a asp-controller="Staff" asp-action="Details">Details</a>
                             </td>
@@ -49,7 +41,6 @@
                         }
                     }
                 }
-            }
         </tbody>
     </table>
 </div>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AirlineMS.Models.Dtos;
 using AirlineMS.Models.Entities;
 using AirlineMS.Repositories.Implementations;
+using AirlineMS.Repositories.Interfaces;
 using AirlineMS.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -13,99 +14,97 @@ namespace AirlineMS.Services.Implementations
 {
     public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(UserRepository userRepository)
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public BaseResponse<UserDto> Create(CreateUserRequestModel model)
+        public BaseResponse<UserDto> Get(string id)
         {
-           var userExist = _userRepository.Get(a => a.Email == model.Email);
-           if (userExist == null)
-           {
-                User user = new User();
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.Email = model.Email;
-                user.Password = model.Password;
-                user.PhoneNumber = model.PhoneNumber;
-                _userRepository.Create(user);
-                _userRepository.Save();
-
-               return new BaseResponse<UserDto>
+            var fetchs = _userRepository.Get(id);
+            if (fetchs != null)
+            {
+                return new BaseResponse<UserDto>
                 {
-                    Message = "Succcessful",
+                    Message = "user found successfully",
                     Status = true,
                     Data = new UserDto
                     {
-                        Id = user.Id,
-                        FirstName = user.FirstName,
-                        Email = user.Email,
-                        PhoneNumber = user.PhoneNumber,
-                        LastName = user.LastName,
-                                               
-                    }
-                };
-            }
-            return new BaseResponse<UserDto>{
-                Message = "ALready Exist",
-                Status = false
-            };
-        }
-
-        public BaseResponse<UserDto> Login(LoginUserRequestModel model)
-        {
-            var user =_userRepository.Get(a => a.Email == model.Email && a.Password == model.Password);
-            if (user != null)
-            {
-                var userLogin =  new BaseResponse<UserDto> 
-                {
-                    Message = "Login Successful",
-                    Status =true,
-                    Data = new UserDto{
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        Email = user.Email,
-                        PhoneNumber = user.PhoneNumber,
-                        Id = user.Id
-                    }
-                };
-            
-            }
-            return  new BaseResponse<UserDto>
-            {
-                Message = "Incorrect email of password",
-                Status = false
-            } ;
-        }
-
-        public BaseResponse<UserDto> Update(string id, UpdateUserRequestModel model)
-        {
-            User user = _userRepository.Get(id);
-            if (user !=  null)
-            {
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-                user.PhoneNumber  = model.PhoneNumber;
-                return new BaseResponse<UserDto> 
-                {
-                    Message = "Update successful",
-                    Status = true,
-                    Data = new UserDto
-                    {
-                        LastName = user.LastName,
-                        FirstName = user.FirstName,
-                        PhoneNumber = user.PhoneNumber,
-                        Email =user.Email,
-                        Id = user.Id
+                        FirstName = fetchs.FirstName,
+                        LastName = fetchs.LastName,
+                        Email = fetchs.Email,
+                        PhoneNumber = fetchs.PhoneNumber,
+                        Id = fetchs.Id
                     }
                 };
             }
             return new BaseResponse<UserDto>
             {
-                Message = "Unable to Update",
+                Message = "User not found",
+                Status = false,
+            };
+        }
+
+        public BaseResponse<List<UserDto>> GetAll()
+        {
+            var getUsers = _userRepository.GetAll();
+            if (getUsers != null)
+            {
+                return new BaseResponse<List<UserDto>>
+                {
+                    Message = "Successful",
+                    Status = true,
+                    Data = getUsers.Select(g => new UserDto
+                    {
+                        FirstName = g.FirstName,
+                        LastName = g.LastName,
+                        Email = g.Email,
+                        PhoneNumber = g.PhoneNumber,
+                        Id = g.Id
+
+                    }).ToList()
+                };
+            }
+            return new BaseResponse<List<UserDto>>
+            {
+                Message = "UnSuccessful",
+                Status = false,
+
+            };
+        }
+
+        public BaseResponse<UserDto> Login(LoginUserRequestModel model)
+        {
+            var user = _userRepository.Get(a => a.Email == model.Email && a.Password == model.Password);
+            if (user != null)
+            {
+                var userLogin = new BaseResponse<UserDto>
+                {
+                    Message = "Login Successful",
+                    Status = true,
+                    Data = new UserDto
+                    {
+                        Id = user.Id,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        PhoneNumber = user.PhoneNumber,
+                        Roles = user.UserRoles.Select(a => new RoleDto{
+                            Id = a.Role.Id,
+                            Name = a.Role.Name,
+                            Description = a.Role.Description
+                        }).ToList(),
+                        
+                    }
+                };
+                return userLogin;
+
+            }
+            return new BaseResponse<UserDto>
+            {
+                Message = "Incorrect email or password",
                 Status = false
             };
         }

@@ -11,18 +11,17 @@ namespace AirlineMS.Services.Implementations
 {
     public class CompanyService : ICompanyService
     {
-        private ICompanyRepository _companyRepository;
-        private IWebHostEnvironment _webHostEnvironment;
+       private readonly ICompanyRepository _companyRepository;
+       private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CompanyService(ICompanyRepository companyRepository, IWebHostEnvironment webHostEnvironment)
-        {
+       public CompanyService(ICompanyRepository companyRepository, IWebHostEnvironment webHostEnvironment)
+       {
             _companyRepository = companyRepository;
             _webHostEnvironment = webHostEnvironment;
-        }
-
+       }
         public BaseResponse<CompanyDto> Create(CreateCompanyRequestModel model)
         {
-            var companyExist = _companyRepository.Get(c => c.Email == model.Email);
+            var companyExist = _companyRepository.Get(c => c.Name == model.Name);
             if (companyExist is not null)
             {
                 return new BaseResponse<CompanyDto>{
@@ -35,11 +34,9 @@ namespace AirlineMS.Services.Implementations
             var Logo = UploadFile(model.Logo);
 
             var newCompany = new Company{
+                Name = model.Name,
                 CACDocument = CACRegistrationNum,
                 CACRegistrationNum = model.CACRegistrationNum,
-                CompanyName = model.CompanyName,
-                Email = model.Email,
-                HQAddress = model.HQAddress,
                 Logo = Logo
             };
 
@@ -51,183 +48,93 @@ namespace AirlineMS.Services.Implementations
                 Status = true,
                 Data = new CompanyDto{
                     Id = newCompany.Id,
-                    UserId = newCompany.UserId,
+                    Name = newCompany.Name,
                     CACRegistrationNum = newCompany.CACRegistrationNum,
                     CACDocument = newCompany.CACDocument,
                     Logo = newCompany.Logo,
-                    Email = newCompany.Email,
-                    HQAddress = newCompany.HQAddress,
-                    HQPhoneNumber = newCompany.HQPhoneNumber,
-                    Branches = newCompany.Branches.Select(b => new BranchDto{
-                        Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
                 }
             };
-        }
         
+        }
+
         public BaseResponse<CompanyDto> Delete(string id)
         {
-            var company = _companyRepository.Get(id);
-            if (company is null)
+            var objExists = _companyRepository.Get(d => d.Id == id);
+             if (objExists != null)
             {
+               objExists.IsDeleted = true;
+               _companyRepository.Update(objExists);
+               _companyRepository.Save();
+               
                 return new BaseResponse<CompanyDto>{
-                    Message = "Company not found",
-                    Status = false
+                    Message = "successful",
+                    Status = true
                 };
             }
+             return new BaseResponse<CompanyDto>{
+                    Message = "Company already exists",
+                    Status = false
+                };
 
-            company.IsDeleted = true;
-
-            _companyRepository.Update(company);
-            _companyRepository.Save();
-
-            return new BaseResponse<CompanyDto>{
-                Message = "Successful",
-                Status = true,
-                Data = new CompanyDto{
-                    Id = company.Id,
-                    UserId = company.UserId,
-                    CompanyName = company.CompanyName,
-                    CACRegistrationNum = company.CACRegistrationNum,
-                    CACDocument = company.CACDocument,
-                    Logo = company.Logo,
-                    Email = company.Email,
-                    HQAddress = company.HQAddress,
-                    HQPhoneNumber = company.HQPhoneNumber,
-                    Branches = company.Branches.Select(b => new BranchDto{
-                        Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
-                }
-            };
         }
 
         public BaseResponse<CompanyDto> Get(string id)
         {
-            var company = _companyRepository.Get(id);
-            if (company == null)
+            var company = _companyRepository.Get(g => g.Id == id);
+            if(company != null)
             {
+
                 return new BaseResponse<CompanyDto>{
-                    Message = "Company not found",
-                    Status = false
+                    Message = "successful",
+                    Status = true,
+                    Data = new CompanyDto{
+                        Id = company.Id,
+                        Name = company.Name,
+                        Logo = company.Logo,
+                        Branches = company.Branches.Select(a => new BranchDto{
+                            Id = a.Id,
+                            Name = a.Name,
+                            Address = a.Address,
+
+                        }).ToList()
+                    },
                 };
             }
-
-            return new BaseResponse<CompanyDto>
-            {
-                Message = "Successful",
-                Status = true,
-                Data = new CompanyDto
-                {
-                    Id = company.Id,
-                    UserId = company.UserId,
-                    CompanyName = company.CompanyName,
-                    CACRegistrationNum = company.CACRegistrationNum,
-                    CACDocument = company.CACDocument,
-                    Logo = company.Logo,
-                    Email = company.Email,
-                    HQAddress = company.HQAddress,
-                    HQPhoneNumber = company.HQPhoneNumber,
-                    Branches = company.Branches.Select(b => new BranchDto{
-                        Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
-                }
-            };
+             return new BaseResponse<CompanyDto>{
+                    Message = "Company is not fund",
+                    Status = false
+                };
         }
 
         public BaseResponse<IEnumerable<CompanyDto>> GetAll()
         {
-            var companies = _companyRepository.GetAll();
+             var companies = _companyRepository.GetAll();
             if (companies == null)
             {
                 return new BaseResponse<IEnumerable<CompanyDto>>{
                     Message = "No Company found",
-                    Status = false
+                    Status = true
                 };
             }
 
             return new BaseResponse<IEnumerable<CompanyDto>>{
                 Message = "Successful",
-                Status = true,
+                Status = false,
                 Data = companies.Select(c => new CompanyDto{
                     Id = c.Id,
-                    UserId = c.UserId,
-                    CompanyName = c.CompanyName,
+                    Name = c.Name,
                     CACRegistrationNum = c.CACRegistrationNum,
                     CACDocument = c.CACDocument,
                     Logo = c.Logo,
-                    Email = c.Email,
-                    HQAddress = c.HQAddress,
-                    HQPhoneNumber = c.HQPhoneNumber,
-                    Branches = c.Branches.Select(b => new BranchDto{
-                        Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
                 })
             };
+           
         }
 
         public BaseResponse<CompanyDto> Update(string id, UpdateCompanyRequestModel model)
         {
-            var company = _companyRepository.Get(id);
-            if (company is null)
-            {
-                return new BaseResponse<CompanyDto>{
-                    Message = "Company not found",
-                    Status = false
-                };
-            }
-
-    
-            company.Email = model.Email;
-            company.HQAddress = model.HQAddress;
-            company.HQPhoneNumber = model.HQPhoneNumber;
-
-            _companyRepository.Create(company);
-            _companyRepository.Save();
-
-            return new BaseResponse<CompanyDto>{
-                Message = "Successful",
-                Status = true,
-                Data = new CompanyDto{
-                    Id = company.Id,
-                    UserId = company.UserId,
-                    CACRegistrationNum = company.CACRegistrationNum,
-                    CACDocument = company.CACDocument,
-                    Logo = company.Logo,
-                    Email = company.Email,
-                    HQAddress = company.HQAddress,
-                    HQPhoneNumber = company.HQPhoneNumber,
-                    Branches = company.Branches.Select(b => new BranchDto{
-                        Id = b.Id,
-                        Name = b.Name,
-                        Address = b.Address,
-                        Email = b.Email,
-                        PhoneNumber = b.PhoneNumber,
-                        CompanyId = b.CompanyId,
-                    }).ToList()
-                }
-            };
+            throw new NotImplementedException();
         }
-
 
         private string UploadFile(IFormFile file)
         {

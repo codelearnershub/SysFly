@@ -1,0 +1,34 @@
+@using AirlineMS.Models.Dtos;
+@model CompanyDto;
+@{
+ ViewData["Title"] = "Add Company";
+}
+
+<div class="border p-3 mt-4">
+    <div><h1>@ViewData["Title"]</h1></div>
+    <div>
+        <form asp-action="Add" enctype="multipart/form-data">
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" type="text" />
+            </div>
+            <div>
+                <label asp-for="CACRegistrationNum"></label>
+                <input asp-for="CACRegistrationNum" class="form-control" type="text" />
+            </div>
+            <div>
+                <label asp-for="CACDocument"></label>
+                <input asp-for="CACDocument" class="form-control" type="file" />
+                <span asp-validation-for="CACDocument" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Logo"></label>
+                <input asp-for="Logo" class="form-control" type="file" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div class="mt-2 text-end">
+                <button type="submit" class="btn btn-primary" style="width: 30%">Add Company</button>
+            </div>
+        </form>
+    </div>
+</div> 

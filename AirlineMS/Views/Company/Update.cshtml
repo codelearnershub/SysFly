@@ -1,0 +1,43 @@
+@model AirlineMS.Models.Entities.Company;
+@{
+    ViewData["Title"] = "Update Company";
+}
+
+<div class="border p-3 mt-4">
+    <div><h1>@ViewData["Title"]</h1></div>
+    <div>
+        <form asp-action="Update">
+            @* <div>
+                <input asp-for="UserId" class="form-control" type="hidden" value="@Model.Id" />
+            </div> *@
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" type="text" value="@Model.Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="CACRegistrationNum"></label>
+                <input asp-for="CACRegistrationNum" class="form-control" type="text" value="@Model.CACRegistrationNum" />
+                <span asp-validation-for="CACRegistrationNum" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="CACDocument"></label>
+                <input asp-for="CACDocument" class="form-control" type="file" value="@Model.CACDocument" />
+                <span asp-validation-for="CACDocument" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Logo"></label>
+                <input asp-for="Logo" class="form-control" type="file" value="@Model.Logo" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Branches"></label>
+                <input asp-for="Branches" class="form-control" type="number" value="@Model.Branches" />
+                <span asp-validation-for="Branches" class="text-danger"></span>
+            </div>
+            <div class="mt-2 text-end">
+                <button type="submit" class="btn btn-primary" style="width: 30%">Update Company</button>
+            </div>
+        </form>
+    </div>
+</div>

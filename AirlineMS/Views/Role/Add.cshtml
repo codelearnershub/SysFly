@@ -1,8 +1,9 @@
 @model AirlineMS.Models.Dtos.CreateRoleRequestModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
+}
 
-<h2>
-
-</h2>
 
 <div>
     <form asp-action="Add">
@@ -17,6 +18,9 @@
             <input type="text" asp-for="Description">
             <span asp-validation-for="Description"></span>
             <br><br>
+        </div>
+        <div>
+            <input class="btn btn-primary" type="submit" value="Submit" />
         </div>
     </form>
 </div>

@@ -11,7 +11,8 @@ namespace AirlineMS.Models.Entities
         public string CACRegistrationNum { get; set; }
         public string CACDocument { get; set; }
         public string Logo { get; set; }
-        public List<Branch> Branches {get; set;}
-        public List<Staff> Staffs { get; set; }
+        public ICollection<Branch> Branches {get; set;} = new HashSet<Branch>();
+        public ICollection<Staff> Staffs { get; set; } = new HashSet<Staff>();
+        public ICollection<Aircraft> Aircrafts{get; set;} = new HashSet<Aircraft>();
     }
 }

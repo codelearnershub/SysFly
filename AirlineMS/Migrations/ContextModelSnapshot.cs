@@ -19,6 +19,39 @@ namespace AirlineMS.Migrations
                 .HasAnnotation("ProductVersion", "6.0.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("AirlineMS.Models.Entities.Aircraft", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("EngineNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Aircraft");
+                });
+
             modelBuilder.Entity("AirlineMS.Models.Entities.Branch", b =>
                 {
                     b.Property<string>("Id")
@@ -30,8 +63,8 @@ namespace AirlineMS.Migrations
                     b.Property<string>("CompanyId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("CreatedBy")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
@@ -66,23 +99,11 @@ namespace AirlineMS.Migrations
                     b.Property<string>("CACRegistrationNum")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("CompanyName")
+                    b.Property<string>("CreatedBy")
                         .HasColumnType("longtext");
-
-                    b.Property<DateTime>("CreatedBy")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("HQAddress")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("HQPhoneNumber")
-                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -90,7 +111,7 @@ namespace AirlineMS.Migrations
                     b.Property<string>("Logo")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("Name")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -103,8 +124,8 @@ namespace AirlineMS.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("CreatedBy")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
@@ -115,7 +136,7 @@ namespace AirlineMS.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("RoleName")
+                    b.Property<string>("Name")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -131,11 +152,17 @@ namespace AirlineMS.Migrations
                     b.Property<string>("BranchId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("CreatedBy")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("CompanyId")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("EmploymentNumber")
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -147,6 +174,8 @@ namespace AirlineMS.Migrations
 
                     b.HasIndex("BranchId");
 
+                    b.HasIndex("CompanyId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Staffs");
@@ -157,8 +186,8 @@ namespace AirlineMS.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("CreatedBy")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
@@ -166,7 +195,7 @@ namespace AirlineMS.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("FirsttName")
+                    b.Property<string>("FirstName")
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
@@ -181,6 +210,9 @@ namespace AirlineMS.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("longtext");
 
+                    b.Property<double>("Wallet")
+                        .HasColumnType("double");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -191,8 +223,8 @@ namespace AirlineMS.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("CreatedBy")
-                        .HasColumnType("datetime(6)");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
@@ -215,24 +247,43 @@ namespace AirlineMS.Migrations
                     b.ToTable("UserRoles");
                 });
 
+            modelBuilder.Entity("AirlineMS.Models.Entities.Aircraft", b =>
+                {
+                    b.HasOne("AirlineMS.Models.Entities.Company", "Company")
+                        .WithMany("Aircrafts")
+                        .HasForeignKey("CompanyId");
+
+                    b.Navigation("Company");
+                });
+
             modelBuilder.Entity("AirlineMS.Models.Entities.Branch", b =>
                 {
-                    b.HasOne("AirlineMS.Models.Entities.Company", null)
+                    b.HasOne("AirlineMS.Models.Entities.Company", "Company")
                         .WithMany("Branches")
                         .HasForeignKey("CompanyId");
+
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Staff", b =>
                 {
-                    b.HasOne("AirlineMS.Models.Entities.Branch", null)
+                    b.HasOne("AirlineMS.Models.Entities.Branch", "Branch")
                         .WithMany("Staffs")
                         .HasForeignKey("BranchId");
 
-                    b.HasOne("AirlineMS.Models.Entities.User", "user")
+                    b.HasOne("AirlineMS.Models.Entities.Company", "Company")
+                        .WithMany("Staffs")
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("AirlineMS.Models.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.Navigation("user");
+                    b.Navigation("Branch");
+
+                    b.Navigation("Company");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AirlineMS.Models.Entities.UserRole", b =>
@@ -257,7 +308,11 @@ namespace AirlineMS.Migrations
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Company", b =>
                 {
+                    b.Navigation("Aircrafts");
+
                     b.Navigation("Branches");
+
+                    b.Navigation("Staffs");
                 });
 
             modelBuilder.Entity("AirlineMS.Models.Entities.Role", b =>

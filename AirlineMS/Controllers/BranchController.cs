@@ -1,8 +1,5 @@
-using System.Security.Claims;
 using AirlineMS.Models.Dtos;
 using AirlineMS.Services.Interfaces;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AirlineMS.Controllers
@@ -23,15 +20,80 @@ namespace AirlineMS.Controllers
         }
 
         [HttpPost]
-
-        public IActionResult Create(CreateBranchRequestModel model)
+        public IActionResult Create(string companyId, CreateBranchRequestModel model)
         {
-            var branch = _branchService.Create(model);
-            if (branch is not null)
+            var response = _branchService.Create(companyId, model);
+            if (response.Status)
             {
-                TempData["Successful"] = " Craedted Successful";
+                TempData["Successful"] = " Created Successful";
 
-                return RedirectToAction("Login","User");
+                return RedirectToAction("List");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CreateHead()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateHead(string id, CreateHeadRequestModel model)
+        {
+            var response = _branchService.CreateHeadquarters(id, model);
+            if (response.Status)
+            {
+                TempData["Successful"] = " Created Successful";
+
+                return RedirectToAction("List");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete(string id)
+        {
+            // var response = _branchService.Get(id);
+            return View();
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult RealDelete(string id)
+        {
+            var response = _branchService.Delete(id);
+            if (response.Status)
+            {
+                TempData["Successful"] = "Deleted successfully";
+
+                return RedirectToAction("List");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult List(string companyId)
+        {
+            var response = _branchService.GetBranchesByCompanyId(companyId);
+            return View(response.Data);
+        }
+
+        [HttpGet]
+        public IActionResult Update(string id)
+        {
+            // var response = _branchService.Get(id);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Update(string id, UpDateBranchRequestModel model)
+        {
+            var response = _branchService.Update(id, model);
+            if (response.Status)
+            {
+                TempData["Successful"] = " Updated Successful";
+
+                return RedirectToAction("List");
             }
             return View();
         }

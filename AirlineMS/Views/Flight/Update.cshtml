@@ -1,0 +1,22 @@
+@model AirlineMS.Models.Dtos.UpdateFlightRequestModel
+
+<div>
+    <div>
+        <form asp-action="Update">
+            <div>
+                <label asp-for="TakeOffPoint"></label>
+                <input type="text" asp-for="TakeOffPoint">
+                <span asp-validation-for="TakeOffPoint"></span>
+            </div>
+            <div>
+                <label asp-for="Destination"></label>
+                <input type="text" asp-for="Destination">
+                <span asp-validation-for="Destination"></span>
+            </div>
+            <div>
+                <input class="btn btn-primary" type="submit" value="Submit"/>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -7,6 +7,7 @@ namespace AirlineMS.Models.Entities
         public string PhoneNumber{ get;set;}
         public string Email{ get;set;}
         public string Password{ get;set;}
+        public double Wallet{get;set;}
         public List<UserRole> UserRoles{ get;set;}
     }
 }

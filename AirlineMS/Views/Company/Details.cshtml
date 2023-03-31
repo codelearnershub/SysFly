@@ -1,0 +1,15 @@
+@model AirlineMS.Models.Dtos.CompanyDto
+
+<div>
+    <h4>
+        Name : @Model.Name
+    </h4>
+    <div>
+        Logo : <img src="~/Upload/Images/@Model.Logo" height="100" width="100">
+    </div>
+    <div class="mt-2 text-end">
+        <button type="submit" class="btn btn-primary" style="width: 30%" >
+            <a asp-action="CreateHead" asp-controller="Branch" asp-route-id="@Model.Id">Craete Headquarters</a>
+        </button>
+    </div>
+</div>

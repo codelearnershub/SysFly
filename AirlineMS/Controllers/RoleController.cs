@@ -15,6 +15,7 @@ namespace AirlineMS.Controllers
         {
             _roleService = roleService;
         }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -23,29 +24,34 @@ namespace AirlineMS.Controllers
         [HttpPost]
         public IActionResult Add(CreateRoleRequestModel model)
         {
-            return View();
+            _roleService.Create(model);
+            return RedirectToAction("List");
         }
         [HttpGet]
-        public IActionResult Delete ()
-        {
-            return View();
-        }
-        [HttpPost]
-
-        public IActionResult ActualDelete ()
+        public IActionResult Delete (string id)
         {
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Details()
+        [HttpPost, ActionName("Delete")]
+        public IActionResult ActualDelete (string id)
         {
-            return View();
+            _roleService.Delete(id);
+            return RedirectToAction("List");
         }
-        [HttpPost]
-        public IActionResult Details(StaffDto staffModel)
+
+        [HttpGet]
+        public IActionResult Details(string id)
         {
-            return View();
+            var role = _roleService.Get(id);
+
+            return View(role.Data);
+        }
+        [HttpGet]
+        public IActionResult List()
+        {
+             var roles = _roleService.GetAll();
+            return View(roles.Data);
         }
         [HttpGet]
         public IActionResult Update()
@@ -53,7 +59,7 @@ namespace AirlineMS.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Update(UpdateStaffRequestModel staffModel)
+        public IActionResult Update(UpdateRoleRequestModel roleModel)
         {
             return View();
         }

@@ -1,0 +1,20 @@
+@model AirlineMS.Models.Dtos.PassengerDto
+@{
+    ViewData["PassengerName"] = @Model.FirstName + " " +Model.LastName;
+}
+<h2>
+    @ViewData["PassengerName"]
+</h2>
+
+<div>
+    <h4>Id : @Model.Id</h4><br><br>
+    <h4>Full Name : @ViewBag["PassengerName"]</h4><br><br>
+    <h4>Email : @Model.Email</h4><br><br>
+    <h4>Phone Number:@Model.PhoneNumber </h4>
+    
+</div>
+<style>
+    div{
+        color: cornflowerblue;
+    }
+</style>

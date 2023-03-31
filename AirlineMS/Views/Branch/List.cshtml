@@ -32,10 +32,10 @@
                             <td>@branch.PhoneNumber</td>
                             <td>@branch.Address</td>
                             <td>
-                                <a href="#">Edit</a>
+                                <a asp-controller="Branch" asp-action="Update" asp-route-id="@branch.Id">Edit</a>
                             </td>
                             <td>
-                                <a href="#">Remove</a>
+                                <a asp-controller="Branch" asp-action="Delete" asp-route-id="@branch.Id">Remove</a>
                             </td>
                         </tr>
                     }

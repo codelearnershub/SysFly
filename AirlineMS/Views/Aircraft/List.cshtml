@@ -1,0 +1,45 @@
+@using AirlineMS.Models.Dtos
+@model IEnumerable<AircraftDto>
+@{
+    ViewData["Title"] = "Aircraft List";
+}
+<div>
+    <div class="text-center">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Engine Number</th>
+                        <th>Capacity</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var aircraft in Model)
+                    {
+                        <tr>
+                            <td>@aircraft.Id</td>
+                            <td>@aircraft.Name</td>
+                            <td>@aircraft.EngineNumber</td>
+                            <td>@aircraft.Capacity</td>
+                            <td>
+                                <a href="#">Edit</a>
+                            </td>
+                            <td>
+                                <a href="#">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

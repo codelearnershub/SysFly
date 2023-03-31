@@ -8,129 +8,141 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AirlineMS
 build_property.RootNamespace = AirlineMS
-build_property.ProjectDir = C:\Users\hp\Desktop\SysFly\AirlineMS\
+build_property.ProjectDir = c:\Users\Haruna\Desktop\SysFly\AirlineMS\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\hp\Desktop\SysFly\AirlineMS
+build_property.MSBuildProjectDirectory = c:\Users\Haruna\Desktop\SysFly\AirlineMS
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Branch/Create.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Branch/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Branch/CreateHead.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Branch/CreateHead.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXENyZWF0ZUhlYWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Branch/List.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Branch/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Branch/Update.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Branch/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Company/Add.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/CompanyManager/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueU1hbmFnZXJcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/CompanyManager/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueU1hbmFnZXJcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/CompanyManager/Udate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueU1hbmFnZXJcVWRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Company/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Company/Delete.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Company/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Company/Details.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Company/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Company/List.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Company/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Company/Update.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Company/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Home/Index.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Home/Privacy.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Role/Add.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Role/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Role/Delete.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Role/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Role/Details.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Role/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Role/List.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Role/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Role/Update.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Role/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Shared/Error.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Staff/Add.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Staff/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Staff/Delete.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Staff/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Staff/Details.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Staff/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Staff/ListOfStaffsByBranch.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Staff/ListOfStaffsByBranch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcTGlzdE9mU3RhZmZzQnlCcmFuY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Staff/ListOfStaffsByCompany.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Staff/ListOfStaffsByCompany.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcTGlzdE9mU3RhZmZzQnlDb21wYW55LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Staff/Update.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Staff/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/User/List.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/User/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/User/Login.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/User/Super.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/User/Super.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTdXBlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/_ViewImports.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/_ViewStart.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hp/Desktop/SysFly/AirlineMS/Views/Shared/_Layout.cshtml]
+[c:/Users/Haruna/Desktop/SysFly/AirlineMS/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-2yjaipze39

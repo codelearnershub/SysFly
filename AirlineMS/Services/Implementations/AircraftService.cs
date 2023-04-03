@@ -33,7 +33,7 @@ namespace AirlineMS.Services.Implementations
 
                 return new BaseResponse<AircraftDto>
                 {
-                    Message = "Succcessful",
+                    Message = "Successful",
                     Status = true,
                     Data = new AircraftDto
                     {
@@ -165,7 +165,7 @@ namespace AirlineMS.Services.Implementations
 
         }
 
-        public BaseResponse<AircraftDto> Delete(string id, CreateAircraftRequestModel model)
+        public BaseResponse<AircraftDto> Delete(string id)
         {
             var aircraftExists = _aircraftRepository.Get(d => d.Id == id);
              if (aircraftExists != null)

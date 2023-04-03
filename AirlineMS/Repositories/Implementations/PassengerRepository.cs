@@ -20,19 +20,20 @@ namespace AirlineMS.Repositories.Implementations
         public Passenger Get(string id)
         {
             return _context.Passengers
+            .Include(a => a.User)
             .FirstOrDefault(a => a.Id == id && a.IsDeleted == false);
         }
 
         public Passenger Get(Expression<Func<Passenger, bool>> expression)
         {
             return _context.Passengers
+            .Include(a => a.User)
             .FirstOrDefault(expression);
         }
 
         public IEnumerable<Passenger> GetAll()
         {
-            return _context.Passengers
-             .ToList();
+            return _context.Passengers.ToList();
         }
 
         public IEnumerable<Passenger> GetSelected(Expression<Func<Passenger, bool>> expression)

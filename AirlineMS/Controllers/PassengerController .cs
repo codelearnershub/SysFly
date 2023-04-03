@@ -13,19 +13,19 @@ namespace AirlineMS.Controllers
     public class PassengerController  : Controller
     {
         private readonly IPassengerService _passengerservice ;
-        public PassengerController ( IPassengerService passengerservice )
+        public PassengerController (IPassengerService passengerservice )
         {
             _passengerservice = passengerservice;
         }
 
           [HttpGet]
-        public IActionResult Create()
+        public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePassengerRequestModel model)
+        public IActionResult Register(CreatePassengerRequestModel model)
         {
             var passenger = _passengerservice.Create(model);
             if(passenger is not null)

@@ -1,0 +1,48 @@
+@model AirlineMS.Models.Dtos.CreatePassengerRequestModel
+
+<div>
+    <div class="text-center">
+        <h2>Registration Form </h2>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form asp-action="Register">
+                <div>
+                    <label asp-for="FirstName"></label>
+                    <input class="form-control" type="text" asp-for="FirstName" placeholder="Alexandra">
+                    <span asp-validation-for="FirstName"></span>
+                </div>
+                <div>
+                    <label asp-for="LastName"></label>
+                    <input class="form-control" type="text" asp-for="LastName" placeholder="Bruno">
+                    <span asp-validation-for="LastName"></span>
+                </div>
+                <div>
+                    <label asp-for="PhoneNumber"></label>
+                    <input class="form-control" type="text" asp-for="PhoneNumber" placeholder="+234">
+                    <span asp-validation-for="PhoneNumber"></span>
+                </div>
+                <div>
+                    <label asp-for="Email"></label>
+                    <input class="form-control" type="text" asp-for="Email" placeholder="user@gmail.com">
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div>
+                    <label asp-for="Password"></label>
+                    <input class="form-control" type="text" asp-for="Password">
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div class="background">
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                </div>
+                <div class="text-end pt-2">
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

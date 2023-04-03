@@ -67,7 +67,7 @@ namespace AirlineMS.Services.Implementations
                _companyRepository.Save();
                
                 return new BaseResponse<CompanyDto>{
-                    Message = "successful",
+                    Message = "Successful",
                     Status = true
                 };
             }
@@ -85,17 +85,17 @@ namespace AirlineMS.Services.Implementations
             {
 
                 return new BaseResponse<CompanyDto>{
-                    Message = "successful",
+                    Message = "Successful",
                     Status = true,
                     Data = new CompanyDto{
                         Id = company.Id,
                         Name = company.Name,
                         Logo = company.Logo,
+                        CACRegistrationNum = company.CACRegistrationNum,
                         Branches = company.Branches.Select(a => new BranchDto{
                             Id = a.Id,
                             Name = a.Name,
                             Address = a.Address,
-
                         }).ToList()
                     },
                 };
@@ -112,7 +112,7 @@ namespace AirlineMS.Services.Implementations
             if (companies == null)
             {
                 return new BaseResponse<IEnumerable<CompanyDto>>{
-                    Message = "No Company found",
+                    Message = "Not found",
                     Status = true
                 };
             }

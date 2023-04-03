@@ -25,11 +25,12 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<BranchDto> Create(string companyId, CreateBranchRequestModel model)
         {
-            var company = _companyRepository.Get(companyId);
+            // var company = _companyRepository.Get(companyId);
             var branchExist = _branchRepository.Get(a => a.Email == model.Email);
             if (branchExist == null)
             {
                 Branch branch = new Branch();
+                branch.CompanyId = companyId;
                 branch.Name = model.Name;
                 branch.Address = model.Address;
                 branch.Email = model.Email;
@@ -39,7 +40,7 @@ namespace AirlineMS.Services.Implementations
                 _branchRepository.Save();
                 return new BaseResponse<BranchDto>
                 {
-                    Message = "Succcessful",
+                    Message = "Successful",
                     Status = true,
                     Data = new BranchDto
                     {
@@ -68,7 +69,7 @@ namespace AirlineMS.Services.Implementations
             {
                 Branch branch = new Branch();
                 branch.CompanyId = companyId;
-                branch.Name = company.Name + "Headquarters";
+                branch.Name = company.Name + " Headquarters";
                 branch.Address = model.Address;
                 branch.Email = model.Email;
                 branch.PhoneNumber = model.PhoneNumber;
@@ -78,7 +79,7 @@ namespace AirlineMS.Services.Implementations
 
                 return new BaseResponse<BranchDto>
                 {
-                    Message = "Succcessful",
+                    Message = "Successful",
                     Status = true,
                     Data = new BranchDto
                     {
@@ -88,7 +89,6 @@ namespace AirlineMS.Services.Implementations
                         Email = branch.Email,
                         PhoneNumber = branch.PhoneNumber,
                         CompanyId = branch.CompanyId,
-
                     }
                 };
             }
@@ -115,8 +115,8 @@ namespace AirlineMS.Services.Implementations
             _branchRepository.Save();
             return new BaseResponse<BranchDto>
             {
-                Message = "Found",
-                Status = false
+                Message = "Successful",
+                Status = true
             };
         }
 
@@ -155,32 +155,35 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<BranchDto> Update(string id, UpDateBranchRequestModel model)
         {
-            return null;
-            // var update = _branchRepository.Get(a => a.Id == id);
-            // if (update is not null)
-            // {
-            //     update.Name = model.Name;
-            //     update.Address = model.Address;
-            //     update.PhoneNumber = model.PhoneNumber;
-            //     return new BaseResponse<BranchDto>
-            //     {
-            //         Message = "Updated successfully",
-            //         Status = true,
-            //         Data = new BranchDto
-            //         {
-            //            PhoneNumber = branch.PhoneNumber,
-            //            Address = branch.Address
-                        
-            //         }
-            //     };
-            // }
+            // return null;
+            var branch = _branchRepository.Get(a => a.Id == id);
+            if (branch is not null)
+            {
+                branch.Name = model.Name;
+                branch.Address = model.Address;
+                branch.PhoneNumber = model.PhoneNumber;
+                return new BaseResponse<BranchDto>
+                {
+                    Message = "Updated successfully",
+                    Status = true,
+                    Data = new BranchDto
+                    {
+                        Id = branch.Id,
+                        Address = branch.Address,
+                        CompanyId = branch.CompanyId,
+                        Email = branch.Email,
+                        Name = branch.Name,
+                        PhoneNumber = branch.PhoneNumber
+                    }
+                };
+            }
 
-            // return new BaseResponse<BranchDto>
-            // {
-            //     Message = "Unable to Update",
-            //     Status = false,
+            return new BaseResponse<BranchDto>
+            {
+                Message = "Unable to Update",
+                Status = false,
                 
-            // };
+            };
         }
     }
 }

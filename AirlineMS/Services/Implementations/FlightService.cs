@@ -21,38 +21,47 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<FlightDto> Create(CreateFlightRequestModel model)
         {
-            var flight = new Flight
+            var flightExist = _flightRepository.Get(f => f.Name == model.Name);
+
+            if (flightExist == null)
             {
-                Name = model.Name,
-                Aircraft = model.Aircraft,
-                AircraftId = model.AircraftId,
-                Destination = model.Destination,
-                TakeOffPoint = model.TakeOffPoint,
-                TakeOffTime = model.TakeOffTime,
-                LandingTime = model.LandingTime,
-                Price = model.Price,
-            };
-            _flightRepository.Create(flight);
-            _flightRepository.Save();
+                var flight = new Flight
+                {
+                    Name = model.Name,
+                    Aircraft = model.Aircraft,
+                    AircraftId = model.AircraftId,
+                    Destination = model.Destination,
+                    TakeOffPoint = model.TakeOffPoint,
+                    TakeOffTime = model.TakeOffTime,
+                    LandingTime = model.LandingTime,
+                    Price = model.Price,
+                };
+                _flightRepository.Create(flight);
+                _flightRepository.Save();
+                return new BaseResponse<FlightDto>
+                {
+                    Status = true,
+                    Message = "Successful",
+                    Data = new FlightDto
+                    {
+                        Id = flight.Id,
+                        Name = flight.Name,
+                        TakeOffPoint = flight.TakeOffPoint,
+                        Destination = flight.Destination,
+                        TakeOffTime = flight.TakeOffTime,
+                        LandingTime = flight.LandingTime,
+                        FlightRef = flight.FlightRef,
+                        PassengerFlights = flight.PassengerFlights,
+                        Aircraft = flight.Aircraft,
+                        AircraftId = flight.AircraftId,
+                        Price = flight.Price
+                    }
+                };
+            }
             return new BaseResponse<FlightDto>
             {
-                Status = true,
-                Message = "Successful",
-                Data = new FlightDto
-                {
-                    Id = flight.Id,
-                    Name = flight.Name,
-                    TakeOffPoint = flight.TakeOffPoint,
-                    Destination = flight.Destination,
-                    TakeOffTime = flight.TakeOffTime,
-                    LandingTime = flight.LandingTime,
-                    FlightRef = flight.FlightRef,
-                    PassengerFlights = flight.PassengerFlights,
-                    Aircraft = flight.Aircraft,
-                    AircraftId = flight.AircraftId,
-                    Price = flight.Price
-                }
-
+                Status = false,
+                Message = "Already exist"
             };
         }
 
@@ -84,7 +93,7 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<FlightDto>
             {
-                Message = "Fight not found",
+                Message = "Not found",
                 Status = false
             };
         }
@@ -112,13 +121,11 @@ namespace AirlineMS.Services.Implementations
                         AircraftId = flight.AircraftId,
                         Price = flight.Price
                     }
-
-                    
                 };
             }
             return new BaseResponse<FlightDto>
             {
-                Message = "Flight not found",
+                Message = "Not found",
                 Status = false
             };
         }
@@ -145,30 +152,30 @@ namespace AirlineMS.Services.Implementations
                         Aircraft = s.Aircraft,
                         AircraftId = s.AircraftId,
                         Price = s.Price
-
-                        
                     }).ToList()
                 };
            }
            return new BaseResponse<IEnumerable<FlightDto>>
            {
-                Message = "UnSuccessful",
+                Message = "Not found",
                 Status = false
            };
         }
 
         public BaseResponse<FlightDto> Update(string id, UpdateFlightRequestModel model)
         {
-            var update = _flightRepository.Get(id);
-            if (update is not null)
+            var flight = _flightRepository.Get(id);
+            if (flight is not null)
             {
-                 var flight = _flightRepository.Update(update);
-                 flight.Aircraft  = model.Aircraft;
-                 flight.AircraftId = model.AircraftId;
+                flight.Aircraft  = model.Aircraft;
+                flight.AircraftId = model.AircraftId;
                 flight.Destination = model.Destination;
                 flight.TakeOffPoint = model.TakeOffPoint;
                 flight.LandingTime  = model.LandingTime;
                 flight.TakeOffTime = model.TakeOffTime;
+                _flightRepository.Update(flight);
+                _flightRepository.Save();
+
                 return new BaseResponse<FlightDto>
                 {
                     Message = "Successful",
@@ -192,7 +199,7 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<FlightDto>
             {
-                Message = "Flght not found",
+                Message = "Not found",
                 Status  = false
             };
 

@@ -16,38 +16,38 @@ namespace AirlineMS.Services.Implementations
         {
             _airportRepository = airportRepository;
         }
-        public BaseResponse<ArPortDto> Create(CreateAirportRequestModel model)
+        public BaseResponse<AirportDto> Create(CreateAirportRequestModel model)
         {
-            var airport = _airportRepository.Get(x => x.Name == model.Name);
-            if (airport is not null)
+            var airportExit = _airportRepository.Get(x => x.Name == model.Name);
+            if (airportExit is null)
             {
-                Airport airporte = new Airport();
+                Airport airport = new Airport();
                 airport.Name = model.Name;
                 airport.Address = model.Address;
-                _airportRepository.Create(airporte);
+                _airportRepository.Create(airport);
                 _airportRepository.Save();
 
-                return new BaseResponse<ArPortDto>
+                return new BaseResponse<AirportDto>
                 {
                     Message = "Successful",
                     Status = true,
-                    Data = new ArPortDto
+                    Data = new AirportDto
                     {
-                        Id = airporte.Id,
-                        Name = airporte.Name,
-                        Address = airporte.Address
+                        Id = airport.Id,
+                        Name = airport.Name,
+                        Address = airport.Address
 
                     }
                 };
             }
-            return new BaseResponse<ArPortDto>{
+            return new BaseResponse<AirportDto>{
                 Message = "Existing Already",
                 Status = false
             };
 
         }
 
-        public BaseResponse<ArPortDto> Delete(string id)
+        public BaseResponse<AirportDto> Delete(string id)
         {
             var airport = _airportRepository.Get(x => x.Id == id);
             if (airport is not null)
@@ -56,28 +56,28 @@ namespace AirlineMS.Services.Implementations
                 _airportRepository.Update(airport);
                 _airportRepository.Save();
 
-                return new BaseResponse<ArPortDto>
+                return new BaseResponse<AirportDto>
                 {
                         Message = "Remove Successful",
                         Status = true
                 };
             }
-            return new BaseResponse<ArPortDto>{
+            return new BaseResponse<AirportDto>{
                 Message = "Not Found",
                 Status = false
             };
         }
 
-        public BaseResponse<ArPortDto> Get(string id)
+        public BaseResponse<AirportDto> Get(string id)
         {
             var airport = _airportRepository.Get(id);
             if (airport is not null)
             {
-                return new BaseResponse<ArPortDto>
+                return new BaseResponse<AirportDto>
                 {
                     Message = "Successful",
                     Status = true,
-                    Data = new ArPortDto{
+                    Data = new AirportDto{
                         Id = airport.Id,
                         Name = airport.Name,
                         Address = airport.Address
@@ -85,25 +85,26 @@ namespace AirlineMS.Services.Implementations
                 };
 
             }
-            return new BaseResponse<ArPortDto>{
-                Message = "Not Found"
+            return new BaseResponse<AirportDto>{
+                Message = "Not Found",
+                Status = false,
             };
         }
 
-        public BaseResponse<IEnumerable<ArPortDto>> GetAll()
+        public BaseResponse<IEnumerable<AirportDto>> GetAll()
         {
             var airport = _airportRepository.GetAll();
-            if (airport is not null)
+            if (airport is null)
             {
-                return new BaseResponse<IEnumerable<ArPortDto>>{
-                    Message = "Successful",
-                    Status = true
+                return new BaseResponse<IEnumerable<AirportDto>>{
+                    Message = "Not Found",
+                    Status = false
                 };
             }
-            return new BaseResponse<IEnumerable<ArPortDto>>{
-                Message = "Not Found",
-                Status = false,
-                Data = airport.Select(c => new ArPortDto{
+            return new BaseResponse<IEnumerable<AirportDto>>{
+                Message = "Successful",
+                Status = true,
+                Data = airport.Select(c => new AirportDto{
                     Id = c.Id,
                     Name = c.Name,
                     Address = c.Address
@@ -112,7 +113,7 @@ namespace AirlineMS.Services.Implementations
             };
         }
 
-        public BaseResponse<ArPortDto> Update(string id, UpdateAirportRequestModel model)
+        public BaseResponse<AirportDto> Update(string id, UpdateAirportRequestModel model)
         {
             var airport = _airportRepository.Get(x => x.Id == id);
             if (airport is not null)
@@ -123,11 +124,11 @@ namespace AirlineMS.Services.Implementations
                 _airportRepository.Update(airport);
                 _airportRepository.Save();
 
-                return new BaseResponse<ArPortDto>
+                return new BaseResponse<AirportDto>
                 {
                     Message = "Successful",
                     Status = true,
-                    Data = new ArPortDto
+                    Data = new AirportDto
                     {
                         Id = airport.Id,
                         Name = airport.Name,
@@ -136,7 +137,7 @@ namespace AirlineMS.Services.Implementations
                     }
                 };
             }
-            return new BaseResponse<ArPortDto>{
+            return new BaseResponse<AirportDto>{
                 Message = "Not Found",
                 Status = false
             };

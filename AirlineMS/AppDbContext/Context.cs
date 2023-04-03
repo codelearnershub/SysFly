@@ -24,7 +24,7 @@ namespace AirlineMS.AppDbContext
         public DbSet<UserRole> UserRoles {get;set;}
         public DbSet<CompanyManager> CompanyManagers {get; set;}
         public DbSet<Aircraft> Aircrafts {get; set;}
-        public DbSet<Airport> Airporte {get;set;}
+        public DbSet<Airport> Airports {get;set;}
         public DbSet<Flight> Flights {get; set;}
     }
 }

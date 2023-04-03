@@ -10,7 +10,7 @@ namespace AirlineMS.Services.Interfaces
     {
         BaseResponse<UserDto> Login(LoginUserRequestModel model);
         BaseResponse<UserDto> Get(string id);
-        BaseResponse<List<UserDto>> GetAll();
+        BaseResponse<IEnumerable<UserDto>> GetAll();
 
     }
 }

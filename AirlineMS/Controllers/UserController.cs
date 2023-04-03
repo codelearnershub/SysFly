@@ -46,7 +46,7 @@ namespace AirlineMS.Controllers
                 HttpContext.SignInAsync(claimsPrincipal);
                 if(user.Status == true)
                 {
-                    if(user.Data.Roles.Select(r => r.Name).Contains("Super Admin"))
+                    if(user.Data.Roles.Select(r => r.Name).Contains("super admin"))
                     {
                         return RedirectToAction("Super");
                     }
@@ -75,6 +75,15 @@ namespace AirlineMS.Controllers
             HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
+
+
+        
+        /* [ChildActionOnly]
+        public ActionResult GetHtmlPage(string path)
+        {
+            return new FilePathResult(path, "text/html");
+            
+        } */
 
     }
 }

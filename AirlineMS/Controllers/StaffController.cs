@@ -12,26 +12,27 @@ namespace AirlineMS.Controllers
 {
     public class StaffController : Controller
     {
-        private readonly IStaffService _staffservice;
-        public StaffController(IStaffService staffservice)
+        private readonly IStaffService _staffService;
+        public StaffController(IStaffService staffService)
         {
-            _staffservice = staffservice;
+            _staffService = staffService;
         }
 
+        [HttpGet, ActionName("List")]
         public IActionResult ListOfStaffsByBranch(string branchId)
         {
-           var staffs = _staffservice.GetStaffsByBranchId(branchId);
+           var staffs = _staffService.GetStaffsByBranchId(branchId);
            return View(staffs.Data);
         }
         public IActionResult ListOfStaffsByCompany(string companyId)
         {
-           var staffs= _staffservice.GetStaffsByCompanyId(companyId);
+           var staffs= _staffService.GetStaffsByCompanyId(companyId);
            return View(staffs.Data);
         }
 
         public IActionResult Details(string id)
         {
-            var staff= _staffservice.Get(id);
+            var staff= _staffService.Get(id);
             return View(staff.Data);
         }
 
@@ -42,19 +43,20 @@ namespace AirlineMS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(CreateStaffRequestModel model)
+        public IActionResult Add(string branchId, CreateStaffRequestModel model)
         {
-            var staff = _staffservice.Create(model);
+            var staff = _staffService.Create(branchId, model);
             if(staff is not null)
             {
                 TempData["Exist"] = "Staff created Successfully";
+                return RedirectToAction("List");
             }
-            return RedirectToAction("Login" ,"User");
+            return View(); 
         }
         [HttpGet]
         public IActionResult Update(string id)
         {
-            var staff = _staffservice.Get(id);
+            var staff = _staffService.Get(id);
             var updateModel  = new UpdateStaffRequestModel
             {
                 FirstName = staff.Data.FirstName,
@@ -68,13 +70,13 @@ namespace AirlineMS.Controllers
         public IActionResult Update(string id,UpdateStaffRequestModel model)
         {
             
-            _staffservice.Update(id,model);
+            _staffService.Update(id,model);
             return RedirectToAction("ListOfStaffsByCompany");
         }
         [HttpGet]
         public IActionResult Delete(string id)
         {
-           var staff = _staffservice.Get(id);
+           var staff = _staffService.Get(id);
             return View(staff.Data);
         }
         [HttpPost, ActionName("Delete")]

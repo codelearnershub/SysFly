@@ -1,10 +1,12 @@
+@using AirlineMS.Models.Dtos
+@model BranchManagerDto
 @{
-    ViewData["Title"] = "Super Admin Dashboard";
+    ViewData["Title"] = "Branch Manager Dashboard";
 }
 <div class="">
     <div class="row">
         <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
-            @await Html.PartialAsync("~/Views/User/Menu.cshtml")
+            @await Html.PartialAsync("~/Views/Branch/Menu.cshtml")
         </div>
         <div class="row col-md-10 pt-3">
             <div class="col-md-12 text-center">

@@ -45,7 +45,7 @@ namespace AirlineMS.Services.Implementations
           }
           return new BaseResponse<RoleDto>
           {
-            Message = "Alredy Exist",
+            Message = "Already Exist",
             Status = false
           };
 
@@ -53,22 +53,23 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<RoleDto> Delete(string id)
         {
-          var role = _roleRepository.Get(id);
-          if (role is null)
-          {
-            return new BaseResponse<RoleDto>
+            var role = _roleRepository.Get(id);
+            if (role is null)
             {
-                Message = "Not Found",
-                Status = false
-            };
-          }
+                return new BaseResponse<RoleDto>
+                {
+                    Message = "Not Found",
+                    Status = false
+                };
+            }
+
             role.IsDeleted = true;
             _roleRepository.Update(role);
             _roleRepository.Save();
             return new BaseResponse<RoleDto>
             {
-                Message = "Found",
-                Status = false
+                Message = "Successful",
+                Status = true
             };
        
         }
@@ -81,13 +82,13 @@ namespace AirlineMS.Services.Implementations
                 return new BaseResponse<RoleDto>
                 {
                     Message = "Not found",
-                    Status = true,
+                    Status = false,
                 };
             }
             return new BaseResponse<RoleDto>
             {
-                Message = "Found",
-                Status = false,
+                Message = "Successful",
+                Status = true,
                 Data = new RoleDto
                 {
                     Id = role.Id,
@@ -111,7 +112,7 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<IEnumerable<RoleDto>>
             {
-                Message = "Found",
+                Message = "Successful",
                 Status = true,
                 Data = role.Select(c => new RoleDto{
                     Id = c.Id,
@@ -124,7 +125,7 @@ namespace AirlineMS.Services.Implementations
         public BaseResponse<RoleDto> Update(string id, UpdateRoleRequestModel model)
         {
             var role = _roleRepository.Get(id);
-            if (role is  null)
+            if (role is null)
             {
                 return new BaseResponse<RoleDto>
                 {
@@ -132,11 +133,15 @@ namespace AirlineMS.Services.Implementations
                     Status = false,
                 };
             }
-            _roleRepository.Create(role);
+
+            role.Description = model.Description;
+            role.Name = model.Name;
+            _roleRepository.Update(role);
             _roleRepository.Save();
+
             return new BaseResponse<RoleDto>
             {
-                Message = "Found",
+                Message = "Successful",
                 Status = true,
                 Data = new RoleDto
                 {

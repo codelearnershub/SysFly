@@ -23,36 +23,36 @@ namespace AirlineMS.Services.Implementations
 
         public BaseResponse<UserDto> Get(string id)
         {
-            var fetchs = _userRepository.Get(id);
-            if (fetchs != null)
+            var user = _userRepository.Get(id);
+            if (user != null)
             {
                 return new BaseResponse<UserDto>
                 {
-                    Message = "user found successfully",
+                    Message = "Successfully",
                     Status = true,
                     Data = new UserDto
                     {
-                        FirstName = fetchs.FirstName,
-                        LastName = fetchs.LastName,
-                        Email = fetchs.Email,
-                        PhoneNumber = fetchs.PhoneNumber,
-                        Id = fetchs.Id
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        PhoneNumber = user.PhoneNumber,
+                        Id = user.Id
                     }
                 };
             }
             return new BaseResponse<UserDto>
             {
-                Message = "User not found",
+                Message = "Not found",
                 Status = false,
             };
         }
 
-        public BaseResponse<List<UserDto>> GetAll()
+        public BaseResponse<IEnumerable<UserDto>> GetAll()
         {
             var getUsers = _userRepository.GetAll();
             if (getUsers != null)
             {
-                return new BaseResponse<List<UserDto>>
+                return new BaseResponse<IEnumerable<UserDto>>
                 {
                     Message = "Successful",
                     Status = true,
@@ -67,7 +67,7 @@ namespace AirlineMS.Services.Implementations
                     }).ToList()
                 };
             }
-            return new BaseResponse<List<UserDto>>
+            return new BaseResponse<IEnumerable<UserDto>>
             {
                 Message = "UnSuccessful",
                 Status = false,

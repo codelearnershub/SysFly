@@ -15,6 +15,8 @@ builder.Services.AddDbContext<Context>(option => option.UseMySql(connectionStrin
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<ICompanyManagerRepository, CompanyManagerRepository>();
+builder.Services.AddScoped<ICompanyManagerService, CompanyManagerService>();
 builder.Services.AddScoped<IBranchRepository, BranchRepository>();
 builder.Services.AddScoped<IStaffRepository, StaffRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -24,6 +26,8 @@ builder.Services.AddScoped<IBranchService, BranchService>();
 builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IBranchManagerRepository, BranchManagerRepository>();
 builder.Services.AddScoped<IBranchManagerService, BranchManagerService>();
+builder.Services.AddScoped<IPassengerRepository, PassengerRepository>();
+builder.Services.AddScoped<IPassengerService, PassengerService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

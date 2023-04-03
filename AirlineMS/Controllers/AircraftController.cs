@@ -44,9 +44,9 @@ namespace AirlineMS.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public IActionResult RealDelete(string companyId, CreateAircraftRequestModel model)
+        public IActionResult RealDelete(string companyId)
         {
-            var response = _aircraftService.Delete(companyId, model);
+            var response = _aircraftService.Delete(companyId);
             if (response.Status)
             {
                 TempData["Successful"] = " Deleted Successful";

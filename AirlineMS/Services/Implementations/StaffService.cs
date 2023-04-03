@@ -12,23 +12,51 @@ namespace AirlineMS.Services.Implementations
 {
     public class StaffService : IStaffService
     {
+        private readonly IBranchRepository _branchRepository;
         private readonly IStaffRepository _staffRepository;
-        public StaffService(IStaffRepository staffRepository)
+        private readonly IUserRepository _userRepository;
+
+        public StaffService(IStaffRepository staffRepository, IUserRepository userRepository)
         {
             _staffRepository = staffRepository;
+            _userRepository = userRepository;
         }
 
-        public BaseResponse<StaffDto> Create(CreateStaffRequestModel model)
+        public BaseResponse<StaffDto> Create(string branchId, CreateStaffRequestModel model)
         {
-            var staffExist = _staffRepository.Get(a => a.User.Email == model.Email);
-            if (staffExist == null)
+            var userExist = _userRepository.Get(a => a.Email == model.Email);
+            if (userExist == null)
             {
-                Staff staff = new Staff();
-                staff.User.FirstName = model.FirstName;
-                staff.User.LastName = model.LastName;
-                staff.User.Email = model.Email;
-                staff.User.Password = model.Password;
-                staff.User.PhoneNumber = model.PhoneNumber;
+                
+                var PhoneNumberExist = _userRepository.Get(a => a.PhoneNumber == model.PhoneNumber);
+                if(PhoneNumberExist != null)
+                {
+                    return new BaseResponse<StaffDto>
+                    {
+                        Message = "PhoneNumber already used",
+                        Status = false,
+                    };
+                }
+
+                User user = new User{
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Password = model.Password,
+                    PhoneNumber = model.PhoneNumber
+                };
+                
+                _userRepository.Create(user);
+                _userRepository.Save();
+
+                var branch = _branchRepository.Get(branchId);
+
+                Staff staff = new Staff{
+                    BranchId = branchId,
+                    CompanyId = branch.CompanyId,
+                    EmploymentNumber = GenerateEmploymentNumber(),
+                    UserId = user.Id
+                };
                 _staffRepository.Create(staff);
                 _staffRepository.Save();
                 return new BaseResponse<StaffDto>
@@ -61,7 +89,7 @@ namespace AirlineMS.Services.Implementations
             {
                 return new BaseResponse<StaffDto>
                 {
-                    Message = "Staff found",
+                    Message = "Successful",
                     Status = true,
                     Data = new StaffDto
                     {
@@ -77,7 +105,7 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<StaffDto>
             {
-                Message = "invalid details",
+                Message = "Not found",
                 Status = false,
             };
         }
@@ -105,61 +133,61 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<IEnumerable<StaffDto>>
             {
-                Message = "Not successful",
+                Message = "Not found",
                 Status = false,
             };
         }
 
-        public BaseResponse<StaffDto> GetStaffsByBranchId(string branchId)
+        public BaseResponse<IEnumerable<StaffDto>> GetStaffsByBranchId(string branchId)
         {
-            var staff = _staffRepository.Get(a => a.BranchId == branchId);
+            var staff = _staffRepository.GetSelected(a => a.BranchId == branchId);
             if (staff is not null)
             {
-                return new BaseResponse<StaffDto>
+                return new BaseResponse<IEnumerable<StaffDto>>
                 {
-                    Message = "Staff found",
+                    Message = "Successful",
                     Status = true,
-                    Data = new StaffDto
+                    Data = staff.Select(s => new StaffDto
                     {
-                        Id = staff.Id,
-                        BranchId = staff.BranchId,
-                        CompanyId = staff.CompanyId,
-                        FirstName = staff.User.FirstName,
-                        LastName = staff.User.LastName,
-                        Email = staff.User.Email,
-                        PhoneNumber = staff.User.PhoneNumber,
-                    }
+                        Id = s.Id,
+                        BranchId = s.BranchId,
+                        CompanyId = s.CompanyId,
+                        FirstName = s.User.FirstName,
+                        LastName = s.User.LastName,
+                        Email = s.User.Email,
+                        PhoneNumber = s.User.PhoneNumber,
+                    })
                 };
             }
-            return new BaseResponse<StaffDto>
+            return new BaseResponse<IEnumerable<StaffDto>>
             {
                 Message = "Not found",
                 Status = false,
             };
         }
 
-        public BaseResponse<StaffDto> GetStaffsByCompanyId(string companyId)
+        public BaseResponse<IEnumerable<StaffDto>> GetStaffsByCompanyId(string companyId)
         {
-            var staff = _staffRepository.Get(a => a.CompanyId == companyId);
+            var staff = _staffRepository.GetSelected(a => a.CompanyId == companyId);
             if (staff is not null)
             {
-                return new BaseResponse<StaffDto>
+                return new BaseResponse<IEnumerable<StaffDto>>
                 {
-                    Message = "Staff found successfully",
+                    Message = "Successful",
                     Status = true,
-                    Data = new StaffDto
+                    Data = staff.Select(s => new StaffDto
                     {
-                        Id = staff.Id,
-                        BranchId = staff.BranchId,
-                        CompanyId = staff.CompanyId,
-                        FirstName = staff.User.FirstName,
-                        LastName = staff.User.LastName,
-                        Email = staff.User.Email,
-                        PhoneNumber = staff.User.PhoneNumber,
-                    }
+                        Id = s.Id,
+                        BranchId = s.BranchId,
+                        CompanyId = s.CompanyId,
+                        FirstName = s.User.FirstName,
+                        LastName = s.User.LastName,
+                        Email = s.User.Email,
+                        PhoneNumber = s.User.PhoneNumber,
+                    })
                 };
             }
-            return new BaseResponse<StaffDto>
+            return new BaseResponse<IEnumerable<StaffDto>>
             {
                 Message = "Not found",
                 Status = false,
@@ -178,7 +206,7 @@ namespace AirlineMS.Services.Implementations
                 _staffRepository.Save();
                 return new BaseResponse<StaffDto>
                 {
-                    Message = "Updated successfully",
+                    Message = "Successful",
                     Status = true,
                     Data = new StaffDto
                     {
@@ -190,9 +218,14 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<StaffDto>
             {
-                Message = "Not updated successfully",
+                Message = "Not found",
                 Status = false,
             };
+        }
+
+        private string GenerateEmploymentNumber(){
+            var staffs = _staffRepository.GetAll();
+            return $"STF/0000{staffs.Count() + 1}";
         }
     }
 }

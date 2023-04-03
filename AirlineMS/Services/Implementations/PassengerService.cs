@@ -13,28 +13,52 @@ namespace AirlineMS.Services.Implementations
     public class PassengerService : IPassengerService
     {
         private readonly IPassengerRepository _passengerRepository;
-        private readonly IFlightRepository _flightRepository;
-        public PassengerService(IPassengerRepository passengerRepository, IFlightRepository flightRepository)
+        private readonly IUserRepository _userRepository;
+        public PassengerService(IPassengerRepository passengerRepository, IUserRepository userRepository)
         {
             _passengerRepository = passengerRepository;
-            _flightRepository = flightRepository;
+            _userRepository = userRepository;
         }
-        BaseResponse<PassengerDto> Create(CreatePassengerRequestModel model)
+        public BaseResponse<PassengerDto> Create(CreatePassengerRequestModel model)
         {
-            var passengerExist = _passengerRepository.Get(a => a.User.Email == model.Email);
-            if (passengerExist == null)
+            var userExist = _userRepository.Get(a => a.Email == model.Email);
+            if (userExist == null)
             {
-                Passenger passenger = new Passenger();
+                /* Passenger passenger = new Passenger();
                 passenger.User.FirstName = model.FirstName;
                 passenger.User.LastName = model.LastName;
                 passenger.User.Email = model.Email;
                 passenger.User.Password = model.Password;
                 passenger.User.PhoneNumber = model.PhoneNumber;
                 _passengerRepository.Create(passenger);
+                _passengerRepository.Save(); */
+                var PhoneNumberExist = _userRepository.Get(a => a.PhoneNumber == model.PhoneNumber);
+                if(PhoneNumberExist != null)
+                {
+                    return new BaseResponse<PassengerDto>
+                    {
+                        Message = "PhoneNumber already used",
+                        Status = false,
+                    };
+                }
+
+                User user = new User();
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Email = model.Email;
+                user.Password = model.Password;
+                user.PhoneNumber = model.PhoneNumber;
+                _userRepository.Create(user);
+                _userRepository.Save();
+
+                Passenger passenger = new Passenger();
+                passenger.UserId = user.Id;
+                _passengerRepository.Create(passenger);
                 _passengerRepository.Save();
+
                 return new BaseResponse<PassengerDto>
                 {
-                    Message = "Passenger created successfully",
+                    Message = "Successfully",
                     Status = true,
                     Data = new PassengerDto
                     {
@@ -48,12 +72,12 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<PassengerDto>
             {
-                Message = "invalid details",
+                Message = "Already exist",
                 Status = false,
             };
         }
 
-           public BaseResponse<IEnumerable<PassengerDto>> GetAll()
+        public BaseResponse<IEnumerable<PassengerDto>> GetAll()
         {
             var passengers = _passengerRepository.GetAll();
             if (passengers is not null)
@@ -106,7 +130,7 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<PassengerDto>
             {
-                Message = "invalid details",
+                Message = "Not found",
                 Status = false,
             };
         }
@@ -118,7 +142,7 @@ namespace AirlineMS.Services.Implementations
             {
                 return new BaseResponse<IEnumerable<PassengerDto>>
                 {
-                    Message = "passenger found",
+                    Message = "Successful",
                     Status = true,
                     Data = passengers.Select(a => new PassengerDto
                     {
@@ -147,9 +171,10 @@ namespace AirlineMS.Services.Implementations
                 passenger.User.PhoneNumber = model.PhoneNumber;
                 _passengerRepository.Update(passenger);
                 _passengerRepository.Save();
+
                 return new BaseResponse<PassengerDto>
                 {
-                    Message = "Updated successfully",
+                    Message = "Successful",
                     Status = true,
                     Data = new PassengerDto
                     {
@@ -161,14 +186,11 @@ namespace AirlineMS.Services.Implementations
             }
             return new BaseResponse<PassengerDto>
             {
-                Message = "Not updated successfully",
+                Message = "Not found",
                 Status = false,
             };
         }
 
-        BaseResponse<PassengerDto> IPassengerService.Create(CreatePassengerRequestModel model)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -6,53 +6,88 @@ using AirlineMS.Models.Dtos;
 using AirlineMS.Models.Entities;
 using AirlineMS.Repositories.Interfaces;
 using AirlineMS.Services.Interfaces;
-using static AirlineMS.Models.Dtos.CompanyManagerDto;
 
 namespace AirlineMS.Services.Implementations
 {
      public class CompanyManagerService : ICompanyManagerService
     {
         private readonly ICompanyManagerRepository _companyManagerRepository;
+        private readonly IRoleRepository _roleRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-    
-        public CompanyManagerService(ICompanyManagerRepository companyManagerRepository, IWebHostEnvironment webHostEnvironment)
+
+        public CompanyManagerService(ICompanyManagerRepository companyManagerRepository, IRoleRepository roleRepository, IUserRepository userRepository, IWebHostEnvironment webHostEnvironment)
         {
-                _companyManagerRepository = companyManagerRepository;
-                _webHostEnvironment = webHostEnvironment;
+            _companyManagerRepository = companyManagerRepository;
+            _roleRepository = roleRepository;
+            _userRepository = userRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
 
-        public BaseResponse<CompanyManagerDto> Create(CreateCompanyManagerRequestModel model)
+        public BaseResponse<CompanyManagerDto> Create(string companyId, CreateCompanyManagerRequestModel model)
         {
-            var companyManagerExist = _companyManagerRepository.Get(a => a.User.Email == model.Email);
-            if (companyManagerExist == null)
+            var userExist = _userRepository.Get(a => a.Email == model.Email);
+            if (userExist == null)
             {
+
+                var PhoneNumberExist = _userRepository.Get(a => a.PhoneNumber == model.PhoneNumber);
+                if(PhoneNumberExist != null)
+                {
+                    return new BaseResponse<CompanyManagerDto>
+                    {
+                        Message = "PhoneNumber already used",
+                        Status = false,
+                    };
+                }
+
+                User user = new User{
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Password = model.Password,
+                    PhoneNumber = model.PhoneNumber,
+                };
+                
+
+                var role = _roleRepository.Get(r => r.Name == "Company Manager");
+                
+                var userRole = new UserRole{
+                    UserId = user.Id,
+                    RoleId = role.Id,
+                    Role = role,
+                    User = user,
+                };
+
+                user.UserRoles.Add(userRole);
+                
+
                 CompanyManager companyManager = new CompanyManager();
-                companyManager.User.FirstName = model.FirstName;
-                companyManager.User.LastName = model.LastName;
-                companyManager.User.Email = model.Email;
-                companyManager.User.Password = model.Password;
-                companyManager.User.PhoneNumber = model.PhoneNumber;
+                companyManager.UserId = user.Id;
+                companyManager.CompanyId = companyId;
+                companyManager.EmploymentNumber = GenerateEmploymentNumber();
+
+                _userRepository.Create(user);
                 
                 _companyManagerRepository.Create(companyManager);
                 _companyManagerRepository.Save();
+
+                
+
                 return new BaseResponse<CompanyManagerDto>
                 {
-                    Message = "CompanyManager successfully created",
+                    Message = "Successful",
                     Status = true,
                     Data = new CompanyManagerDto
                     {
                         Id = companyManager.Id,
                         CompanyId = companyManager.CompanyId,
-                        FirstName = companyManager.User.FirstName,
-                        LastName = companyManager.User.LastName,
-                        Email = companyManager.User.Email,
-                        PhoneNumber = companyManager.User.PhoneNumber,
+                        UserId = companyManager.UserId
                     }
                 };
             }
             return new BaseResponse<CompanyManagerDto>
             {
-                Message = "invalid details",
+                Message = "Manager Already exist",
                 Status = false,
             };
 
@@ -65,7 +100,7 @@ namespace AirlineMS.Services.Implementations
                 {
                     return new BaseResponse<CompanyManagerDto>
                     {
-                        Message = "CompanyManager found",
+                        Message = "Successful",
                         Status = true,
                         Data = new CompanyManagerDto
                         {
@@ -80,7 +115,7 @@ namespace AirlineMS.Services.Implementations
                 }
                 return new BaseResponse<CompanyManagerDto>
                 {
-                    Message = "invalid details",
+                    Message = "Not found",
                     Status = false,
                 };
             }
@@ -90,22 +125,22 @@ namespace AirlineMS.Services.Implementations
         public BaseResponse<CompanyManagerDto> Delete(string id)
         {
              var objExists = _companyManagerRepository.Get(a => a.Id == id);
-                if (objExists != null)
-                {
+            if (objExists != null)
+            {
                 objExists.IsDeleted = true;
                 _companyManagerRepository.Update(objExists);
                 _companyManagerRepository.Save();
-                
-                    return new BaseResponse<CompanyManagerDto>{
-                        Message = "successful",
-                        Status = true
-                    };
-                }
-                return new BaseResponse<CompanyManagerDto>
-                {
-                        Message = "CompanyManager already exists",
-                        Status = false
+            
+                return new BaseResponse<CompanyManagerDto>{
+                    Message = "Successful",
+                    Status = true
                 };
+            }
+            return new BaseResponse<CompanyManagerDto>
+            {
+                Message = "Manager not found",
+                Status = false
+            };
         }
 
        
@@ -119,20 +154,20 @@ namespace AirlineMS.Services.Implementations
                 {
                     Message = "Successful",
                     Status = true,
-                    Data = companyManagers.Select(s => new CompanyManagerDto
+                    Data = companyManagers.Select(m => new CompanyManagerDto
                     {
-                        Id = s.Id,
-                        CompanyId = s.CompanyId,
-                        FirstName = s.User.FirstName,
-                        LastName = s.User.LastName,
-                        Email = s.User.Email,
-                        PhoneNumber = s.User.PhoneNumber,
+                        Id = m.Id,
+                        CompanyId = m.CompanyId,
+                        FirstName = m.User.FirstName,
+                        LastName = m.User.LastName,
+                        Email = m.User.Email,
+                        PhoneNumber = m.User.PhoneNumber,
                     })
                 };
             }
             return new BaseResponse<IEnumerable<CompanyManagerDto>>
             {
-                Message = "Not successful",
+                Message = "Not found",
                 Status = false,
             };
         }
@@ -144,7 +179,7 @@ namespace AirlineMS.Services.Implementations
                 {
                     return new BaseResponse<CompanyManagerDto>
                     {
-                        Message = "companyManager found successfully",
+                        Message = "Successful",
                         Status = true,
                         Data = new CompanyManagerDto
                         {
@@ -173,7 +208,7 @@ namespace AirlineMS.Services.Implementations
                 {
                     return new BaseResponse<CompanyManagerDto>
                     {
-                        Message = "companyManager found successfully",
+                        Message = "Successful",
                         Status = true,
                         Data = new CompanyManagerDto
                         {
@@ -207,7 +242,7 @@ namespace AirlineMS.Services.Implementations
                     _companyManagerRepository.Save();
                     return new BaseResponse<CompanyManagerDto>
                     {
-                        Message = "Updated successfully",
+                        Message = "Successfully",
                         Status = true,
                         Data = new CompanyManagerDto
                         {
@@ -219,9 +254,13 @@ namespace AirlineMS.Services.Implementations
                 }
                 return new BaseResponse<CompanyManagerDto>
                 {
-                    Message = "Not updated successfully",
+                    Message = "Not found",
                     Status = false,
                 };
+        }
+        private string GenerateEmploymentNumber(){
+            var staffs = _companyManagerRepository.GetAll();
+            return $"MNG/0000{staffs.Count() + 1}";
         }
     }
 }

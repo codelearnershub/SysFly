@@ -45,9 +45,9 @@ namespace AirlineMS.Controllers
             if (response.Status)
             {
                 TempData["Successful"] = " Created Successful";
-
-                return RedirectToAction("List");
+                return RedirectToAction("List", new {id = id});
             }
+            TempData["error"] = response.Message;
             return View();
         }
 
@@ -71,10 +71,15 @@ namespace AirlineMS.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult List(string companyId)
+        public IActionResult Index()
         {
-            var response = _branchService.GetBranchesByCompanyId(companyId);
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult List(string id)
+        {
+            var response = _branchService.GetBranchesByCompanyId(id);
             return View(response.Data);
         }
 

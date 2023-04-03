@@ -1,15 +1,41 @@
 @model AirlineMS.Models.Dtos.CompanyDto
-
-<div>
-    <h4>
-        Name : @Model.Name
-    </h4>
-    <div>
-        Logo : <img src="~/Upload/Images/@Model.Logo" height="100" width="100">
-    </div>
-    <div class="mt-2 text-end">
-        <button type="submit" class="btn btn-primary" style="width: 30%" >
-            <a asp-action="CreateHead" asp-controller="Branch" asp-route-id="@Model.Id">Craete Headquarters</a>
-        </button>
+@{
+    ViewData["Title"] = "Company Details";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px;">
+            <h6 class="pt-2" style="">
+                <a class="active" asp-action="CreateHead" asp-controller="Branch" asp-route-id="@Model.Id">Create Headquarter</a>
+            </h6>
+            <h6 class="pt-2">
+                <a class="" asp-action="List" asp-controller="Branch" asp-route-id="@Model.Id">Branch List</a>
+            </h6>
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <table class="table">
+                    <tr>
+                        <td style="width: 50%;"></td>
+                        <td class="text-center" style="width: 50%;">
+                            <img src="~/Upload/Images/@Model.Logo" height="100" width="100">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>
+                            @Model.Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Registration Number</td>
+                        <td>
+                            @Model.CACRegistrationNum
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

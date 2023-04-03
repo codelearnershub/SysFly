@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirlineMS.Models.Dtos
 {
-    public class ArPortDto
+    public class AirportDto
     {
         public string Id {get ; set;}
         public string Name {get ; set;}

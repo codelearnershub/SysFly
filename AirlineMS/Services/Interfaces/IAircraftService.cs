@@ -12,7 +12,7 @@ namespace AirlineMS.Services.Interfaces
         BaseResponse<AircraftDto> Update(string id, UpdateAircraftRequestModel model);
         BaseResponse<IEnumerable<AircraftDto>> GetAircraftsByCompanyId(string companyId);
         BaseResponse<IEnumerable<AircraftDto>> GetAll();
-        BaseResponse<AircraftDto> Delete(string id, CreateAircraftRequestModel model);
+        BaseResponse<AircraftDto> Delete(string id);
         BaseResponse<AircraftDto> GetAircraftByCompanyId(string companyId);
     }
 }

@@ -19,24 +19,24 @@ namespace AirlineMS.Repositories.Implementations
 
         public Airport Get(Expression<Func<Airport, bool>> expression)
         {
-             return _context.Airporte.FirstOrDefault(expression);
+             return _context.Airports.FirstOrDefault(expression);
 
         }
 
         public Airport Get(string id)
         {
-            return _context.Airporte
+            return _context.Airports
             .FirstOrDefault(c => c.Id == id && c.IsDeleted == false);
         }
 
         public IEnumerable<Airport> GetAll()
         {
-            return _context.Airporte.Where(m => m.IsDeleted == false).ToList();
+            return _context.Airports.Where(m => m.IsDeleted == false).ToList();
         }
 
         public IEnumerable<Airport> GetSelected(List<string> ids)
         {
-            return _context.Airporte.Where(p => ids.Contains(p.Id) && p.IsDeleted == false).ToList();
+            return _context.Airports.Where(p => ids.Contains(p.Id) && p.IsDeleted == false).ToList();
         }
 
         public IEnumerable<Airport> GetSelected(Expression<Func<Airport, bool>> expression)

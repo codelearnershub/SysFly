@@ -8,11 +8,11 @@ namespace AirlineMS.Services.Interfaces
 {
     public interface IStaffService
     {
-         BaseResponse<StaffDto> Create(CreateStaffRequestModel model);
+         BaseResponse<StaffDto> Create(string branchId, CreateStaffRequestModel model);
         BaseResponse<StaffDto> Update(string id, UpdateStaffRequestModel model);
         BaseResponse<StaffDto> Get(string id);
-        BaseResponse<StaffDto> GetStaffsByCompanyId(string companyId);
-        BaseResponse<StaffDto> GetStaffsByBranchId(string branchId);
+        BaseResponse<IEnumerable<StaffDto>> GetStaffsByCompanyId(string companyId);
+        BaseResponse<IEnumerable<StaffDto>> GetStaffsByBranchId(string branchId);
         BaseResponse<IEnumerable<StaffDto>> GetAll();
     }
 }

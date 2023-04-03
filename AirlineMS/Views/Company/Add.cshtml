@@ -3,32 +3,40 @@
 @{
  ViewData["Title"] = "Add Company";
 }
-
-<div class="border p-3 mt-4">
-    <div><h1>@ViewData["Title"]</h1></div>
-    <div>
-        <form asp-action="Add" enctype="multipart/form-data">
-            <div>
-                <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" type="text" />
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+            @await Html.PartialAsync("~/Views/User/Menu.cshtml")
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                <form asp-action="Add" enctype="multipart/form-data">
+                    <div>
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" type="text" />
+                    </div>
+                    <div>
+                        <label asp-for="CACRegistrationNum"></label>
+                        <input asp-for="CACRegistrationNum" class="form-control" type="text" />
+                    </div>
+                    <div>
+                        <label asp-for="CACDocument"></label>
+                        <input asp-for="CACDocument" class="form-control" type="file" />
+                        <span asp-validation-for="CACDocument" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Logo"></label>
+                        <input asp-for="Logo" class="form-control" type="file" />
+                        <span asp-validation-for="Logo" class="text-danger"></span>
+                    </div>
+                    <div class="mt-2 text-end">
+                        <button type="submit" class="btn btn-primary" style="width: 30%">Add Company</button>
+                    </div>
+                </form>
             </div>
-            <div>
-                <label asp-for="CACRegistrationNum"></label>
-                <input asp-for="CACRegistrationNum" class="form-control" type="text" />
-            </div>
-            <div>
-                <label asp-for="CACDocument"></label>
-                <input asp-for="CACDocument" class="form-control" type="file" />
-                <span asp-validation-for="CACDocument" class="text-danger"></span>
-            </div>
-            <div>
-                <label asp-for="Logo"></label>
-                <input asp-for="Logo" class="form-control" type="file" />
-                <span asp-validation-for="Logo" class="text-danger"></span>
-            </div>
-            <div class="mt-2 text-end">
-                <button type="submit" class="btn btn-primary" style="width: 30%">Add Company</button>
-            </div>
-        </form>
+            <div class="col-md-3"></div>
+        </div>
     </div>
-</div> 
+</div>

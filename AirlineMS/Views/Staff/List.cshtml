@@ -1,0 +1,53 @@
+@model IEnumerable<AirlineMS.Models.Dtos.StaffDto>
+@{
+
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+            @* @await Html.PartialAsync("~/Views/User/Menu.cshtml") *@
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-12">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                <table class="table table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>PhoneNumber</th>                   
+                            <th>Detail</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @{
+                            int a = 1;
+                            foreach (var staff in Model)
+                            {
+                            <tr>
+                                <td>@a</td>
+                                <td>@staff.FirstName</td>
+                                <td>@staff.LastName</td>
+                                <td>@staff.PhoneNumber</td>
+                                <td>
+                                    <a asp-controller="Staff" asp-action="Details">Details</a>
+                                    </td>
+                                <td>
+                                    <a asp-controller="Staff" asp-action="Delete">Delete</a>
+                                    </td>
+                            </tr>
+                                {
+                                    a++;
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

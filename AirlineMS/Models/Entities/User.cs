@@ -8,6 +8,6 @@ namespace AirlineMS.Models.Entities
         public string Email{ get;set;}
         public string Password{ get;set;}
         public double Wallet{get;set;}
-        public List<UserRole> UserRoles{ get;set;}
+        public ICollection<UserRole> UserRoles{ get;set;} = new HashSet<UserRole>();
     }
 }

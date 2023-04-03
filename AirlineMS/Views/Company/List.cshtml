@@ -3,39 +3,49 @@
 @{
     ViewData["Title"] = "List of Company";
 }
-<div>
-    <div class="pt-4">
-        <table class="table table-bordered table-striped table-responsive">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>CompanyName</th>
-                    <th>CACRegistrationNum</th>
-                    <th>CACDocument</th>
-                    <th>Logo</th>                   
-                    <th>Detail</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var company in Model)
-                {
-                    <tr>
-                        <td>@company.Id</td>
-                        <td>@company.Name</td>
-                        <td>@company.CACRegistrationNum</td>
-                        <td><img src="~/Upload/Images/@company.CACDocument" height="100" width="100"></td>
-                        <td><img src="~/Upload/Images/@company.Logo" height="100" width="100"></td>
-                        <td>
-                            <a asp-controller="Company" asp-action="Details" asp-route-id="@company.Id">View</a>
-                        </td>
-                        <td>Remove</td>
-                    </tr>
-                }
-            </tbody>
-            <div>
-
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+            @await Html.PartialAsync("~/Views/User/Menu.cshtml")
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-12">
+                <span class="text-center"><h3>@ViewData["Title"]</h3></span>
+                <table class="table table-bordered table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>CompanyName</th>
+                            <th>CACRegistrationNum</th>
+                            <th>Add</th>                   
+                            <th>Detail</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int SerialNumber = 1;
+                            foreach (var company in Model)
+                            {
+                                <tr>
+                                    <td>@SerialNumber</td>
+                                    <td>@company.Name</td>
+                                    <td>@company.CACRegistrationNum</td>
+                                    <td>
+                                        <a asp-action="Add" asp-controller="CompanyManager" asp-route-id="@company.Id"> Add Manager</a>
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Company" asp-action="Details" asp-route-id="@company.Id">View</a>
+                                    </td>
+                                    <td>Remove</td>
+                                </tr>
+                                SerialNumber++;
+                            }
+                        }
+                        
+                    </tbody>
+                </table>
             </div>
-        </table>
+        </div>
     </div>
-</div> 
+</div>

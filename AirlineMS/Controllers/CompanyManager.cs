@@ -12,21 +12,21 @@ namespace AirlineMS.Controllers
 {
     public class CompanyManagerController : Controller
     {
-        private readonly ICompanyManagerService _companyManagerservice;
-        public CompanyManagerController(ICompanyManagerService companyManagerservice)
+        private readonly ICompanyManagerService _companyManagerService;
+        public CompanyManagerController(ICompanyManagerService companyManagerService)
         {
-            _companyManagerservice = companyManagerservice;
+            _companyManagerService = companyManagerService;
         }
 
         public IActionResult ListOfCompaniesManagerByCompany(string CompanyId)
         {
-           var response = _companyManagerservice.GetCompanyManagerByCompanyId(CompanyId);
+           var response = _companyManagerService.GetCompanyManagerByCompanyId(CompanyId);
            return View(response.Data);
         }
 
         public IActionResult Details(string id)
         {
-            var response= _companyManagerservice.Get(id);
+            var response= _companyManagerService.Get(id);
             return View(response.Data);
         }
 
@@ -37,9 +37,9 @@ namespace AirlineMS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(CreateCompanyManagerRequestModel model)
+        public IActionResult Add(string id, CreateCompanyManagerRequestModel model)
         {
-            var companyManager = _companyManagerservice.Create(model);
+            var companyManager = _companyManagerService.Create(id, model);
             if(companyManager is not null)
             {
                 TempData["Exist"] = "CompanyManager created Successfully";
@@ -49,7 +49,7 @@ namespace AirlineMS.Controllers
         [HttpGet]
         public IActionResult Update(string id)
         {
-            var companyManager = _companyManagerservice.Get(id);
+            var companyManager = _companyManagerService.Get(id);
             var updateModel  = new UpdateCompanyManagerRequestModel
             {
                 FirstName = companyManager.Data.FirstName,
@@ -63,13 +63,13 @@ namespace AirlineMS.Controllers
         public IActionResult Update(string id,UpdateCompanyManagerRequestModel model)
         {
             
-            _companyManagerservice.Update(id,model);
+            _companyManagerService.Update(id,model);
             return RedirectToAction("ListOfCompanyManagersByCompany");
         }
         [HttpGet]
         public IActionResult Delete(string id)
         {
-           var companyManager = _companyManagerservice.Get(id);
+           var companyManager = _companyManagerService.Get(id);
             return View(companyManager.Data);
         }
         [HttpPost, ActionName("Delete")]

@@ -9,7 +9,7 @@ namespace AirlineMS.Services.Interfaces
 {
     public interface ICompanyManagerService
     {
-        BaseResponse<CompanyManagerDto> Create(CreateCompanyManagerRequestModel model);
+        BaseResponse<CompanyManagerDto> Create(string id, CreateCompanyManagerRequestModel model);
         BaseResponse<CompanyManagerDto> Update(string id, UpdateCompanyManagerRequestModel model);
         BaseResponse<CompanyManagerDto> Get(string id);
         BaseResponse<CompanyManagerDto> GetCompanyManagerByCompanyId(string companyId);

@@ -8,10 +8,10 @@ namespace AirlineMS.Services.Interfaces
 {
     public interface IAirportService
     {
-        BaseResponse<ArPortDto> Create(CreateAirportRequestModel model);
-        BaseResponse<ArPortDto> Update(string id, UpdateAirportRequestModel model);
-        BaseResponse<ArPortDto> Get(string id);
-        BaseResponse<IEnumerable<ArPortDto>> GetAll();
-        BaseResponse<ArPortDto> Delete(string id);
+        BaseResponse<AirportDto> Create(CreateAirportRequestModel model);
+        BaseResponse<AirportDto> Update(string id, UpdateAirportRequestModel model);
+        BaseResponse<AirportDto> Get(string id);
+        BaseResponse<IEnumerable<AirportDto>> GetAll();
+        BaseResponse<AirportDto> Delete(string id);
     }
 }

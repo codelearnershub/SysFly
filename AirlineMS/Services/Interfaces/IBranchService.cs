@@ -8,7 +8,7 @@ namespace AirlineMS.Services.Interfaces
 {
     public interface IBranchService
     {
-        BaseResponse<BranchDto> Create(string companyId,CreateBranchRequestModel model);
+        BaseResponse<BranchDto> Create(CreateBranchRequestModel model);
         BaseResponse<BranchDto> CreateHeadquarters(string companyId,CreateHeadRequestModel model);
         BaseResponse<BranchDto> Update(string id, UpDateBranchRequestModel model);
         BaseResponse<IEnumerable<BranchDto>> GetBranchesByCompanyId(string companyId);

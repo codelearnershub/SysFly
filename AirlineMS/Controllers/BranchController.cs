@@ -20,14 +20,14 @@ namespace AirlineMS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(string companyId, CreateBranchRequestModel model)
+        public IActionResult Create(CreateBranchRequestModel model)
         {
-            var response = _branchService.Create(companyId, model);
+            var response = _branchService.Create(model);
             if (response.Status)
             {
                 TempData["Successful"] = " Created Successful";
 
-                return RedirectToAction("List");
+                return RedirectToAction("List", new {id = response.Data.Id});
             }
             return View();
         }

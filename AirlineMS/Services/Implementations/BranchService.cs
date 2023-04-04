@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AirlineMS.Models.Dtos;
 using AirlineMS.Models.Entities;
@@ -14,23 +15,27 @@ namespace AirlineMS.Services.Implementations
     {
         private readonly IBranchRepository _branchRepository;
         private readonly ICompanyRepository _companyRepository;
+        private readonly ICompanyManagerRepository _companyManagerRepository;
+        private readonly IHttpContextAccessor _httpAccessor;
 
-        public BranchService(IBranchRepository branchRepository, ICompanyRepository companyRepository)
+        public BranchService(IBranchRepository branchRepository, ICompanyRepository companyRepository, ICompanyManagerRepository companyManagerRepository, IHttpContextAccessor httpAccessor)
         {
             _branchRepository = branchRepository;
             _companyRepository = companyRepository;
+            _companyManagerRepository = companyManagerRepository;
+            _httpAccessor = httpAccessor;
         }
 
-      
-
-        public BaseResponse<BranchDto> Create(string companyId, CreateBranchRequestModel model)
+        public BaseResponse<BranchDto> Create(CreateBranchRequestModel model)
         {
+            var user = _httpAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var companyManager = _companyManagerRepository.Get(a => a.UserId == user);
             // var company = _companyRepository.Get(companyId);
             var branchExist = _branchRepository.Get(a => a.Email == model.Email);
             if (branchExist == null)
             {
                 Branch branch = new Branch();
-                branch.CompanyId = companyId;
+                branch.CompanyId = companyManager.CompanyId;
                 branch.Name = model.Name;
                 branch.Address = model.Address;
                 branch.Email = model.Email;

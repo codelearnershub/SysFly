@@ -27,7 +27,14 @@ builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IBranchManagerRepository, BranchManagerRepository>();
 builder.Services.AddScoped<IBranchManagerService, BranchManagerService>();
 builder.Services.AddScoped<IPassengerRepository, PassengerRepository>();
+builder.Services.AddScoped<IAircraftRepository, AircraftRepository>();
+builder.Services.AddScoped<IAircraftService, AircraftService>();
 builder.Services.AddScoped<IPassengerService, PassengerService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
+
+
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

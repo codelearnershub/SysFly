@@ -65,6 +65,7 @@ namespace AirlineMS.Services.Implementations
                 companyManager.UserId = user.Id;
                 companyManager.CompanyId = companyId;
                 companyManager.EmploymentNumber = GenerateEmploymentNumber();
+            
 
                 _userRepository.Create(user);
                 

@@ -4,7 +4,12 @@
 <div class="">
     <div class="row">
         <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
-            @await Html.PartialAsync("~/Views/User/Menu.cshtml")
+            @* @await Html.PartialAsync("~/Views/User/Menu.cshtml") *@
+            <a class="dropdown-item active" asp-action="Super" asp-controller="User">Dashboard</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Role">Create Roles</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Role">Role List</a>
+            <a class="dropdown-item" asp-action="Add" asp-controller="Company">Add Company</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Company">Company List</a>
         </div>
         <div class="row col-md-10 pt-3">
             <div class="col-md-12 text-center">

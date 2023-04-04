@@ -19,7 +19,7 @@ namespace AirlineMS.Repositories.Implementations
             public CompanyManager Get(string Id)
             {
                 return _context.CompanyManagers
-                .Include(a => a.Company)
+                .Include(a => a.Company).Include(a => a.User)
                 .FirstOrDefault(a => a.UserId == Id && a.IsDeleted == false);
             
             }
@@ -27,7 +27,7 @@ namespace AirlineMS.Repositories.Implementations
             public CompanyManager Get(Expression<Func<CompanyManager, bool>> expression)
             {
                 return _context.CompanyManagers
-                .Include(a => a.Company)
+                .Include(a => a.Company).Include(a => a.User)
                 .FirstOrDefault(expression);
             }
 

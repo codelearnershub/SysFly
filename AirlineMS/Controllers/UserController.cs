@@ -34,6 +34,7 @@ namespace AirlineMS.Controllers
             {
                 var claims = new List<Claim>
                 {
+                    new Claim(ClaimTypes.NameIdentifier, user.Data.Id),
                     new Claim(ClaimTypes.Email, user.Data.Email),
                     new Claim(ClaimTypes.Name, user.Data.FirstName +" "+ user.Data.LastName),
                     new Claim(ClaimTypes.HomePhone, user.Data.PhoneNumber)
@@ -49,6 +50,10 @@ namespace AirlineMS.Controllers
                     if(user.Data.Roles.Select(r => r.Name).Contains("super admin"))
                     {
                         return RedirectToAction("Super");
+                    }
+                    else if(user.Data.Roles.Select(r => r.Name).Contains("Company Manager"))
+                    {
+                        return RedirectToAction("Manager");
                     }
                 }
 
@@ -66,6 +71,13 @@ namespace AirlineMS.Controllers
         }
 
         public IActionResult Super()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [ActionName("Manager")]
+        public IActionResult CompanyManager()
         {
             return View();
         }

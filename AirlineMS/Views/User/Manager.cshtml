@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Company Manager Dashboard";
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" style="min-height: 520px; padding: 0px; margin: 0px">
+            @* @await Html.PartialAsync("~/Views/User/Menu.cshtml") *@
+            <a class="dropdown-item active" asp-action="Manager" asp-controller="User">Dashboard</a>
+            <a class="dropdown-item" asp-action="Create" asp-controller="Branch">Create Branch</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="Branch">List of Branches</a>
+            <a class="dropdown-item" asp-action="Create" asp-controller="AirCraft">Add AirCraft</a>
+            <a class="dropdown-item" asp-action="List" asp-controller="AirCraft">List AirCrafts</a>
+        </div>
+        <div class="row col-md-10 pt-3">
+            <div class="col-md-12 text-center">
+                <h3>@ViewData["Title"]</h3>
+            </div>
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+    </div>
+</div>
